@@ -1,0 +1,28 @@
+{
+    "cli": true,
+    "adapterName": "vis-3dmodel",
+    "title": "3D Model",
+    "description": "Import 3D GLTF images into Blender",
+    "keywords": [
+        "threejs",
+        "gltf",
+        "vis",
+        "iobroker",
+        "3d",
+        "blender"
+    ],
+    "expert": "no",
+    "features": [
+        "vis"
+    ],
+    "type": "visualization-widgets",
+    "authorName": "Excodibur",
+    "authorGithub": "Excodibur",
+    "authorEmail": "excodibur@posteo.de",
+    "gitRemoteProtocol": "HTTPS",
+    "gitCommit": "no",
+    "license": "MIT License",
+    "ci": "gh-actions",
+    "dependabot": "no",
+    "creatorVersion": "1.29.1"
+}

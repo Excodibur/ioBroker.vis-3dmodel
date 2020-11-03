@@ -1,0 +1,39 @@
+{
+  "name": "iobroker.vis-3dmodel",
+  "version": "0.0.1",
+  "description": "Import 3D GLTF images into Blender",
+  "author": {
+    "name": "Excodibur",
+    "email": "excodibur@posteo.de"
+  },
+  "homepage": "https://github.com/Excodibur/ioBroker.vis-3dmodel",
+  "license": "MIT",
+  "keywords": [
+    "threejs",
+    "gltf",
+    "vis",
+    "iobroker",
+    "3d",
+    "blender"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Excodibur/ioBroker.vis-3dmodel"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@iobroker/testing": "^2.3.0",
+    "@types/gulp": "^4.0.7",
+    "axios": "^0.21.0",
+    "gulp": "^4.0.2"
+  },
+  "main": "widgets/3dmodel.html",
+  "scripts": {
+    "test:package": "mocha test/package --exit",
+    "test": "npm run test:package"
+  },
+  "bugs": {
+    "url": "https://github.com/Excodibur/ioBroker.vis-3dmodel/issues"
+  },
+  "readmeFilename": "README.md"
+}
