@@ -33,11 +33,11 @@ vis.binds["3dmodel"] = {
         }
 
         var container = document.getElementById(widgetID);
-        $div.on("resize", _onContainerResize);
+        //$div.on("resize", _onContainerResize);
         //container.addEventListener('resize', _onContainerResize);;
 
         var model = new ThreeJSModel(container);
-
+        this.models[widgetID] = model;
         model.setupScene(data.background_color, data.highlight_selected, data.highlight_color, data.enable_realistic_lighting);
 
         model.setupView(
@@ -50,7 +50,7 @@ vis.binds["3dmodel"] = {
         );
 
         if (data.enable_ambient_lighting)
-            model.setupLights(data.ambient_color, data.ambient_intensity);
+            model.setupLights(data.enable_shadows, data.ambient_color, data.ambient_intensity);
 
         //Get list of clickable objects
         var clickableObjects = [];
@@ -64,7 +64,6 @@ vis.binds["3dmodel"] = {
         }
 
         //Bind animations to states
-        var stateAnimations = [];
         var bound = [];
 
         // subscribe on updates of value
@@ -112,6 +111,7 @@ vis.binds["3dmodel"] = {
         }
 
         //Force Vis to get all state and stay updated
+        //Works in end-user-view, but not in edit-mode
         vis.conn.getStates(bound, function (error, states) {
             vis.updateStates(states);
             vis.conn.subscribe(bound);
@@ -131,6 +131,25 @@ vis.binds["3dmodel"] = {
 
         model.setupClickableObjects(clickableObjects, performAction);
 
+        //#####################
+        //TODO: Initialize dynamic menues (called too late, needs to be invoked earlier)
+        //#####################
+        for(var i=0; i <= data.number_animations; i++) {
+            var mode = data.attr("animation_behaviour" +i);
+            console.log("Animation behaviour: " +mode);
+
+            switch (mode) {
+                case "repeat":
+                    $("#inspect_monitored_state_name" + i).prop("disabled", true);
+                    $("#inspect_state_animation_mapping" + i).prop("disabled", true);
+                break;
+                case "monitorstate":
+                    $("#inspect_monitored_state_name" + i).prop("disabled", false);
+                    $("#inspect_state_animation_mapping" + i).prop("disabled", false);
+                break;
+            }
+        }
+
         //only try to load model, if it is acutally set
         if (data.gltf_file)
             model.load(
@@ -141,14 +160,15 @@ vis.binds["3dmodel"] = {
                 data.model_pos_z,
                 data.scale
             );
-        this.models[widgetID] = model;
+        console.log("added widgetID: "+widgetID);
+        
         //model.addGlobalClippingPlane();
         /*vis.states.bind("0_userdata.0.dummy.val", (e, newVal, oldVal) => {
             console.log("triggered");
             model.updateAnimationByState("Animation_Rolladen_Buero_Vorne", parsetInt(newVal), "something", 100);
         });*/
 
-
+        
 
         if (bound.length) {
             // remember all ids, that bound
@@ -167,6 +187,7 @@ vis.binds["3dmodel"] = {
         //vis.states.bind()
     },
     getClickableObjects: async function (widgetId) {
+        console.log("widgetID: "+widgetId);
         var currentModel = this.models[widgetId];
 
         if (!currentModel) {
@@ -209,6 +230,16 @@ vis.binds["3dmodel"] = {
             await currentModel.checkIfLoaded();
             return currentModel.getScenes();
         }
+    },
+    animationBehaviourOnChange(widgetId, view, mode, inputFieldId, data4) {
+        console.log("Something changed: " + JSON.stringify(widgetId) +"," + JSON.stringify(view)+"," + JSON.stringify(inputFieldId) + "," + JSON.stringify(mode)+"," + JSON.stringify(data4));
+        //Assume current form-field is named something like animation_behaviour<n>
+        var index = inputFieldId.match(/^.*(\d+)$/)[1];
+        console.log("index: " + index);
+        if (index == null)
+            return;
+ 
+        
     }
 };
 

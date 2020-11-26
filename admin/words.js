@@ -337,5 +337,17 @@ systemDictionary = {
         "es": "nombre del objeto",
         "pl": "nazwa obiektu",
         "zh-cn": "对象名称"
+      },
+      "enable_shadows": {
+        "en": "calculate shadows",
+        "de": "Schatten berechnen",
+        "ru": "вычислить тени",
+        "pt": "calcular sombras",
+        "nl": "bereken schaduwen",
+        "fr": "calculer les ombres",
+        "it": "calcolare le ombre",
+        "es": "calcular sombras",
+        "pl": "oblicz cienie",
+        "zh-cn": "计算阴影"
       }
 };

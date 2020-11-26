@@ -56,10 +56,11 @@ class ThreeJSModel {
         this.controls.enableDamping = true;
     }
 
-    setupLights(ambientColor, ambientIntensity = 1) {
+    setupLights(shadowsEnabled, ambientColor, ambientIntensity = 1) {
         //this.scene.add(new THREE.HemisphereLight(0xffffff, this.scene.background, 1));
         this.scene.add(new THREE.AmbientLight (new THREE.Color(ambientColor), ambientIntensity))
 
+        this.shadowsEnabled = shadowsEnabled;
         //var dirLight = new THREE.DirectionalLight(0xffffff, 1);
         //dirLight.position.set(light_pos_x, light_pos_y, light_pos_z);
         //this.scene.add(dirLight);
@@ -86,8 +87,8 @@ class ThreeJSModel {
             model.scale.set(scale, scale, scale);
 
 
-            model.traverse(function (node) {
-                if (node.isMesh || node.isLight) { node.castShadow = true; node.receiveShadow = true; }
+            model.traverse((node) => {
+                if ((node.isMesh || node.isLight) && this.shadowsEnabled) { node.castShadow = true; node.receiveShadow = true; }
             });
 
             this.scene.add(model);
@@ -188,10 +189,10 @@ class ThreeJSModel {
                 if (this.isLoaded == true) {
                     resolve("is loaded");
                 }
-            }.bind(this), 1000);
+            }.bind(this), 10);
         });
     }
-
+    
     updateAnimationByState(name, value, valueType, maxValue) {
         console.log("running animation " + name);
         if (!this.animations[name]) return;

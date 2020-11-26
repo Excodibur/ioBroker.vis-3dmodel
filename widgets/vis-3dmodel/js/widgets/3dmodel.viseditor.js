@@ -8,6 +8,7 @@
 vis.binds["3dmodel"].viseditor = {
     clickableObjectsSelector: function (widAttr, data) {
         try {
+            console.log("loading clickable objects");
             var that = vis;
             var line = {
                 input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
@@ -37,6 +38,7 @@ vis.binds["3dmodel"].viseditor = {
     },
     animationsSelector: function (widAttr, data) {
         try {
+            console.log("loading animations");
             var that = vis;
             var line = {
                 input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
@@ -53,6 +55,7 @@ vis.binds["3dmodel"].viseditor = {
                         //get all other options
                         vis.binds["3dmodel"].getAnimations(widget).then(animationList => {
                             for (const [name, tools] of Object.entries(animationList)) {
+                                console.log("Adding animation to dropdown: " + name);
                                 $(this).append('<option value="' + name + '" ' + ((data == name)? 'selected' : '') + '>' + name + '</option>');
                             }
                         });
@@ -68,6 +71,7 @@ vis.binds["3dmodel"].viseditor = {
     },
     lightsSelector: function (widAttr, data) {
         try {
+            console.log("loading lights");
             var that = vis;
             var line = {
                 input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
@@ -99,6 +103,7 @@ vis.binds["3dmodel"].viseditor = {
     },
     sceneSelector: function (widAttr, data) {
         try {
+            console.log("loading scenes");
             var that = vis;
             var line = {
                 input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
