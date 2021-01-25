@@ -86,12 +86,14 @@ class ThreeJSModel {
             model.position.set(model_pos_x, model_pos_y, model_pos_z);
             model.scale.set(scale, scale, scale);
 
+            console.log("Current scene: " + model.name);
 
             model.traverse((node) => {
                 if ((node.isMesh || node.isLight) && this.shadowsEnabled) { node.castShadow = true; node.receiveShadow = true; }
             });
 
             this.scene.add(model);
+            this.currentScene = model.name;
 
             //load objects
             //this.listObjects(this.scene.children[2], this.allObjects, this.lights);
@@ -110,7 +112,7 @@ class ThreeJSModel {
             });
 
             this.isLoaded = true;
-
+            console.log("Scenes available: " + this.scenes);
             this.animate();
         }, undefined, function (error) {
             console.error(error);
@@ -147,6 +149,10 @@ class ThreeJSModel {
         return this.scenes;
     }
 
+    getCurrentScene() {
+        return this.currentScene;
+    }
+
     isClickableObject(object) {
         //Get parent if it exists
         var checkObject = (this.allObjects[object.name] != null) ? this.allObjects[object.name] : object;
@@ -172,8 +178,10 @@ class ThreeJSModel {
                 }
             }
             //check if light
-            if (object.isLight)
-                listOfLights[object.name] = object;
+            if ((object.type == "PointLight")||(object.type == "DirectionalLight")||(object.type == "SpotLight")) {
+                console.log("Found light: " + object.name);
+                listOfLights[object.name] = { "object" : object, "max_power" : 6000, "smooth_transition" : true};
+            }
 
             console.log("[" + level + "] Object: " + object.name + " Parent: " + (((listOfObjects[object.name] != null) && (listOfObjects[object.name].parent != null)) ? listOfObjects[object.name].parent.name : "") + " Type:" + object.type);
         }
@@ -219,29 +227,31 @@ class ThreeJSModel {
         console.log("currentClipTime:" + currentClipTime + " timescale:" + clipAction.timeScale);
     }
 
-    updateLightByState(name, value, smoothTransition) {
-        var lightObject = this.lights[name];
+    updateLightByState(name, value) {
+        var light = this.lights[name];
+        var lightObject = light.object;
         if (!lightObject) return;
 
-        var oldIntensity = lightObject.intensity;
-        var targetIntensity = (value) ? 2 : 0;
+        //var oldIntensity = lightObject.intensity;
+        //var targetIntensity = (value) ? 2 : 0;
+        var oldPower = lightObject.power;
+        var targetPower = value / 1000 * light.max_power;
         console.log("light state change");
-        if (true) {
+        if (light.smooth_transition) {
             console.log("doing smooth transition"); //Does not work as intended
-            if (targetIntensity > oldIntensity) {
-                while (lightObject.intensity < targetIntensity) {
-                    //setTimeout(function() {
-                    lightObject.intensity += 0.1;
-                    //}, 50);
-                }
+            if (targetPower > oldPower) {
+                var intr = setInterval(function() {
+                    //console.log("++LIGHT power: " + lightObject.power);
+                    if ((lightObject.power += 10) >= targetPower) clearInterval(intr);
+                }, 10)
             } else {
-                while (lightObject.intensity > targetIntensity) {
-                    //setTimeout(function () {
-                    lightObject.intensity -= 0.1;
-                    //}, 50);
-                    console.log("intensity: " + lightObject.intensity);
-                }
+                var intr = setInterval(function() {
+                    //console.log("--LIGHT power: " + lightObject.power);
+                    if ((lightObject.power -= 10) <= targetPower) clearInterval(intr);
+                }, 10)
             }
+        } else {
+            lightObject.power = targetPower;
         }
     }
 

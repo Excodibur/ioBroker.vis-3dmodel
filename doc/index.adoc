@@ -1,0 +1,12 @@
+= VIS 3D Model Widget handbook
+
+== Installation
+
+== Usage
+=== Preparation
+==== Creating a 3d model
+=== 3D Model Widget
+==== Overview
+==== Known limitations
+
+== 

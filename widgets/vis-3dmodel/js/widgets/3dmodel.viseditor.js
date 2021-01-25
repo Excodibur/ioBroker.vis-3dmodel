@@ -62,6 +62,7 @@ vis.binds["3dmodel"].viseditor = {
                     }
 
                     $(this).next().css('width', '100%');
+                    //$(this).load(location.href+" #inspect_"+widAttr+">*","");
                 }
             }
             return line;
@@ -118,9 +119,12 @@ vis.binds["3dmodel"].viseditor = {
                         //add empty option
                         $(this).append('<option value=""></option>');
                         //get all other options
-                        vis.binds["3dmodel"].getScenes(widget).then(sceneList => {
+                        vis.binds["3dmodel"].getScenes(widget).then(sceneData => {
+                            var sceneList = sceneData[0];
+                            var currentScene = sceneData[1];
+                            
                             sceneList.forEach(name => {
-                                $(this).append('<option value="' + name + '" ' + ((data == name)? 'selected' : '') + '>' + name + '</option>');
+                                $(this).append('<option value="' + name + '" ' + ((currentScene == name)? 'selected' : '') + '>' + name + '</option>');
                             });
                         });
                     }

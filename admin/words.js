@@ -14,6 +14,18 @@ systemDictionary = {
         "pl": "Model",
         "zh-cn": "模型"
     },
+    "gltf_file": {
+      "en": "gltf file",
+      "de": "gltf Datei",
+      "ru": "gltf файл",
+      "pt": "arquivo gltf",
+      "nl": "gltf-bestand",
+      "fr": "fichier gltf",
+      "it": "gltf file",
+      "es": "archivo gltf",
+      "pl": "plik gltf",
+      "zh-cn": "gltf文件"
+    },
     "group_modellighting": {
         "en": "model lighting",
         "de": "Modellbeleuchtung",
@@ -74,7 +86,7 @@ systemDictionary = {
         "pl": "pozycja modelu z",
         "zh-cn": "模特位置z"
     },
-    "scale": {
+    "scaling": {
         "en": "scaling",
         "de": "Skalierung",
         "ru": "масштабирование",
@@ -193,6 +205,42 @@ systemDictionary = {
         "es": "iluminación realista",
         "pl": "realistyczne oświetlenie",
         "zh-cn": "逼真的照明"
+      },
+      "enable_ambient_lighting": {
+        "en": "ambient lighting",
+        "de": "Umgebungsbeleuchtung",
+        "ru": "окружающее освещение",
+        "pt": "iluminação ambiente",
+        "nl": "sfeerverlichting",
+        "fr": "éclairage ambiant",
+        "it": "illuminazione dell'ambiente",
+        "es": "iluminación ambiental",
+        "pl": "otaczające światło",
+        "zh-cn": "环境照明"
+      },
+      "ambient_color": {
+        "en": "ambient color",
+        "de": "Umgebungsfarbe",
+        "ru": "окружающий цвет",
+        "pt": "cor ambiente",
+        "nl": "omgevingskleur",
+        "fr": "couleur ambiante",
+        "it": "colore ambientale",
+        "es": "color ambiental",
+        "pl": "kolor otoczenia",
+        "zh-cn": "环境颜色"
+      },
+      "ambient_intensity": {
+        "en": "ambient intensity",
+        "de": "Umgebungsintensität",
+        "ru": "интенсивность окружающей среды",
+        "pt": "intensidade ambiente",
+        "nl": "omgevingsintensiteit",
+        "fr": "intensité ambiante",
+        "it": "intensità ambientale",
+        "es": "intensidad ambiental",
+        "pl": "intensywność otoczenia",
+        "zh-cn": "环境强度"
       },
       "enable_hemispheric_lighting": {
         "en": "hemispheric lighting",

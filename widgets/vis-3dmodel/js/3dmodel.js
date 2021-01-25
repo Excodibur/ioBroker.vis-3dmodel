@@ -79,7 +79,7 @@ vis.binds["3dmodel"] = {
 
             if (monitoredStateLightMap[oid]) {
                 monitoredStateLightMap[oid].forEach(light => {
-                    model.updateLightByState(light, newVal, true);
+                    model.updateLightByState(light, newVal);
                 });
             }
             //$div.find('.template-value').html(newVal);
@@ -158,7 +158,7 @@ vis.binds["3dmodel"] = {
                 data.model_pos_x,
                 data.model_pos_y,
                 data.model_pos_z,
-                data.scale
+                data.scaling
             );
         console.log("added widgetID: "+widgetID);
         
@@ -228,7 +228,7 @@ vis.binds["3dmodel"] = {
             return [];
         } else {
             await currentModel.checkIfLoaded();
-            return currentModel.getScenes();
+            return [currentModel.getScenes(), currentModel.getCurrentScene()];
         }
     },
     animationBehaviourOnChange(widgetId, view, mode, inputFieldId, data4) {
