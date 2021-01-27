@@ -12,6 +12,7 @@ class ThreeJSModel {
         this.lights = [];
         this.scenes = [];
         this.isLoaded = false;
+        this.debugShowCoordinates = false;
     }
 
     setupScene(bgColor, highlightSelected, highlightColor, enable_realistic_lighting) {
@@ -66,6 +67,10 @@ class ThreeJSModel {
         //this.scene.add(dirLight);
     }
 
+    showDebugCoordinates(activate) {
+        this.debugShowCoordinates = activate;
+    }
+
     load(gltfFile, scene_name, model_pos_x, model_pos_y, model_pos_z, scale) {
         var loader = new THREE.GLTFLoader();
         loader.load(gltfFile, (gltf) => {
@@ -105,7 +110,15 @@ class ThreeJSModel {
                 
                 //One mixer per clip is needed, as they should be controlled & played independently
                 var mixer = new THREE.AnimationMixer(model);
-                this.animations[clip.name] = { "clip": clip, "mixer": mixer, "currentPosition": 0, "targetPosition": 0, "clock": new THREE.Clock() };
+                console.log("clip loaded:"+clip.name);
+                this.animations[clip.name] = {
+                    "clip": clip,
+                    "mixer": mixer,
+                    "currentPosition": 0,
+                    "targetPosition": 0,
+                    "repeat": false,
+                    "clock": new THREE.Clock()
+                };
                 //activate animation, but don't play
                 mixer.clipAction(clip).timeScale = 0;
                 mixer.clipAction(clip).play();
@@ -193,15 +206,19 @@ class ThreeJSModel {
 
     checkIfLoaded() {
         return new Promise(resolve => {
-            setTimeout(function () {
+            var intr = setInterval(function () {
                 if (this.isLoaded == true) {
+                    console.log("Promise fulfilled");
+                    clearInterval(intr);
                     resolve("is loaded");
+                } else {
+                    console.log("not yet loaded: " + this.isLoaded);
                 }
             }.bind(this), 10);
         });
     }
     
-    updateAnimationByState(name, value, valueType, maxValue) {
+    updateAnimationByState(name, value, maxValue) {
         console.log("running animation " + name);
         if (!this.animations[name]) return;
 
@@ -217,7 +234,17 @@ class ThreeJSModel {
         var clipDuration = clip.duration;
 
         var currentPositionPercent = currentClipTime / clipDuration * 100;
-        var targetPositionPercent = value / maxValue * 100;
+        
+        //Check if value (ioBroker state) is of type number or boolean to decide wether to play animation by percentage or toggle
+        var targetPositionPercent;
+        if (typeof value == "boolean") {
+            targetPositionPercent = (value) ? 100 : 0;
+            console.log("setting targetposition (boolean)" + targetPositionPercent);
+        } else if (typeof value == "number") {
+            targetPositionPercent = value / maxValue * 100;
+        } else {
+            return;
+        }
 
         this.animations[name].targetPosition = clipDuration / 100 * targetPositionPercent;
         //Behave differently depending on value type       
@@ -225,6 +252,40 @@ class ThreeJSModel {
         //Check whether to reverse or forward the animation
         clipAction.timeScale = (this.animations[name].targetPosition < currentClipTime) ? -1 : 1;
         console.log("currentClipTime:" + currentClipTime + " timescale:" + clipAction.timeScale);
+    }
+
+    async autoplayAnimation(name){
+        await this.checkIfLoaded();
+ 
+        if (!this.animations[name]) return;
+        console.log("Auto playing animation " + name);
+
+        //Get current frame from animation (by percentage)
+        var mixer = this.animations[name].mixer;
+        var clip = this.animations[name].clip;
+        var clipAction = mixer.clipAction(clip);
+
+
+        //Workaround (set targetPosition higher than clip length, so it can never be reached)
+        this.animations[name].targetPosition = clip.duration;
+
+        clipAction.timeScale = 1;
+    }
+
+    async repeatAnimation(name) {
+        await this.checkIfLoaded();
+        if (!this.animations[name]) return;
+        console.log("Repeating animation " + name);
+
+        //Get current frame from animation (by percentage)
+        var mixer = this.animations[name].mixer;
+        var clip = this.animations[name].clip;
+        var clipAction = mixer.clipAction(clip);
+
+        this.animations[name].repeat = true;
+        //clipAction.setLoop(THREE.LoopRepeat);
+        //Workaround (set targetPosition higher than clip length, so it can never be reached)
+        //this.animations[name].targetPosition = clip.duration + 1000;
     }
 
     updateLightByState(name, value) {
@@ -273,9 +334,20 @@ class ThreeJSModel {
             var deltaTime = value.clock.getDelta();
 
             //Play animations smoothly
-            if (((clipAction.timeScale == 1) && (Math.ceil(value.currentPosition * 10) / 10 < Math.ceil(value.targetPosition * 10) / 10)) ||
-                ((clipAction.timeScale == -1) && (Math.floor(value.currentPosition * 10) / 10 > Math.floor(value.targetPosition * 10) / 10)))
+            if (value.repeat){
+                if (value.targetPosition > 0){
+                    clipAction.enabled = true;
+                    clipAction.setLoop(THREE.LoopRepeat);
+                }else
+                    clipAction.setLoop(THREE.LoopOnce);
                 mixer.update(deltaTime);
+            } else {
+                //go only to target position
+                if (((clipAction.timeScale == 1) && (Math.ceil(value.currentPosition * 10) / 10 < Math.ceil(value.targetPosition * 10) / 10)) ||
+                ((clipAction.timeScale == -1) && (Math.floor(value.currentPosition * 10) / 10 > Math.floor(value.targetPosition * 10) / 10)))
+                    mixer.update(deltaTime);
+            }
+            
         }
         //this.mixer.update(this.clock.getDelta());
         requestAnimationFrame(this.animate.bind(this));

@@ -2,3 +2,9 @@
 .vis-3dmodel-class {
     font-style: italic;
 }
+
+/* In Chrome hide border around model */
+canvas { 
+    outline: none; 
+    border: none;
+}

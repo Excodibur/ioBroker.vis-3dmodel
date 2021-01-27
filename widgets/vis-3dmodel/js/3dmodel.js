@@ -13,6 +13,8 @@ $.get("../vis-3dmodel.admin/words.js", function (script) {
     $.extend(systemDictionary, iobSystemDic);
 });
 
+let stateDefinitions = [];
+
 // this code can be placed directly in vis-3dmodel.html
 vis.binds["3dmodel"] = {
     version: "0.0.1",
@@ -69,11 +71,15 @@ vis.binds["3dmodel"] = {
         // subscribe on updates of value
         function onChange(e, newVal, oldVal) {
             var oid = e.type.replace(/\.val$/, '');
-            console.log("triggered " + oid);
+            //var state = vis.conn.getObject(oid);
+            //console.log("****" + JSON.stringify(stateDefinitions));
+            //console.log("triggered " + oid + " state: " + JSON.stringify(stateDefinitions[oid]));
+            var stateType = stateDefinitions[oid].common.type;
+            newVal = (stateType == "boolean") ? !!newVal : newVal; //hacky way to transform number to boolean
             //Get all animations
             if (monitoredStateAnimationMap[oid]) {
                 monitoredStateAnimationMap[oid].forEach(animation => {
-                    model.updateAnimationByState(animation, newVal, "something", 100);
+                    model.updateAnimationByState(animation, newVal, 100); //100 ? maxvalue --> check
                 });
             }
 
@@ -87,22 +93,36 @@ vis.binds["3dmodel"] = {
 
         //It should be possible to map more than one animation to a state
         var monitoredStateAnimationMap = [];
+        var autoplayAnimations = [];
+        var repeatAnimations = [];
         for (var i = 0; i <= data.number_animations; i++) {
-            var animationName = data.attr("state_animation" + i);
-            var monitoredStateName = data.attr("monitored_state_name" + i);
-            if (monitoredStateAnimationMap[monitoredStateName] == null)
-                monitoredStateAnimationMap[monitoredStateName] = [];
-            monitoredStateAnimationMap[monitoredStateName].push(animationName);
-            //console.log("Setup state: " + monitoredStateName + " with animation " + animationName);
-            //vis.states.bind(monitoredStateName + '.val', onChange);
-            bound.push(monitoredStateName);
+            var animationName = data.attr("animation" + i);
+            var behaviour = data.attr("animation_behaviour" + i);
+            var repeat = data.attr("animation_repeat" + i);
+            if (behaviour == "monitorstate") {
+                var monitoredStateName = data.attr("monitored_state_name" + i);
+                if (monitoredStateAnimationMap[monitoredStateName] == null)
+                    monitoredStateAnimationMap[monitoredStateName] = [];
+                monitoredStateAnimationMap[monitoredStateName].push(animationName);
+                //console.log("Setup state: " + monitoredStateName + " with animation " + animationName);
+                //vis.states.bind(monitoredStateName + '.val', onChange);
+                bound.push(monitoredStateName);
+            } else {
+                if (behaviour == "autoplay") 
+                    autoplayAnimations.push(animationName);
+                
+                
+            }  
+            if (repeat)
+                repeatAnimations.push(animationName);
         }
+
+        
 
         //Do same stuff for lights on state changes
         var monitoredStateLightMap = [];
         for (var i = 0; i <= data.number_switchable_lights; i++) {
             var lightName = data.attr("light_name" + i);
-            console.log("setup light: " + lightName);
             var monitoredStateName = data.attr("light_monitored_state" + i);
             if (monitoredStateLightMap[monitoredStateName] == null)
                 monitoredStateLightMap[monitoredStateName] = [];
@@ -110,17 +130,58 @@ vis.binds["3dmodel"] = {
             bound.push(monitoredStateName);
         }
 
+        async function initializeModel(model, states, monitoredStateAnimationMap, monitoredStateLightMap, autoplayAnimations, repeatAnimations) {
+            await model.checkIfLoaded();
+            //Initialize all animations/lights upon start
+            console.log("ANIMATIONS: " + monitoredStateAnimationMap.toString());
+            for (const [oid, animations] of Object.entries(monitoredStateAnimationMap)) {
+                animations.forEach((animation) => {
+                    console.log("###oid: " + oid + " animation: "+animation + " val: "+states[oid].val);
+                    model.updateAnimationByState(animation, states[oid].val,100);
+                });
+                
+            }
+            console.log("LIGHTS: " + monitoredStateLightMap);
+            for (const [oid, lights] of Object.entries(monitoredStateLightMap)) {
+                lights.forEach((light) => {
+                    model.updateLightByState(light, states[oid].val);
+                });
+            }
+
+            //start auto-play animations
+            if (autoplayAnimations.length > 0){
+                autoplayAnimations.forEach((animation) => {
+                    model.autoplayAnimation(animation);
+                });
+            }
+
+            //repeat animations
+            if (repeatAnimations.length > 0){
+                repeatAnimations.forEach((animation) => {
+                    model.repeatAnimation(animation);
+                });
+            }
+        }
+
         //Force Vis to get all state and stay updated
         //Works in end-user-view, but not in edit-mode
-        vis.conn.getStates(bound, function (error, states) {
+        vis.conn.getStates(bound, (error, states) => {
             vis.updateStates(states);
             vis.conn.subscribe(bound);
-
+            //console.log("###state info: " + JSON.stringify(states));
             for (var i = 0; i < bound.length; i++) {
-                console.log("Setup state: " + bound[i]);
                 vis.states.bind(bound[i] + '.val', onChange);
+
+                //Store additional data about states
+                vis.conn.getObject(bound[i], false, function (error, config) {
+                    stateDefinitions[config._id] = config;
+                    //console.log("++++state: " + config._id + " config: " + JSON.stringify(config));
+                });
+                
+                initializeModel(model, states, monitoredStateAnimationMap, monitoredStateLightMap, autoplayAnimations, repeatAnimations);
             }
         });
+
 
         function performAction(targetId, action) {
             console.log("Performing action " + action + " for target " + targetId);
@@ -139,13 +200,18 @@ vis.binds["3dmodel"] = {
             console.log("Animation behaviour: " +mode);
 
             switch (mode) {
-                case "repeat":
+                case "autoplay":
                     $("#inspect_monitored_state_name" + i).prop("disabled", true);
                     $("#inspect_state_animation_mapping" + i).prop("disabled", true);
+                    $("#inspect_animation_repeat" + i).prop("disabled", false);
                 break;
                 case "monitorstate":
                     $("#inspect_monitored_state_name" + i).prop("disabled", false);
                     $("#inspect_state_animation_mapping" + i).prop("disabled", false);
+                    
+                    //Only disable, if monitored state is not boolean
+                    //TODO
+                    //$("#inspect_animation_repeat" + i).prop("disabled", true);
                 break;
             }
         }

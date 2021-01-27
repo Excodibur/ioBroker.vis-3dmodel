@@ -158,7 +158,7 @@ systemDictionary = {
         "pl": "położenie celu kamery (z)",
         "zh-cn": "相机目标位置 (z)"
       },
-      "model_camera_ pos_x": {
+      "model_camera_pos_x": {
         "en": "camera position (x)",
         "de": "Kameraposition (x)",
         "ru": "положение камеры (x)",
@@ -170,7 +170,7 @@ systemDictionary = {
         "pl": "położenie kamery (x)",
         "zh-cn": "相机位置 (x)"
       },
-      "model_camera_ pos_y": {
+      "model_camera_pos_y": {
         "en": "camera position (y)",
         "de": "Kameraposition (y)",
         "ru": "положение камеры (y)",
@@ -182,17 +182,17 @@ systemDictionary = {
         "pl": "położenie kamery (y)",
         "zh-cn": "相机位置 (y)"
       },
-      "model_camera_ pos_x": {
-        "en": "camera position (x)",
-        "de": "Kameraposition (x)",
-        "ru": "положение камеры (x)",
-        "pt": "posição da câmera (x)",
-        "nl": "camerapositie (x)",
-        "fr": "position de la caméra (x)",
-        "it": "posizione della telecamera (x)",
-        "es": "posición de la cámara (x)",
-        "pl": "położenie kamery (x)",
-        "zh-cn": "相机位置 (x)"
+      "model_camera_pos_z": {
+        "en": "camera position (z)",
+        "de": "Kameraposition (z)",
+        "ru": "положение камеры (z)",
+        "pt": "posição da câmera (z)",
+        "nl": "camerapositie (z)",
+        "fr": "position de la caméra (z)",
+        "it": "posizione della telecamera (z)",
+        "es": "posición de la cámara (z)",
+        "pl": "położenie kamery (z)",
+        "zh-cn": "相机位置 (z)"
       },
       "enable_realistic_lighting": {
         "en": "realistic lighting",
@@ -361,6 +361,78 @@ systemDictionary = {
         "es": "número de animaciones",
         "pl": "liczba animacji",
         "zh-cn": "动画数量"
+      },
+      "animation_behaviour": {
+        "en": "behaviour",
+        "de": "Verhalten",
+        "ru": "поведение",
+        "pt": "comportamento",
+        "nl": "gedrag",
+        "fr": "comportement",
+        "it": "comportamento",
+        "es": "comportamiento",
+        "pl": "zachowanie",
+        "zh-cn": "行为"
+      },
+      "monitored_state_name": {
+        "en": "monitored state",
+        "de": "überwachter Zustand",
+        "ru": "контролируемое состояние",
+        "pt": "estado monitorado",
+        "nl": "bewaakte staat",
+        "fr": "état surveillé",
+        "it": "stato monitorato",
+        "es": "estado monitoreado",
+        "pl": "monitorowany stan",
+        "zh-cn": "监视状态"
+      },
+      "monitorstate": {
+        "en": "monitor state",
+        "de": "Status überwachen",
+        "ru": "состояние монитора",
+        "pt": "monitorar estado",
+        "nl": "monitor staat",
+        "fr": "état du moniteur",
+        "it": "monitorare lo stato",
+        "es": "estado del monitor",
+        "pl": "stan monitora",
+        "zh-cn": "监控状态"
+      },
+      "autoplay": {
+        "en": "auto play",
+        "de": "automatisches Abspielen",
+        "ru": "Автовоспроизведение",
+        "pt": "Reprodução automática",
+        "nl": "automatisch afspelen",
+        "fr": "lecture automatique",
+        "it": "riproduzione automatica",
+        "es": "auto-reproducción",
+        "pl": "Automatyczne odtwarzanie",
+        "zh-cn": "自动播放"
+      },
+      "animation": {
+        "en": "animation",
+        "de": "Animation",
+        "ru": "анимация",
+        "pt": "animação",
+        "nl": "animatie",
+        "fr": "animation",
+        "it": "animazione",
+        "es": "animación",
+        "pl": "animacja",
+        "zh-cn": "动画"
+      },
+      "animation_repeat": {
+        "en": "repeat",
+        "de": "wiederholen",
+        "ru": "повторение",
+        "pt": "repetir",
+        "nl": "herhaling",
+        "fr": "répéter",
+        "it": "ripetere",
+        "es": "repetir",
+        "pl": "powtarzać",
+        "zh-cn": "重复"
       },
       "group_modelclickableobjects": {
         "en": "clickable objects",
