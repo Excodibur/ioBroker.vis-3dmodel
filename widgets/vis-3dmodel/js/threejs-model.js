@@ -208,11 +208,10 @@ class ThreeJSModel {
         return new Promise(resolve => {
             var intr = setInterval(function () {
                 if (this.isLoaded == true) {
-                    console.log("Promise fulfilled");
                     clearInterval(intr);
                     resolve("is loaded");
                 } else {
-                    console.log("not yet loaded: " + this.isLoaded);
+                    console.log("model not yet loaded: " + this.isLoaded);
                 }
             }.bind(this), 10);
         });
