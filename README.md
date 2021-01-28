@@ -14,9 +14,10 @@
 
 ## vis-3dmodel adapter for ioBroker
 
-This widget allows to render interactive 3D models directly in ioBroker VIS. In editor-mode ioBroker states can also be link to certain entities like animations, or lights.
+This widget allows to render interactive 3D models directly in ioBroker VIS. In edit-mode ioBroker states can also be linked to certain 3d-entities like animations, or lights.
 
 ![Widget Demo](doc/media/clips/3dmodel_demo.gif)
+Source files for this example can be found [here](examples/house).
 
 ### TODO
 This widget is in a very early and potentially unstable phase. Not all features have been implemented yet, so there will be a lot of bugs and "dead-ends" at the moment.
