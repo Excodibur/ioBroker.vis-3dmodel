@@ -43,3 +43,15 @@ Only *.gltf* files should be uploaded to VIS file-manager. At first glance it lo
 It is a good idea to check the validity of your export GLTF-file, before using it in the widget. The publicly available link:https://gltf-viewer.donmccurdy.com/[online GLTF Viewer] provides an easy way to test any GLTF file you export. It is not in any way related to this widget and helps to distinguish between issues caused by the widget and issues as a result of export- or modeling-errors in your Blender project. Only if it works properly in such viewers, it will work flawlessly in the widget.
 --
 == Setting up states (optional)
+
+Although not required, one of the key features of this widget is the ability to react to states maintained in ioBroker to update the model in real time.
+
+States (sometimes also refered to as _Datapoint_) can be used in conjunction within light-sources, as well as animations of the 3D model. Currently there are two types of states supported:
+* `boolean`: Toogles entities of the 3D model.
+** *Lights* are turned on or off. 
+** *Animations* are played once.
+* `number`: Dynamically changes entities of the 3D model.
+** *Lights* are basically dimmed smoothly.
+** *Animations* are played partially, depending on the state-value. 
+
+For more information please refer to link:#_lights[Lights] and link:#_animations[Animations] chapter.
