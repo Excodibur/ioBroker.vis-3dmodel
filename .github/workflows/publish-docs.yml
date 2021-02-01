@@ -10,7 +10,7 @@ on:
     #  - 'docs/**.adoc'
     #  - '!docs/release-documentation.adoc'
     branches:
-            - "master"
+            - main
         tags:
             # normal versions
             - "v[0-9]+.[0-9]+.[0-9]+"
