@@ -40,8 +40,10 @@ jobs:
           TAG_NAME="${GITHUB_REF##refs/tags/}"
           if [ "$TAG_NAME" = $(git describe --tags --abbrev=0) ]; then
               echo "::set-output name=is_latest::true"
+          fi
           if [ -z $TAG_NAME ]; then
               TAG_NAME=dev
+          fi
           echo "::set-output name=tag_name::${TAG_NAME}"
           echo "::set-output name=deploy_tag_name::doc-${TAG_NAME}"
       
