@@ -22,6 +22,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@alcalzone/release-script": "^1.8.3",
     "@iobroker/testing": "^2.3.0",
     "@types/gulp": "^4.0.7",
     "axios": "^0.21.0",

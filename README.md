@@ -25,9 +25,7 @@ Before you start using it, please [read the documentation](https://github.com/Ex
 
 
 ## Changelog
-
-### 0.0.1
-* (Excodibur) initial release
+See [Changelog](https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/CHANGELOG.md).
 
 ## License
 MIT License
