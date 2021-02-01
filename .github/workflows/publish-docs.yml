@@ -32,20 +32,21 @@ jobs:
           TAG_NAME="${GITHUB_REF##refs/tags/}"
           echo "::set-output name=tag_name::${TAG_NAME}"
           echo "::set-output name=deploy_tag_name::doc-${TAG_NAME}"
+      
       # Build HTML Asciidoc
       - name: Get build container
         id: adocbuild
         uses: avattathil/asciidoctor-action@master
         with:
-            program: "asciidoctor -D docs --backend=html5 -o docs/index.html docs/index.adoc"
+            program: "asciidoctor -D doc --backend=html5 -o doc/index.html doc/index.adoc"
           
       # Runs a single command using the runners shell
-      - name: Deploy
+      - name: Deploy documentation to GH Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doc
           exclude_assets: '.adoc'
-          destination_dir: subdir
+          destination_dir: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
