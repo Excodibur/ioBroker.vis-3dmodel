@@ -34,11 +34,14 @@ jobs:
           echo "::set-output name=deploy_tag_name::doc-${TAG_NAME}"
       
       # Build HTML Asciidoc
-      - name: Get build container
+      - name: Build Asciidoc
         id: adocbuild
         uses: avattathil/asciidoctor-action@master
         with:
             program: "asciidoctor -D doc --backend=html5 -o doc/index.html doc/index.adoc"
+      
+      - name: CHECK index.html
+        run: cat doc/index.html
           
       # Runs a single command using the runners shell
       - name: Deploy documentation to GH Pages
@@ -46,7 +49,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doc
-          exclude_assets: '.adoc'
+          exclude_assets: '**.adoc'
           destination_dir: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
