@@ -1,83 +1,83 @@
 {
-  "common": {
-    "name": "vis-3dmodel",
-    "version": "0.0.1",
-    "news": {
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "zh-cn": "首次出版"
-      }
+    "common": {
+        "name": "vis-3dmodel",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "3D Model",
+        "titleLang": {
+            "en": "3D Model",
+            "de": "3D-Modell",
+            "ru": "3D модель",
+            "pt": "Modelo 3D",
+            "nl": "3d model",
+            "fr": "modèle 3D",
+            "it": "Modello 3D",
+            "es": "modelo 3d",
+            "pl": "Model 3D",
+            "zh-cn": "3D模型"
+        },
+        "desc": {
+            "en": "Import 3D GLTF images into Blender",
+            "de": "Importieren Sie 3D-GLTF-Bilder in Blender",
+            "ru": "Импорт изображений 3D GLTF в Blender",
+            "pt": "Importe imagens 3D GLTF para o Blender",
+            "nl": "Importeer 3D GLTF-afbeeldingen in Blender",
+            "fr": "Importez des images 3D GLTF dans Blender",
+            "it": "Importa immagini 3D GLTF in Blender",
+            "es": "Importar imágenes GLTF 3D a Blender",
+            "pl": "Importuj obrazy 3D GLTF do Blendera",
+            "zh-cn": "将3D GLTF图像导入Blender"
+        },
+        "authors": [
+            "Excodibur <non@existant.com>"
+        ],
+        "keywords": [
+            "threejs",
+            "gltf",
+            "vis",
+            "iobroker",
+            "3d",
+            "blender"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "vis-3dmodel.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Excodibur/ioBroker.vis-3dmodel/master/admin/vis-3dmodel.png",
+        "readme": "https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/README.md",
+        "loglevel": "info",
+        "restartAdapters": [
+            "vis"
+        ],
+        "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
+        "onlyWWW": true,
+        "noConfig": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "mode": "once",
+        "dependencies": [
+            "vis"
+        ],
+        "installedFrom": "/mnt/c/dev/git/ioBroker.vis-3dmodel"
     },
-    "title": "3D Model",
-    "titleLang": {
-      "en": "3D Model",
-      "de": "3D-Modell",
-      "ru": "3D модель",
-      "pt": "Modelo 3D",
-      "nl": "3d model",
-      "fr": "modèle 3D",
-      "it": "Modello 3D",
-      "es": "modelo 3d",
-      "pl": "Model 3D",
-      "zh-cn": "3D模型"
+    "native": {
+        "option1": true,
+        "option2": "42"
     },
-    "desc": {
-      "en": "Import 3D GLTF images into Blender",
-      "de": "Importieren Sie 3D-GLTF-Bilder in Blender",
-      "ru": "Импорт изображений 3D GLTF в Blender",
-      "pt": "Importe imagens 3D GLTF para o Blender",
-      "nl": "Importeer 3D GLTF-afbeeldingen in Blender",
-      "fr": "Importez des images 3D GLTF dans Blender",
-      "it": "Importa immagini 3D GLTF in Blender",
-      "es": "Importar imágenes GLTF 3D a Blender",
-      "pl": "Importuj obrazy 3D GLTF do Blendera",
-      "zh-cn": "将3D GLTF图像导入Blender"
-    },
-    "authors": [
-      "Excodibur <non@existant.com>"
-    ],
-    "keywords": [
-      "threejs",
-      "gltf",
-      "vis",
-      "iobroker",
-      "3d",
-      "blender"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "main.js",
-    "icon": "vis-3dmodel.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/Excodibur/ioBroker.vis-3dmodel/master/admin/vis-3dmodel.png",
-    "readme": "https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/README.md",
-    "loglevel": "info",
-    "restartAdapters": [
-      "vis"
-    ],
-    "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
-    "onlyWWW": true,
-    "noConfig": true,
-    "singleton": true,
-    "type": "visualization-widgets",
-    "mode": "once",
-    "dependencies": [
-      "vis"
-    ],
-    "installedFrom": "/mnt/c/dev/git/ioBroker.vis-3dmodel"
-  },
-  "native": {
-    "option1": true,
-    "option2": "42"
-  },
-  "objects": [],
-  "instanceObjects": []
+    "objects": [],
+    "instanceObjects": []
 }

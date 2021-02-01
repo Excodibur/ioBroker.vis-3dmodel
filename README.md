@@ -21,7 +21,7 @@ Source files for this example can be found [here](examples/house).
 
 This widget is in a very early and potentially unstable phase. Not all features have been implemented yet, so there will be a lot of bugs and "dead-ends" at the moment.
 
-Before you start using it, please [read the documentation](https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/doc/index.adoc).
+Before you start using it, please [read the documentation](https://excodibur.github.io/ioBroker.vis-3dmodel/latest/index.html).
 
 
 ## Changelog

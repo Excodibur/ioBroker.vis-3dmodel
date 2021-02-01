@@ -6,9 +6,16 @@ name: Publish Documentation
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    paths:
-      - 'docs/**.adoc'
-      - '!docs/release-documentation.adoc'
+    #paths:
+    #  - 'docs/**.adoc'
+    #  - '!docs/release-documentation.adoc'
+    branches:
+            - "master"
+        tags:
+            # normal versions
+            - "v[0-9]+.[0-9]+.[0-9]+"
+            # pre-releases
+            - "v[0-9]+.[0-9]+.[0-9]+-**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,11 +32,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
+      # TODO: Check if tag is latest and create symlink to release
       - name: Prepare tag
         id: prepare_tag
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           TAG_NAME="${GITHUB_REF##refs/tags/}"
+          if [ "$TAG_NAME" = $(git describe --tags --abbrev=0) ]; then
+              echo "::set-output name=is_latest::true"
+          if [ -z $TAG_NAME ]; then
+              TAG_NAME=dev
           echo "::set-output name=tag_name::${TAG_NAME}"
           echo "::set-output name=deploy_tag_name::doc-${TAG_NAME}"
       
@@ -40,8 +52,8 @@ jobs:
         with:
             program: "asciidoctor -D doc --backend=html5 -o index.html doc/index.adoc"
       
-      - name: CHECK index.html
-        run: cat doc/index.html
+      #- name: CHECK index.html
+      #  run: cat doc/index.html
           
       # Runs a single command using the runners shell
       - name: Deploy documentation to GH Pages
@@ -50,6 +62,16 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doc
           exclude_assets: '**.adoc,*/**.adoc,*/**.sh'
+          keep_files: true
           destination_dir: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
+
+      # Change latest link in case there is a new documentation available
+      - name: Update latest symlink
+        if: ${{ steps.prepare_tag.outputs.is_latest}}
+        run: |
+          echo "tag is latest. need to update latest-symlink in gh-pages branch"
+
+
+      

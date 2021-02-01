@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ROOTFILE=$1
-OUTFILE=$2
+ROOTFILE="$1"
+OUTFILE="$2"
 
 outputString=""
 
@@ -55,5 +55,5 @@ outputString="$(resolveIncludes $ROOTFILE 0)"
 echo -e "$outputString" > $OUTFILE
 
 #Add correct version number to output file
-PACKAGE_VERSION=$(node -p -e "require('$GITHUB_WORKSPACE/package.json').version")
-sed -i "s/___VERSION___/$PACKAGE_VERSION/g" OUTFILE
+PACKAGE_VERSION=$(node -p -e "require('../package.json').version")
+sed -i "s/___VERSION___/$PACKAGE_VERSION/g" $OUTFILE
