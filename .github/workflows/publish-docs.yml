@@ -49,7 +49,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doc
-          exclude_assets: '**.adoc,*/**.adoc'
+          exclude_assets: '**.adoc,*/**.adoc,*/**.sh'
           destination_dir: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
