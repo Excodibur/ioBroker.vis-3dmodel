@@ -93,4 +93,4 @@ jobs:
                   draft: false
                   # Prerelease versions create prereleases on Github
                   prerelease: ${{ contains(steps.extract_release.outputs.VERSION, '-') }}
-                  body: ${{ steps.extract_release.outputs..BODY }}
+                  body: ${{ steps.extract_release.outputs.BODY }}

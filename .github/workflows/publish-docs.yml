@@ -10,12 +10,12 @@ on:
     #  - 'docs/**.adoc'
     #  - '!docs/release-documentation.adoc'
     branches:
-            - main
-        tags:
-            # normal versions
-            - "v[0-9]+.[0-9]+.[0-9]+"
-            # pre-releases
-            - "v[0-9]+.[0-9]+.[0-9]+-**"
+        - main
+    tags:
+        # normal versions
+        - "v[0-9]+.[0-9]+.[0-9]+"
+        # pre-releases
+        - "v[0-9]+.[0-9]+.[0-9]+-**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
