@@ -1,0 +1,52 @@
+= 3D Model Widget
+The widget itself can be used like any regular widget in iobroker VIS. It should look similar to the following figure:
+
+image:media/3dmodel_widget_vis_main.png[title="Main view 3D Model Widget VIS",800]
+
+To work properly, a valid GLTF file needs to be uploaded to ioBroker VIS file manager (`Setup` → `File Manager...`) and referenced in the widget attributes under `General` / `Common` / `*gltf file*`.
+
+[TIP]
+====
+If a exported GLTF file is valid, can be checked easily beforehand with available online tools, like link:https://gltf-viewer.donmccurdy.com/[GLTF Viewer].
+====
+
+== Model
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_model.png[Widget settings - Model,300,float="right"]
+The following settings are available to position and size the model properly to the viewport:
+
+* `*scene*`: Every GLTF file should contain at least one scene containing meshes, lights and animations. Scenes in ThreeJS eqaul scenes used in Blender. In the smarthome context scenes can be used to keep data from different floors (or even rooms) separated, but still in the same model.
+* `*model position x/y/z*`:  Position of the model on each axis in 3D space. Setting `0` here is sufficient for most scenarios.
+* `*scaling*`: This setting allows you to scale your model up or down. A similar effect can be achieved by changing the camera settings which is more complex, so this setting here is mostly there for conveniance. While the scrollbar allows the model to be scaled up to 10 times of its original size, the input box can be used to scale even higher than that.
+* `*background-color*`: The default two-dimensional background color for the rendered model can be set here.
+--
+
+== Camera
+In this widget the camera always orbits around a target (aka your model), which allows for a free 360 degree rotation into every direction of 3D space. 
+
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_camera.png[Widget settings - Camera,300,float="right"]
+
+* `*camera target position (x/y/z)*`: As you normally want the camera to exactly rotate around your model, it is advised to use the same settings here as for `Model` / `model position x/y/z`.
+* `*camera position (x/y/z)*`: This is starting position of your camera "in orbit" and given distance and angle to `camera target position` decides what users will see from your model when loading the page initially. Once the widget is fully loaded, by dragging or scrolling you can change the camera position in real-time to inspect different parts of your model.
+--
+
+== Lighting
+
+== Switchable Lights
+
+== Interactive Objects
+
+== Animations
+
+When *Animations* are turned on, they will just play once, unless configured to _repeat_. Typical smarthome scenarios could be opened/closed doors, windows, or other devices that can be toggled.
+
+With a configured _Max Value_ (the highest value the state can have) it is calculated relatively, up to which point an animation is played. E.g. a window-blind animation is played up to 50%, if the state value indicates the blinds are closed that much. If the state value decreases after that (e.g. because blinds are opened more and only 30% closed) the animation will play in reverse up to that percentage.
+
+== Debugging
+TODO
+
+== Known limitations
+TODO

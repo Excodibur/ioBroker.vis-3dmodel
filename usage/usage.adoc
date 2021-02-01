@@ -1,0 +1,5 @@
+= Usage
+Once all installation steps are completed, the widget should be accessible in the VIS toolbar. The widget itself allows users to upload GLTF files containing the 3d scene information to VIS and then to embed it onto any page.
+
+include::preparation.adoc[leveloffset=1]
+include::widget.adoc[leveloffset=1]

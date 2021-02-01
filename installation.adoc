@@ -1,0 +1,33 @@
+= Installation
+
+At this point in time the 3dmodel widget was not added to the ioBroker stable-repository, meaning you will have to install it directly from source.
+
+To achieve this, perform the following steps:
+
+. It is expected that ioBroker VIS (Adapter: _Visualisation_) is already installed and a valid license key is configured. 
+. In ioBroker admin GUI, go to _Adapter_ and click on the Github Icon (image:media/iobroker_icon_github.png[Github-Icon,16]) to _Install from custom URL_. In the next dialog switch to the tab _CUSTOM_ and copy link:https://github.com/Excodibur/ioBroker.vis-3dmodel[] into the field _URL or file path_. Press _Install_ to start the installation of the widget.
+. If you experience issues while using the widget, please also take a look at the chapter link:#_known_issuesworkarounds[Known Issues/Workarounds].
+
+== Known Issues/Workarounds
+
+The following issues were observed during development and likely will reoccur for other users, hence this section covers known workarounds for them. Some of the issues described here are already being fixed, or formally addressed, but still exist at the time of writing this document.
+
+* The *Content Security Policy* that is enforced by ioBroker VIS by default will likely cause issues on client-side, if a GLTF model is loaded that contains Materials and Image Textures. It is correctly displayed in edit-view, but in the regular end-user view it appears as black box, since it was not properly loaded. In the web-console of your browser you will find numerous errors related to the *Content Security Policy*. ThreeJS, the 3D render library used within this widget loads some resources as *blob* data, which by default is blocked by the CSP the VIS adapter uses.
+** The solution is to change the VIS config file `<iobroker-home>/node_modules/iobroker.vis/www/index.html` 
+
+[source,html]
+----
+<meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' * 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' *; img-src 'self' 'unsafe-inline' * data:; media-src 'self' 'unsafe-inline' *; connect-src 'self' 'unsafe-eval' 'unsafe-inline' * ws: wss:; script-src 'self' 'unsafe-eval' 'unsafe-inline' *">
+----
+to
+[source,html]
+----
+ <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' * 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' *; img-src 'self' 'unsafe-inline' * data: blob:; media-src 'self' 'unsafe-inline' *; connect-src 'self' 'unsafe-eval' 'unsafe-inline' * ws: wss: blob:; script-src 'self' 'unsafe-eval' 'unsafe-inline' *"> # <1>
+----
+<1> Notice that for content types `img-src` and `connect-src` both *blob:* was added.
+
+And then restart VIS via GUI, or CLI. However sometimes updating old or installing new widgets overwrites this setting again, so this is not a permanet fix. It is checked, if this can be changed in the core code.
+
+Recent issues can also be found here: link:https://github.com/Excodibur/ioBroker.vis-3dmodel/issues[GitHub 3D Model Widget issue tracker].
