@@ -38,7 +38,7 @@ jobs:
         id: adocbuild
         uses: avattathil/asciidoctor-action@master
         with:
-            program: "asciidoctor -D doc --backend=html5 -o doc/index.html doc/index.adoc"
+            program: "asciidoctor -D doc --backend=html5 -o index.html doc/index.adoc"
       
       - name: CHECK index.html
         run: cat doc/index.html
