@@ -79,7 +79,7 @@ vis.binds["3dmodel"] = {
             //Get all animations
             if (monitoredStateAnimationMap[oid]) {
                 monitoredStateAnimationMap[oid].forEach(animation => {
-                    model.updateAnimationByState(animation, newVal, 100); //100 ? maxvalue --> check
+                    model.updateAnimationByState(animation, newVal, stateAttributes[oid].maxValue); //100 ? maxvalue --> check
                 });
             }
 
@@ -92,18 +92,22 @@ vis.binds["3dmodel"] = {
         }
 
         //It should be possible to map more than one animation to a state
+        //TODO Probably the following code needs to be reworked to reduce amount of arrays 
         var monitoredStateAnimationMap = [];
         var autoplayAnimations = [];
         var repeatAnimations = [];
+        var stateAttributes = [];
         for (var i = 0; i <= data.number_animations; i++) {
             var animationName = data.attr("animation" + i);
             var behaviour = data.attr("animation_behaviour" + i);
             var repeat = data.attr("animation_repeat" + i);
             if (behaviour == "monitorstate") {
                 var monitoredStateName = data.attr("monitored_state_name" + i);
+                var monitoredStateMaxValue = data.attr("monitored_state_max_value" + i);
                 if (monitoredStateAnimationMap[monitoredStateName] == null)
                     monitoredStateAnimationMap[monitoredStateName] = [];
                 monitoredStateAnimationMap[monitoredStateName].push(animationName);
+                stateAttributes[monitoredStateName] = {"maxValue": monitoredStateMaxValue};
                 //console.log("Setup state: " + monitoredStateName + " with animation " + animationName);
                 //vis.states.bind(monitoredStateName + '.val', onChange);
                 bound.push(monitoredStateName);
@@ -130,14 +134,14 @@ vis.binds["3dmodel"] = {
             bound.push(monitoredStateName);
         }
 
-        async function initializeModel(model, states, monitoredStateAnimationMap, monitoredStateLightMap, autoplayAnimations, repeatAnimations) {
+        async function initializeModel(model, states, monitoredStateAnimationMap, stateAttributes, monitoredStateLightMap, autoplayAnimations, repeatAnimations) {
             await model.checkIfLoaded();
             //Initialize all animations/lights upon start
             console.log("ANIMATIONS: " + monitoredStateAnimationMap.toString());
             for (const [oid, animations] of Object.entries(monitoredStateAnimationMap)) {
                 animations.forEach((animation) => {
                     console.log("###oid: " + oid + " animation: "+animation + " val: "+states[oid].val);
-                    model.updateAnimationByState(animation, states[oid].val,100);
+                    model.updateAnimationByState(animation, states[oid].val, stateAttributes[oid].maxValue);
                 });
                 
             }
@@ -178,7 +182,7 @@ vis.binds["3dmodel"] = {
                     //console.log("++++state: " + config._id + " config: " + JSON.stringify(config));
                 });
                 
-                initializeModel(model, states, monitoredStateAnimationMap, monitoredStateLightMap, autoplayAnimations, repeatAnimations);
+                initializeModel(model, states, monitoredStateAnimationMap, stateAttributes, monitoredStateLightMap, autoplayAnimations, repeatAnimations);
             }
         });
 
@@ -202,11 +206,13 @@ vis.binds["3dmodel"] = {
             switch (mode) {
                 case "autoplay":
                     $("#inspect_monitored_state_name" + i).prop("disabled", true);
+                    $("#inspect_monitored_state_max_value" + i).prop("disabled", true);
                     $("#inspect_state_animation_mapping" + i).prop("disabled", true);
                     $("#inspect_animation_repeat" + i).prop("disabled", false);
                 break;
                 case "monitorstate":
                     $("#inspect_monitored_state_name" + i).prop("disabled", false);
+                    $("#inspect_monitored_state_max_value" + i).prop("disabled", false);
                     $("#inspect_state_animation_mapping" + i).prop("disabled", false);
                     
                     //Only disable, if monitored state is not boolean

@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
+            "0.0.2": {
+                "en": "Reordered some menues in VIS editor\nExtended documentation\nImproved animation system\nMultiple Bugfixes",
+                "de": "Einige Menüs im VIS-Editor neu angeordnet\nErweiterte Dokumentation\nVerbessertes Animationssystem\nMehrere Bugfixes",
+                "ru": "Изменен порядок некоторых меню в редакторе VIS.\nРасширенная документация\nУлучшенная система анимации\nМножественные исправления",
+                "pt": "Reordenou alguns menus no editor VIS\nDocumentação estendida\nSistema de animação aprimorado\nVárias correções de bugs",
+                "nl": "Enkele menu's opnieuw gerangschikt in VIS-editor\nUitgebreide documentatie\nVerbeterd animatiesysteem\nMeerdere bugfixes",
+                "fr": "Réorganisation de certains menus dans l'éditeur VIS\nDocumentation étendue\nSystème d'animation amélioré\nCorrections de bogues multiples",
+                "it": "Riordinato alcuni menu nell'editor VIS\nDocumentazione estesa\nSistema di animazione migliorato\nCorrezioni multiple di bug",
+                "es": "Reordenó algunos menús en el editor VIS\nDocumentación ampliada\nSistema de animación mejorado\nVarias correcciones de errores",
+                "pl": "Zmieniono kolejność niektórych menu w edytorze VIS\nRozszerzona dokumentacja\nUlepszony system animacji\nWiele poprawek",
+                "zh-cn": "重新排列了VIS编辑器中的某些菜单\n扩展文档\n改进的动画系统\n多个错误修正"
+            },
             "0.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",

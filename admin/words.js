@@ -386,6 +386,18 @@ systemDictionary = {
         "pl": "monitorowany stan",
         "zh-cn": "监视状态"
       },
+      "monitored_state_max_value": {
+        "en": "state max value",
+        "de": "Zustand max Wert",
+        "ru": "указать максимальное значение",
+        "pt": "valor máximo do estado",
+        "nl": "max. waarde aangeven",
+        "fr": "état valeur max",
+        "it": "indicare il valore massimo",
+        "es": "estado valor máximo",
+        "pl": "wartość maksymalna stanu",
+        "zh-cn": "状态最大值"
+      },
       "monitorstate": {
         "en": "monitor state",
         "de": "Status überwachen",

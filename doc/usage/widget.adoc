@@ -34,19 +34,100 @@ image:media/3dmodel_widget_vis_settings_camera.png[Widget settings - Camera,300,
 --
 
 == Lighting
+Lighting is a key feature in this widget to propery illuminate the loaded 3D model.
 
-== Switchable Lights
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_lighting.png[Widget settings - Lighting,300,float="right"]
 
-== Interactive Objects
+* `*realisic lighting*`: Enables more realistic, physically correct, but more cpu intensive lighting. See also link:https://threejs.org/docs/#api/en/renderers/WebGLRenderer.physicallyCorrectLights[ThreeJS docs].
+* `*ambient lighting*`: Globally illuminate the whole scene equally. See also link:https://threejs.org/docs/#api/en/lights/AmbientLight[ThreeJS docs].
+* `*ambient color*`: Color of ambient lighting.
+* `*ambient intensity*`: Intensity of ambient light. In physically correct mode, intensity is interpreted as luminous intensity measured in candela.
+* `*calculate shadows*`: If activated, all objects in the scene will cast and receive shadows.
+* `*number of switchable lights*`: Number of lights that should be bound to ioBroker states. Opens up new submenues. See chapter link:#_switchable_lights[Switchable Lights].
+--
+
+=== Switchable Lights
+Besides permanent light sources, it is also possible to configure switchable lights which can be bound to IoBroker states.
+
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_switchable_lights.png[Widget settings - Switchable Lights,300,float="right"]
+
+* `*light_name*`: Light object from 3D model that should be linked to state. For punctual lights the GLTF format supports Directional, Point and Spot lights.
+* `*monitored_state*`: ioBroker state to bind light to.
+* `*light_max_power*`: Light intensity/brightness. In physically correct mode, intensity is interpreted as luminous intensity measured in candela.
+
+TODO: Light behaviour in connection with ioBroker state
+--
+
+== Clickable Objects
+Apart from binding link:#_animations[Animations] and link:#_switchable_lights[Lights] to states, it is also possible to make every object in the scene clickable. Once clicked upon, a customly configured action (e.g. execution of Javascript) will be invoked.
+
+[WARNING]
+--
+Not fully implemented yet
+--
+
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_clickable_objects_1.png[Widget settings - Clickable Objects 1,300,float="right"]
+
+* `*highlight selection*`: Highlight selected objects in 3D view. If a mouse is used to interact with the 3D model, objects will be highlighted already on mouse over, otherwise only when clicking on them.
+* `*highlight color*`: Color of the highlighting-effect applied to objects.
+* `*number of clickable objects*`: Number of objects in model that should be clickable. Opens up new submenues for configuration.
+
+--
+[.float-group]
+--
+Each clickable object can be configured as follows:
+image:media/3dmodel_widget_vis_settings_clickable_objects_2.png[Widget settings - Clickable Objects 2,300,float="right"]
+
+* `*object name*`: Name of the clickable object.
+* `*clickable_object_action_id*`: *Does nothing at the moment.*
+* `*clickable_object_action_task*`: *Does nothing at the moment.* The idea is to have options like: 
+** run JavaScript
+** set the monitored state to a preconfigured value
+** open up new preconfigured dialog window (e.g. dialog with slider for window blinds)
+
+--
+
+
 
 == Animations
+The animation system within this widget is rather complex and based on the ThreeJS library. Please also take the link:https://threejs.org/docs/#manual/en/introduction/Animation-system[ThreeJS Animation System documentation] into account when working with animations.
+
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_animations_1.png[Widget settings - Animations 1,300,float="right"]
+
+* `*number of animations*`: Number of animations to configure. Opens up new submenues.
+
+--
+
+Each animation can be configured as follows:
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_animations_2.png[Widget settings - Animations2,300,float="right"]
+
+* `*behaviour*`: Decides under which conditions the animation is played:
+** `monitor state`: Plays the animation in sync with a ioBroker state.
+** `auto play`: Plays the animation as soon as the model is loaded.
+* `*monitored state*`: ioBroker state to bind animation to.
+* `*animation*`: Animation for which this configuration applies.
+* `*repeat*`: Loop the animation, instead of playing it just once. Mostly used in conjunction with `auto play`.
+* `*state max value*`: Max value the ioBroker state can have. This value is used, when the ioBroker state referred to is of type _number_ (not _boolean_!). The widget then assumes that the state can be set to a value from 0 to `state max value`. Defaults to _100_. See further explanation below.
+
+--
 
 When *Animations* are turned on, they will just play once, unless configured to _repeat_. Typical smarthome scenarios could be opened/closed doors, windows, or other devices that can be toggled.
 
-With a configured _Max Value_ (the highest value the state can have) it is calculated relatively, up to which point an animation is played. E.g. a window-blind animation is played up to 50%, if the state value indicates the blinds are closed that much. If the state value decreases after that (e.g. because blinds are opened more and only 30% closed) the animation will play in reverse up to that percentage.
+With a configured `state max value` (the highest value the monitored state can have) it is calculated relatively, up to which point an animation is played. E.g. a window-blind animation is played up to 50%, if the state value indicates the blinds are closed that much (e.g. current state value: 50, state max value: 100). If the state value decreases after that (e.g. because blinds are opened more and only 30% closed) the animation will play in reverse up to that percentage.
 
 == Debugging
-TODO
 
-== Known limitations
-TODO
+[WARNING]
+--
+Further debugging features have not yet been implemented.
+--

@@ -41,11 +41,9 @@ jobs:
           if [ "$TAG_NAME" = $(git describe --tags --abbrev=0) ]; then
               echo "::set-output name=is_latest::true"
           fi
-          if [ -z $TAG_NAME ]; then
-              TAG_NAME=dev
-          fi
           echo "::set-output name=tag_name::${TAG_NAME}"
           echo "::set-output name=deploy_tag_name::doc-${TAG_NAME}"
+          sed -i "s/___VERSION___/$TAG_NAME/g" doc/index.adoc
       
       # Build HTML Asciidoc
       - name: Build Asciidoc
@@ -74,6 +72,11 @@ jobs:
         if: ${{ steps.prepare_tag.outputs.is_latest}}
         run: |
           echo "tag is latest. need to update latest-symlink in gh-pages branch"
+          git checkout gh-pages
+          ln -f -s ${{ steps.prepare_tag.outputs.deploy_tag_name }} latest
+          git add latest
+          git commit -m "updated latest symlink to refer to ${{ steps.prepare_tag.outputs.deploy_tag_name }}"
+          git push gh-pages origin
 
 
       
