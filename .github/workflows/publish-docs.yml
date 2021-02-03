@@ -68,11 +68,15 @@ jobs:
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
 
       # Change latest link in case there is a new documentation available
+      - name : Modify gh-pages branch
+      - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+
       - name: Update latest symlink
         if: ${{ steps.prepare_tag.outputs.is_latest}}
         run: |
           echo "tag is latest. need to update latest-symlink in gh-pages branch"
-          git checkout --track origin/gh-pages
           ln -f -s doc-${{ steps.prepare_tag.outputs.deploy_tag_name }} latest
           git add latest
           git commit --amend
