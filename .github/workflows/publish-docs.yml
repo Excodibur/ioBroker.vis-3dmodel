@@ -64,8 +64,6 @@ jobs:
           exclude_assets: '**.adoc,*/**.adoc,*/**.sh'
           keep_files: true
           destination_dir: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
-          tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
-          tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
 
       # Change latest link in case there is a new documentation available
       - name : Modify gh-pages branch
@@ -78,10 +76,16 @@ jobs:
         run: |
           echo "tag is latest. need to update latest-symlink in gh-pages branch"
           ln -f -s ${{ steps.prepare_tag.outputs.deploy_tag_name }} latest
-          git config user.name Excodibur
-          git add latest
-          git commit --amend -m "updated symlink to ${{ steps.prepare_tag.outputs.deploy_tag_name }}"
-          git push gh-pages
+      
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          add: latest
+          author_name: Excodibur
+          branch: gh-pages
+          message: updated symlink latest to ${{ steps.prepare_tag.outputs.deploy_tag_name }}
+          tag: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
+
 
 
       
