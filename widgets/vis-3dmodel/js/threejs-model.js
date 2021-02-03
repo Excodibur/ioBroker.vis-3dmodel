@@ -4,7 +4,7 @@ var mouse;
 var testToggle = true;
 
 class ThreeJSModel {
-    constructor(container) {
+    constructor(container, showLoader) {
         this.container = container;
         this.clickableObjects = [];
         this.allObjects = [];
@@ -13,6 +13,11 @@ class ThreeJSModel {
         this.scenes = [];
         this.isLoaded = false;
         this.debugShowCoordinates = false;
+        this.showLoader = showLoader;
+    }
+
+    setupLoader() {
+
     }
 
     setupScene(bgColor, highlightSelected, highlightColor, enable_realistic_lighting) {
@@ -71,8 +76,20 @@ class ThreeJSModel {
         this.debugShowCoordinates = activate;
     }
 
-    load(gltfFile, scene_name, model_pos_x, model_pos_y, model_pos_z, scale) {
-        var loader = new THREE.GLTFLoader();
+    load(gltfFile, scene_name, model_pos_x, model_pos_y, model_pos_z, scale, loadingScreenId) {
+        //Setup loading screen animation
+        const loadingManager = new THREE.LoadingManager( () => {
+            const loadingScreen = document.getElementById(loadingScreenId);
+            loadingScreen.classList.add( 'fade-out' );
+            
+            // optional: remove loader from DOM via event listener
+           loadingScreen.addEventListener( 'transitionend', (event) => {
+                event.target.remove();
+            });
+        } );
+
+        //Setup model loader
+        var loader = (this.showLoader) ? new THREE.GLTFLoader(loadingManager) : new THREE.GLTFLoader();
         loader.load(gltfFile, (gltf) => {
             var model;
             if ((!scene_name) || (scene_name == ""))
@@ -192,11 +209,11 @@ class ThreeJSModel {
             }
             //check if light
             if ((object.type == "PointLight")||(object.type == "DirectionalLight")||(object.type == "SpotLight")) {
-                console.log("Found light: " + object.name);
+                //console.log("Found light: " + object.name);
                 listOfLights[object.name] = { "object" : object, "max_power" : 6000, "smooth_transition" : true};
             }
 
-            console.log("[" + level + "] Object: " + object.name + " Parent: " + (((listOfObjects[object.name] != null) && (listOfObjects[object.name].parent != null)) ? listOfObjects[object.name].parent.name : "") + " Type:" + object.type);
+            //console.log("[" + level + "] Object: " + object.name + " Parent: " + (((listOfObjects[object.name] != null) && (listOfObjects[object.name].parent != null)) ? listOfObjects[object.name].parent.name : "") + " Type:" + object.type);
         }
 
         object.children.forEach(function (el1) {
@@ -218,7 +235,7 @@ class ThreeJSModel {
     }
     
     updateAnimationByState(name, value, maxValue) {
-        console.log("running animation " + name);
+        //console.log("running animation " + name);
         if (!this.animations[name]) return;
 
         //Get current frame from animation (by percentage)
@@ -238,7 +255,6 @@ class ThreeJSModel {
         var targetPositionPercent;
         if (typeof value == "boolean") {
             targetPositionPercent = (value) ? 100 : 0;
-            console.log("setting targetposition (boolean)" + targetPositionPercent);
         } else if (typeof value == "number") {
             targetPositionPercent = value / maxValue * 100;
         } else {
@@ -250,7 +266,6 @@ class ThreeJSModel {
 
         //Check whether to reverse or forward the animation
         clipAction.timeScale = (this.animations[name].targetPosition < currentClipTime) ? -1 : 1;
-        console.log("currentClipTime:" + currentClipTime + " timescale:" + clipAction.timeScale);
     }
 
     async autoplayAnimation(name){
@@ -296,9 +311,7 @@ class ThreeJSModel {
         //var targetIntensity = (value) ? 2 : 0;
         var oldPower = lightObject.power;
         var targetPower = value / 1000 * light.max_power;
-        console.log("light state change");
         if (light.smooth_transition) {
-            console.log("doing smooth transition"); //Does not work as intended
             if (targetPower > oldPower) {
                 var intr = setInterval(function() {
                     //console.log("++LIGHT power: " + lightObject.power);

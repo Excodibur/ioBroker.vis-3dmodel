@@ -55,7 +55,6 @@ vis.binds["3dmodel"].viseditor = {
                         //get all other options
                         vis.binds["3dmodel"].getAnimations(widget).then(animationList => {
                             for (const [name, tools] of Object.entries(animationList)) {
-                                console.log("Adding animation to dropdown: " + name);
                                 $(this).append('<option value="' + name + '" ' + ((data == name)? 'selected' : '') + '>' + name + '</option>');
                             }
                         });
@@ -122,10 +121,10 @@ vis.binds["3dmodel"].viseditor = {
                         vis.binds["3dmodel"].getScenes(widget).then(sceneData => {
                             var sceneList = sceneData[0];
                             var currentScene = sceneData[1];
-                            
-                            sceneList.forEach(name => {
-                                $(this).append('<option value="' + name + '" ' + ((currentScene == name)? 'selected' : '') + '>' + name + '</option>');
-                            });
+                            if (sceneList != null)
+                                sceneList.forEach(name => {
+                                    $(this).append('<option value="' + name + '" ' + ((currentScene == name)? 'selected' : '') + '>' + name + '</option>');
+                                });
                         });
                     }
 

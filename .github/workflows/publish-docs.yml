@@ -72,10 +72,10 @@ jobs:
         if: ${{ steps.prepare_tag.outputs.is_latest}}
         run: |
           echo "tag is latest. need to update latest-symlink in gh-pages branch"
-          git checkout gh-pages
-          ln -f -s ${{ steps.prepare_tag.outputs.deploy_tag_name }} latest
+          git checkout --track origin/gh-pages
+          ln -f -s doc-${{ steps.prepare_tag.outputs.deploy_tag_name }} latest
           git add latest
-          git commit -m "updated latest symlink to refer to ${{ steps.prepare_tag.outputs.deploy_tag_name }}"
+          git commit --amend
           git push gh-pages origin
 
 

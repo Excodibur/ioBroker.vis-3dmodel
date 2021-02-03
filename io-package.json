@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "news": {
+            "0.0.3": {
+                "en": "Removed docs from NPM\nAdded loading-animation for model\nMultiple Bugfixes",
+                "de": "Dokumente aus NPM entfernt\nLadeanimation für Modell hinzugefügt\nMehrere Bugfixes",
+                "ru": "Удалены документы из NPM\nДобавлена анимация загрузки для модели\nМножественные исправления",
+                "pt": "Documentos removidos do NPM\nAdicionada animação de carregamento para o modelo\nVárias correções de bugs",
+                "nl": "Documenten verwijderd uit NPM\nLaadanimatie toegevoegd voor model\nMeerdere bugfixes",
+                "fr": "Documents supprimés de NPM\nAjout d'une animation de chargement pour le modèle\nCorrections de bogues multiples",
+                "it": "Documenti rimossi da NPM\nAggiunta animazione di caricamento per il modello\nCorrezioni multiple di bug",
+                "es": "Documentos eliminados de NPM\nAnimación de carga agregada para el modelo\nVarias correcciones de errores",
+                "pl": "Usunięto dokumenty z NPM\nDodano animację ładowania modelu\nWiele poprawek",
+                "zh-cn": "从NPM中删除了文档\n添加了模型的加载动画\n多个错误修正"
+            },
             "0.0.2": {
                 "en": "Reordered some menues in VIS editor\nExtended documentation\nImproved animation system\nMultiple Bugfixes",
                 "de": "Einige Menüs im VIS-Editor neu angeordnet\nErweiterte Dokumentation\nVerbessertes Animationssystem\nMehrere Bugfixes",

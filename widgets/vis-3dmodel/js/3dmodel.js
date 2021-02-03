@@ -17,7 +17,7 @@ let stateDefinitions = [];
 
 // this code can be placed directly in vis-3dmodel.html
 vis.binds["3dmodel"] = {
-    version: "0.0.1",
+    version: "0.0.3",
     models: [],
     showVersion: function () {
         if (vis.binds["3dmodel"].version) {
@@ -35,10 +35,43 @@ vis.binds["3dmodel"] = {
         }
 
         var container = document.getElementById(widgetID);
-        //$div.on("resize", _onContainerResize);
-        //container.addEventListener('resize', _onContainerResize);;
 
-        var model = new ThreeJSModel(container);
+        //Don't initate model, unless GLTF file is refered to
+        if (!data.gltf_file) {
+            //Display some warning
+            var domWarningMessage = document.createElement("div");
+            domWarningMessage.innerHTML = translateWord("no 3d model specified");
+            //translateWord(text)
+            container.appendChild(domWarningMessage);
+            return;
+        }
+
+        if (data.show_loader) {
+            //Create loading screen
+            var domLoadingScreen = document.createElement("div");
+            domLoadingScreen.setAttribute("id", "loading-screen-"+widgetID);
+            domLoadingScreen.setAttribute("class", "loading-screen");
+ 
+            var numBoxes = 4;
+            var domBoxLoader = document.createElement("div");
+            domBoxLoader.setAttribute("class", "boxes");
+            for (var i = 0; i < numBoxes; i++) {
+                var domBox = document.createElement("div");
+                domBox.setAttribute("class", "box");
+                for (var l = 0; l < 4; l++) {
+                    domBox.appendChild(document.createElement("div"));
+                }
+                domBoxLoader.appendChild(domBox);
+            }
+            domLoadingScreen.appendChild(domBoxLoader);
+            container.appendChild(domLoadingScreen);
+        }
+
+        //React to widget-box being resized in VIS edit mode
+        $div.on("resize", _onContainerResize);
+        container.addEventListener('resize', _onContainerResize);;
+        
+        var model = new ThreeJSModel(container, data.show_loader);
         this.models[widgetID] = model;
         model.setupScene(data.background_color, data.highlight_selected, data.highlight_color, data.enable_realistic_lighting);
 
@@ -121,8 +154,6 @@ vis.binds["3dmodel"] = {
                 repeatAnimations.push(animationName);
         }
 
-        
-
         //Do same stuff for lights on state changes
         var monitoredStateLightMap = [];
         for (var i = 0; i <= data.number_switchable_lights; i++) {
@@ -137,15 +168,12 @@ vis.binds["3dmodel"] = {
         async function initializeModel(model, states, monitoredStateAnimationMap, stateAttributes, monitoredStateLightMap, autoplayAnimations, repeatAnimations) {
             await model.checkIfLoaded();
             //Initialize all animations/lights upon start
-            console.log("ANIMATIONS: " + monitoredStateAnimationMap.toString());
             for (const [oid, animations] of Object.entries(monitoredStateAnimationMap)) {
                 animations.forEach((animation) => {
-                    console.log("###oid: " + oid + " animation: "+animation + " val: "+states[oid].val);
                     model.updateAnimationByState(animation, states[oid].val, stateAttributes[oid].maxValue);
                 });
                 
             }
-            console.log("LIGHTS: " + monitoredStateLightMap);
             for (const [oid, lights] of Object.entries(monitoredStateLightMap)) {
                 lights.forEach((light) => {
                     model.updateLightByState(light, states[oid].val);
@@ -201,7 +229,7 @@ vis.binds["3dmodel"] = {
         //#####################
         for(var i=0; i <= data.number_animations; i++) {
             var mode = data.attr("animation_behaviour" +i);
-            console.log("Animation behaviour: " +mode);
+            //console.log("Animation behaviour: " +mode);
 
             switch (mode) {
                 case "autoplay":
@@ -230,17 +258,10 @@ vis.binds["3dmodel"] = {
                 data.model_pos_x,
                 data.model_pos_y,
                 data.model_pos_z,
-                data.scaling
+                data.scaling,
+                "loading-screen-"+widgetID
             );
-        console.log("added widgetID: "+widgetID);
-        
-        //model.addGlobalClippingPlane();
-        /*vis.states.bind("0_userdata.0.dummy.val", (e, newVal, oldVal) => {
-            console.log("triggered");
-            model.updateAnimationByState("Animation_Rolladen_Buero_Vorne", parsetInt(newVal), "something", 100);
-        });*/
-
-        
+        //console.log("added widgetID: "+widgetID);      
 
         if (bound.length) {
             // remember all ids, that bound
@@ -249,14 +270,9 @@ vis.binds["3dmodel"] = {
             $div.data('bindHandler', onChange);
         }
 
-        /*vis.states.bind(data.scale + '.val', (e, newVal, oldVal) => {
-            model.scale.set(data.scale, data.scale, data.scale);
-        });*/
-
         function _onContainerResize() {
             model.resizeView($(container).width(), $(container).height());
         }
-        //vis.states.bind()
     },
     getClickableObjects: async function (widgetId) {
         console.log("widgetID: "+widgetId);
@@ -266,6 +282,7 @@ vis.binds["3dmodel"] = {
             console.log("no model found");
             return [];
         } else {
+            console.log("Current model: " + currentModel);
             await currentModel.checkIfLoaded();
             return currentModel.getAllObjects();
         }

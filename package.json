@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-3dmodel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Import 3D GLTF images into Blender",
   "author": {
     "name": "Excodibur",

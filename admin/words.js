@@ -26,6 +26,30 @@ systemDictionary = {
       "pl": "plik gltf",
       "zh-cn": "gltf文件"
     },
+    "show_loader": {
+      "en": "show loading screen",
+      "de": "Ladebildschirm anzeigen",
+      "ru": "показать экран загрузки",
+      "pt": "mostrar tela de carregamento",
+      "nl": "toon laadscherm",
+      "fr": "afficher l'écran de chargement",
+      "it": "mostra la schermata di caricamento",
+      "es": "mostrar la pantalla de carga",
+      "pl": "pokaż ekran ładowania",
+      "zh-cn": "显示载入画面"
+    },
+    "no 3d model specified": {
+      "en": "No 3d model specified",
+      "de": "Kein 3D-Modell angegeben",
+      "ru": "не указана 3d модель",
+      "pt": "nenhum modelo 3D especificado",
+      "nl": "geen 3D-model gespecificeerd",
+      "fr": "aucun modèle 3D spécifié",
+      "it": "nessun modello 3d specificato",
+      "es": "sin modelo 3d especificado",
+      "pl": "nie określono modelu 3D",
+      "zh-cn": "未指定3D模型"
+    },
     "group_modellighting": {
         "en": "model lighting",
         "de": "Modellbeleuchtung",
