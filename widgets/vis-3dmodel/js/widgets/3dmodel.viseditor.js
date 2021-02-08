@@ -5,135 +5,142 @@
 */
 "use strict";
 
+// Define some globals for eslint that are set by other JavaScript entries in 3dmodel.html
+/* global vis */
+
 vis.binds["3dmodel"].viseditor = {
-    clickableObjectsSelector: function (widAttr, data) {
+    "clickableObjectsSelector": function (widAttr, data) {
+        const widgetId = vis.activeWidgets[0];
+        const logger = vis.binds["3dmodel"].logger[widgetId];
         try {
-            console.log("loading clickable objects");
-            var that = vis;
-            var line = {
-                input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
-                init: function (_wid_attr, data) {
-                    $(this).html('');
+            logger.debug("loading clickable objects");
+            const that = vis;
+            const line = {
+                "input": '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
+                "init": function (widAttr, data) {
+                    $(this).html("");
 
-                    //only fill select box if one widget is selected at a time
-                    if (that.activeWidgets.length == 1) {
+                    // only fill select box if one widget is selected at a time
+                    if (that.activeWidgets.length === 1) {
                         // get list of clickable objects from widget
-                        var widget = that.activeWidgets[0];
+                        const widget = that.activeWidgets[0];
                         vis.binds["3dmodel"].getClickableObjects(widget).then(objectList => {
-                            for (const [name, parent] of Object.entries(objectList)) {
-                                if (parent == null) $(this).append('<option value="' + name + '" ' + ((data == name)? 'selected' : '') + '>' + name + '</option>');
-                            }
+                            for (const [name, parent] of Object.entries(objectList))
+                                if (parent == null) $(this).append('<option value="' + name + '" ' + ((data === name) ? "selected" : "") + ">" + name + "</option>");
                         });
-
-                        
                     }
 
-                    $(this).next().css('width', '100%');
+                    $(this).next().css("width", "100%");
                 }
-            }
+            };
             return line;
         } catch (ex) {
-            console.error(`3dmodel clickableObjectsSelector: error: ${ex.message}, stack: ${ex.stack}`);
+            logger.error(`3dmodel clickableObjectsSelector: error: ${ex.message}, stack: ${ex.stack}`);
         }
     },
-    animationsSelector: function (widAttr, data) {
+    "animationsSelector": function (widAttr, data) {
+        const widgetId = vis.activeWidgets[0];
+        const logger = vis.binds["3dmodel"].logger[widgetId];
         try {
-            console.log("loading animations");
-            var that = vis;
-            var line = {
-                input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
-                init: function (_wid_attr, data) {
-                    //console.log("DATA:"+JSON.stringify(data));
-                    $(this).html('');
+            logger.debug("loading animations");
+            const that = vis;
+            const line = {
+                "input": '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
+                "init": function (widAttr, data) {
+                    // console.log("DATA:"+JSON.stringify(data));
+                    $(this).html("");
 
-                    //only fill select box if one widget is selected at a time
-                    if (that.activeWidgets.length == 1) {
+                    // only fill select box if one widget is selected at a time
+                    if (that.activeWidgets.length === 1) {
                         // get list of clickable objects from widget
-                        var widget = that.activeWidgets[0];
-                        //add empty option
+                        const widget = that.activeWidgets[0];
+                        // add empty option
                         $(this).append('<option value=""></option>');
-                        //get all other options
+                        // get all other options
                         vis.binds["3dmodel"].getAnimations(widget).then(animationList => {
-                            for (const [name, tools] of Object.entries(animationList)) {
-                                $(this).append('<option value="' + name + '" ' + ((data == name)? 'selected' : '') + '>' + name + '</option>');
-                            }
+                            for (const [name, tools] of Object.entries(animationList))
+                                $(this).append('<option value="' + name + '" ' + ((data === name) ? "selected" : "") + ">" + name + "</option>");
                         });
                     }
 
-                    $(this).next().css('width', '100%');
-                    //$(this).load(location.href+" #inspect_"+widAttr+">*","");
+                    $(this).next().css("width", "100%");
+                    // $(this).load(location.href+" #inspect_"+widAttr+">*","");
                 }
-            }
+            };
             return line;
         } catch (ex) {
-            console.error(`3dmodel animationsSelector: error: ${ex.message}, stack: ${ex.stack}`);
+            logger.error(`3dmodel animationsSelector: error: ${ex.message}, stack: ${ex.stack}`);
         }
     },
-    lightsSelector: function (widAttr, data) {
+    "lightsSelector": function (widAttr, data) {
+        const widgetId = vis.activeWidgets[0];
+        const logger = vis.binds["3dmodel"].logger[widgetId];
         try {
-            console.log("loading lights");
-            var that = vis;
-            var line = {
-                input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
-                init: function (_wid_attr, data) {
-                    //console.log("DATA:"+JSON.stringify(data));
-                    $(this).html('');
+            logger.debug("loading lights");
+            const that = vis;
+            const line = {
+                "input": '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
+                "init": function (widAttr, data) {
+                    // console.log("DATA:"+JSON.stringify(data));
+                    $(this).html("");
 
-                    //only fill select box if one widget is selected at a time
-                    if (that.activeWidgets.length == 1) {
+                    // only fill select box if one widget is selected at a time
+                    if (that.activeWidgets.length === 1) {
                         // get list of clickable objects from widget
-                        var widget = that.activeWidgets[0];
-                        //add empty option
+                        const widget = that.activeWidgets[0];
+                        // add empty option
                         $(this).append('<option value=""></option>');
-                        //get all other options
+                        // get all other options
                         vis.binds["3dmodel"].getLights(widget).then(lightList => {
-                            for (const [name, object] of Object.entries(lightList)) {
-                                $(this).append('<option value="' + name + '" ' + ((data == name)? 'selected' : '') + '>' + name + '</option>');
+                            for (const [name, object] of Object.entries(lightList))
+                                $(this).append('<option value="' + name + '" ' + ((data === name) ? "selected" : "") + ">" + name + "</option>");
+                        });
+                    }
+
+                    $(this).next().css("width", "100%");
+                }
+            };
+            return line;
+        } catch (ex) {
+            logger.error(`3dmodel lightsSelector: error: ${ex.message}, stack: ${ex.stack}`);
+        }
+    },
+    "sceneSelector": function (widAttr, data) {
+        const widgetId = vis.activeWidgets[0];
+        const logger = vis.binds["3dmodel"].logger[widgetId];
+        try {
+            logger.debug("loading scenes");
+            const that = vis;
+            const line = {
+                "input": '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
+                "init": function (widAttr, data) {
+                    // console.log("DATA:"+JSON.stringify(data));
+                    $(this).html("");
+
+                    // only fill select box if one widget is selected at a time
+                    if (that.activeWidgets.length === 1) {
+                        // get list of clickable objects from widget
+                        const widget = that.activeWidgets[0];
+                        // add empty option
+                        $(this).append('<option value=""></option>');
+                        // get all other options
+                        vis.binds["3dmodel"].getScenes(widget).then(sceneData => {
+                            const sceneList = sceneData[0];
+                            const currentScene = sceneData[1];
+                            if (sceneList != null) {
+                                sceneList.forEach(name => {
+                                    $(this).append('<option value="' + name + '" ' + ((currentScene === name) ? "selected" : "") + ">" + name + "</option>");
+                                });
                             }
                         });
                     }
 
-                    $(this).next().css('width', '100%');
+                    $(this).next().css("width", "100%");
                 }
-            }
+            };
             return line;
         } catch (ex) {
-            console.error(`3dmodel lightsSelector: error: ${ex.message}, stack: ${ex.stack}`);
-        }
-    },
-    sceneSelector: function (widAttr, data) {
-        try {
-            console.log("loading scenes");
-            var that = vis;
-            var line = {
-                input: '<select id="inspect_' + widAttr + '" class="select-groups"></select>',
-                init: function (_wid_attr, data) {
-                    //console.log("DATA:"+JSON.stringify(data));
-                    $(this).html('');
-
-                    //only fill select box if one widget is selected at a time
-                    if (that.activeWidgets.length == 1) {
-                        // get list of clickable objects from widget
-                        var widget = that.activeWidgets[0];
-                        //add empty option
-                        $(this).append('<option value=""></option>');
-                        //get all other options
-                        vis.binds["3dmodel"].getScenes(widget).then(sceneData => {
-                            var sceneList = sceneData[0];
-                            var currentScene = sceneData[1];
-                            if (sceneList != null)
-                                sceneList.forEach(name => {
-                                    $(this).append('<option value="' + name + '" ' + ((currentScene == name)? 'selected' : '') + '>' + name + '</option>');
-                                });
-                        });
-                    }
-
-                    $(this).next().css('width', '100%');
-                }
-            }
-            return line;
-        } catch (ex) {
-            console.error(`3dmodel sceneSelector: error: ${ex.message}, stack: ${ex.stack}`);
+            logger.error(`3dmodel sceneSelector: error: ${ex.message}, stack: ${ex.stack}`);
         }
     }
 };

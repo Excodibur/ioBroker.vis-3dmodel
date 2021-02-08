@@ -44,6 +44,7 @@ image:media/3dmodel_widget_vis_settings_lighting.png[Widget settings - Lighting,
 * `*ambient lighting*`: Globally illuminate the whole scene equally. See also link:https://threejs.org/docs/#api/en/lights/AmbientLight[ThreeJS docs].
 * `*ambient color*`: Color of ambient lighting.
 * `*ambient intensity*`: Intensity of ambient light. In physically correct mode, intensity is interpreted as luminous intensity measured in candela.
+* `*punct-lights max power*`: Default intensity of all punctual lights in the scene. Can be overwritten with link:#_switchable_lights[Switchable Lights]/`light max-power`.
 * `*calculate shadows*`: If activated, all objects in the scene will cast and receive shadows.
 * `*number of switchable lights*`: Number of lights that should be bound to ioBroker states. Opens up new submenues. See chapter link:#_switchable_lights[Switchable Lights].
 --
@@ -55,9 +56,14 @@ Besides permanent light sources, it is also possible to configure switchable lig
 --
 image:media/3dmodel_widget_vis_settings_switchable_lights.png[Widget settings - Switchable Lights,300,float="right"]
 
-* `*light_name*`: Light object from 3D model that should be linked to state. For punctual lights the GLTF format supports Directional, Point and Spot lights.
-* `*monitored_state*`: ioBroker state to bind light to.
-* `*light_max_power*`: Light intensity/brightness. In physically correct mode, intensity is interpreted as luminous intensity measured in candela.
+* `*light name*`: Light object from 3D model that should be linked to state. For punctual lights the GLTF format supports Directional, Point and Spot lights.
+* `*monitored state*`: ioBroker state to bind light to.
+* `*light max-power*`: Light intensity/brightness. In physically correct mode, the luminous power of the light measured in lumens.
+
+[NOTE]
+--
+Regarding _light intensity_ being measured in lumens it is questionable if real-life values are sensible to be used here. Although not fully verified, how bright a light-source will appear in the rendered object also depends on the dimension of your model. E.g. a house model might look fine while rendered, but if it not also does match sensible metrics (e.g. wall height of rooms), a normal lumen-intensity will not provide enough light for the whole room.
+--
 
 TODO: Light behaviour in connection with ioBroker state
 --

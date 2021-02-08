@@ -1,5 +1,5 @@
-/*global systemDictionary:true */
-'use strict';
+/* global systemDictionary:true */
+"use strict";
 
 systemDictionary = {
     "group_model": {
@@ -15,40 +15,40 @@ systemDictionary = {
         "zh-cn": "模型"
     },
     "gltf_file": {
-      "en": "gltf file",
-      "de": "gltf Datei",
-      "ru": "gltf файл",
-      "pt": "arquivo gltf",
-      "nl": "gltf-bestand",
-      "fr": "fichier gltf",
-      "it": "gltf file",
-      "es": "archivo gltf",
-      "pl": "plik gltf",
-      "zh-cn": "gltf文件"
+        "en": "gltf file",
+        "de": "gltf Datei",
+        "ru": "gltf файл",
+        "pt": "arquivo gltf",
+        "nl": "gltf-bestand",
+        "fr": "fichier gltf",
+        "it": "gltf file",
+        "es": "archivo gltf",
+        "pl": "plik gltf",
+        "zh-cn": "gltf文件"
     },
     "show_loader": {
-      "en": "show loading screen",
-      "de": "Ladebildschirm anzeigen",
-      "ru": "показать экран загрузки",
-      "pt": "mostrar tela de carregamento",
-      "nl": "toon laadscherm",
-      "fr": "afficher l'écran de chargement",
-      "it": "mostra la schermata di caricamento",
-      "es": "mostrar la pantalla de carga",
-      "pl": "pokaż ekran ładowania",
-      "zh-cn": "显示载入画面"
+        "en": "show loading screen",
+        "de": "Ladebildschirm anzeigen",
+        "ru": "показать экран загрузки",
+        "pt": "mostrar tela de carregamento",
+        "nl": "toon laadscherm",
+        "fr": "afficher l'écran de chargement",
+        "it": "mostra la schermata di caricamento",
+        "es": "mostrar la pantalla de carga",
+        "pl": "pokaż ekran ładowania",
+        "zh-cn": "显示载入画面"
     },
     "no 3d model specified": {
-      "en": "No 3d model specified",
-      "de": "Kein 3D-Modell angegeben",
-      "ru": "не указана 3d модель",
-      "pt": "nenhum modelo 3D especificado",
-      "nl": "geen 3D-model gespecificeerd",
-      "fr": "aucun modèle 3D spécifié",
-      "it": "nessun modello 3d specificato",
-      "es": "sin modelo 3d especificado",
-      "pl": "nie określono modelu 3D",
-      "zh-cn": "未指定3D模型"
+        "en": "No 3d model specified",
+        "de": "Kein 3D-Modell angegeben",
+        "ru": "не указана 3d модель",
+        "pt": "nenhum modelo 3D especificado",
+        "nl": "geen 3D-model gespecificeerd",
+        "fr": "aucun modèle 3D spécifié",
+        "it": "nessun modello 3d specificato",
+        "es": "sin modelo 3d especificado",
+        "pl": "nie określono modelu 3D",
+        "zh-cn": "未指定3D模型"
     },
     "group_modellighting": {
         "en": "model lighting",
@@ -75,40 +75,40 @@ systemDictionary = {
         "zh-cn": "现场"
     },
     "model_pos_x": {
-        "en": "model position x",
-        "de": "Modellposition x",
-        "ru": "положение модели x",
-        "pt": "posição do modelo x",
-        "nl": "model positie x",
-        "fr": "position du modèle x",
-        "it": "posizione del modello x",
-        "es": "posición del modelo x",
-        "pl": "pozycja modelu x",
-        "zh-cn": "模特位置x"
+        "en": "model position (x)",
+        "de": "Modellposition (x)",
+        "ru": "положение модели (x)",
+        "pt": "posição do modelo (x)",
+        "nl": "model positie (x)",
+        "fr": "position du modèle (x)",
+        "it": "posizione del modello (x)",
+        "es": "posición del modelo (x)",
+        "pl": "pozycja modelu (x)",
+        "zh-cn": "模特位置(x)"
     },
     "model_pos_y": {
-        "en": "model position y",
-        "de": "Modellposition y",
-        "ru": "положение модели y",
-        "pt": "posição do modelo y",
-        "nl": "model positie y",
-        "fr": "position du modèle y",
-        "it": "posizione del modello y",
-        "es": "posición del modelo y",
-        "pl": "pozycja modelu y",
-        "zh-cn": "模特位置y"
+        "en": "model position (y)",
+        "de": "Modellposition (y)",
+        "ru": "положение модели (y)",
+        "pt": "posição do modelo (y)",
+        "nl": "model positie (y)",
+        "fr": "position du modèle (y)",
+        "it": "posizione del modello (y)",
+        "es": "posición del modelo (y)",
+        "pl": "pozycja modelu (y)",
+        "zh-cn": "模特位置(y)"
     },
     "model_pos_z": {
-        "en": "model position z",
-        "de": "Modellposition z",
-        "ru": "положение модели z",
-        "pt": "posição do modelo z",
-        "nl": "model positie z",
-        "fr": "position du modèle z",
-        "it": "posizione del modello z",
-        "es": "posición del modelo z",
-        "pl": "pozycja modelu z",
-        "zh-cn": "模特位置z"
+        "en": "model position (z)",
+        "de": "Modellposition (z)",
+        "ru": "положение модели (z)",
+        "pt": "posição do modelo (z)",
+        "nl": "model positie (z)",
+        "fr": "position du modèle (z)",
+        "it": "posizione del modello (z)",
+        "es": "posición del modelo (z)",
+        "pl": "pozycja modelu (z)",
+        "zh-cn": "模特位置(z)"
     },
     "scaling": {
         "en": "scaling",
@@ -121,8 +121,8 @@ systemDictionary = {
         "es": "escalada",
         "pl": "skalowanie",
         "zh-cn": "缩放"
-      },
-      "background_color": {
+    },
+    "background_color": {
         "en": "background color",
         "de": "Hintergrundfarbe",
         "ru": "фоновый цвет",
@@ -133,8 +133,8 @@ systemDictionary = {
         "es": "color de fondo",
         "pl": "kolor tła",
         "zh-cn": "背景颜色"
-      },
-      "group_modelcamera": {
+    },
+    "group_modelcamera": {
         "en": "camera",
         "de": "Kamera",
         "ru": "камера",
@@ -145,8 +145,8 @@ systemDictionary = {
         "es": "cámara",
         "pl": "aparat fotograficzny",
         "zh-cn": "相机"
-      },
-      "model_camera_target_pos_x": {
+    },
+    "model_camera_target_pos_x": {
         "en": "camera target position (x)",
         "de": "Zielposition der Kamera (x)",
         "ru": "целевое положение камеры (x)",
@@ -157,8 +157,8 @@ systemDictionary = {
         "es": "posición del objetivo de la cámara (x)",
         "pl": "położenie celu kamery (x)",
         "zh-cn": "相机目标位置 (x)"
-      },
-      "model_camera_target_pos_y": {
+    },
+    "model_camera_target_pos_y": {
         "en": "camera target position (y)",
         "de": "Zielposition der Kamera (y)",
         "ru": "целевое положение камеры (y)",
@@ -169,8 +169,8 @@ systemDictionary = {
         "es": "posición del objetivo de la cámara (y)",
         "pl": "położenie celu kamery (y)",
         "zh-cn": "相机目标位置 (y)"
-      },
-      "model_camera_target_pos_z": {
+    },
+    "model_camera_target_pos_z": {
         "en": "camera target position (z)",
         "de": "Zielposition der Kamera (z)",
         "ru": "целевое положение камеры (z)",
@@ -181,8 +181,8 @@ systemDictionary = {
         "es": "posición del objetivo de la cámara (z)",
         "pl": "położenie celu kamery (z)",
         "zh-cn": "相机目标位置 (z)"
-      },
-      "model_camera_pos_x": {
+    },
+    "model_camera_pos_x": {
         "en": "camera position (x)",
         "de": "Kameraposition (x)",
         "ru": "положение камеры (x)",
@@ -193,8 +193,8 @@ systemDictionary = {
         "es": "posición de la cámara (x)",
         "pl": "położenie kamery (x)",
         "zh-cn": "相机位置 (x)"
-      },
-      "model_camera_pos_y": {
+    },
+    "model_camera_pos_y": {
         "en": "camera position (y)",
         "de": "Kameraposition (y)",
         "ru": "положение камеры (y)",
@@ -205,8 +205,8 @@ systemDictionary = {
         "es": "posición de la cámara (y)",
         "pl": "położenie kamery (y)",
         "zh-cn": "相机位置 (y)"
-      },
-      "model_camera_pos_z": {
+    },
+    "model_camera_pos_z": {
         "en": "camera position (z)",
         "de": "Kameraposition (z)",
         "ru": "положение камеры (z)",
@@ -217,8 +217,8 @@ systemDictionary = {
         "es": "posición de la cámara (z)",
         "pl": "położenie kamery (z)",
         "zh-cn": "相机位置 (z)"
-      },
-      "enable_realistic_lighting": {
+    },
+    "enable_realistic_lighting": {
         "en": "realistic lighting",
         "de": "realistische Beleuchtung",
         "ru": "реалистичное освещение",
@@ -229,8 +229,8 @@ systemDictionary = {
         "es": "iluminación realista",
         "pl": "realistyczne oświetlenie",
         "zh-cn": "逼真的照明"
-      },
-      "enable_ambient_lighting": {
+    },
+    "enable_ambient_lighting": {
         "en": "ambient lighting",
         "de": "Umgebungsbeleuchtung",
         "ru": "окружающее освещение",
@@ -241,8 +241,8 @@ systemDictionary = {
         "es": "iluminación ambiental",
         "pl": "otaczające światło",
         "zh-cn": "环境照明"
-      },
-      "ambient_color": {
+    },
+    "ambient_color": {
         "en": "ambient color",
         "de": "Umgebungsfarbe",
         "ru": "окружающий цвет",
@@ -253,8 +253,8 @@ systemDictionary = {
         "es": "color ambiental",
         "pl": "kolor otoczenia",
         "zh-cn": "环境颜色"
-      },
-      "ambient_intensity": {
+    },
+    "ambient_intensity": {
         "en": "ambient intensity",
         "de": "Umgebungsintensität",
         "ru": "интенсивность окружающей среды",
@@ -265,8 +265,8 @@ systemDictionary = {
         "es": "intensidad ambiental",
         "pl": "intensywność otoczenia",
         "zh-cn": "环境强度"
-      },
-      "enable_hemispheric_lighting": {
+    },
+    "enable_hemispheric_lighting": {
         "en": "hemispheric lighting",
         "de": "halbkugelförmige Beleuchtung",
         "ru": "полусферическое освещение",
@@ -277,8 +277,20 @@ systemDictionary = {
         "es": "iluminación hemisférica",
         "pl": "oświetlenie półkuliste",
         "zh-cn": "半球照明"
-      },
-      "number_switchable_lights": {
+    },
+    "punctual_lights_max_power": {
+        "en": "punct-lights max power",
+        "de": "Punktlichter maximale Leistung",
+        "ru": "максимальная мощность светильников",
+        "pt": "potência máxima das luzes punct",
+        "nl": "punct-lights max. vermogen",
+        "fr": "puissance maximale de punct-lights",
+        "it": "potenza massima luci puntiforme",
+        "es": "punct-lights potencia máxima",
+        "pl": "maksymalna moc świateł punktowych",
+        "zh-cn": "点光源最大功率"
+    },
+    "number_switchable_lights": {
         "en": "number of switchable lights",
         "de": "Anzahl der schaltbaren Lichter",
         "ru": "количество переключаемых огней",
@@ -289,8 +301,8 @@ systemDictionary = {
         "es": "número de luces conmutables",
         "pl": "liczba włączanych świateł",
         "zh-cn": "可切换灯的数量"
-      },
-      "group_modelswitchablelights": {
+    },
+    "group_modelswitchablelights": {
         "en": "switchable lights",
         "de": "Schaltbare Lichter",
         "ru": "переключаемый свет",
@@ -301,8 +313,8 @@ systemDictionary = {
         "es": "luces conmutables",
         "pl": "włączane światła",
         "zh-cn": "开关灯"
-      },
-      "light_name": {
+    },
+    "light_name": {
         "en": "light name",
         "de": "Licht Name",
         "ru": "свет имя",
@@ -313,8 +325,8 @@ systemDictionary = {
         "es": "ligero nombre",
         "pl": "światło naszwa",
         "zh-cn": "光 名称"
-      },
-      "light_monitored_state": {
+    },
+    "light_monitored_state": {
         "en": "monitored state",
         "de": "überwachter Zustand",
         "ru": "контролируемое состояние",
@@ -325,8 +337,8 @@ systemDictionary = {
         "es": "estado monitoreado",
         "pl": "monitorowany stan",
         "zh-cn": "监视状态"
-      },
-      "group_modelanimations": {
+    },
+    "group_modelanimations": {
         "en": "animations",
         "de": "Animationen",
         "ru": "анимации",
@@ -337,8 +349,8 @@ systemDictionary = {
         "es": "animaciones",
         "pl": "animacje",
         "zh-cn": "动画"
-      },
-      "highlight_selected": {
+    },
+    "highlight_selected": {
         "en": "highlight selection",
         "de": "Auswahl markieren",
         "ru": "выделить выбор",
@@ -349,8 +361,8 @@ systemDictionary = {
         "es": "resaltar la selección",
         "pl": "zaznacz zaznaczenie",
         "zh-cn": "高亮选择"
-      },
-      "highlight_color": {
+    },
+    "highlight_color": {
         "en": "highlight color",
         "de": "Hervorhebungsfarbe",
         "ru": "цвет выделения",
@@ -361,8 +373,8 @@ systemDictionary = {
         "es": "resaltar el color",
         "pl": "podświetlony kolor",
         "zh-cn": "突出显示颜色"
-      },
-      "number_clickable_objects": {
+    },
+    "number_clickable_objects": {
         "en": "number of clickable objects",
         "de": "Anzahl anklickbarer Objekte",
         "ru": "количество кликабельных объектов",
@@ -373,8 +385,8 @@ systemDictionary = {
         "es": "número de objetos en los que se puede hacer clic",
         "pl": "liczba klikalnych obiektów",
         "zh-cn": "可点击对象的数量"
-      },
-      "number_animations": {
+    },
+    "number_animations": {
         "en": "number of animations",
         "de": "Anzahl der Animationen",
         "ru": "количество анимаций",
@@ -385,8 +397,8 @@ systemDictionary = {
         "es": "número de animaciones",
         "pl": "liczba animacji",
         "zh-cn": "动画数量"
-      },
-      "animation_behaviour": {
+    },
+    "animation_behaviour": {
         "en": "behaviour",
         "de": "Verhalten",
         "ru": "поведение",
@@ -397,8 +409,8 @@ systemDictionary = {
         "es": "comportamiento",
         "pl": "zachowanie",
         "zh-cn": "行为"
-      },
-      "monitored_state_name": {
+    },
+    "monitored_state_name": {
         "en": "monitored state",
         "de": "überwachter Zustand",
         "ru": "контролируемое состояние",
@@ -409,8 +421,8 @@ systemDictionary = {
         "es": "estado monitoreado",
         "pl": "monitorowany stan",
         "zh-cn": "监视状态"
-      },
-      "monitored_state_max_value": {
+    },
+    "monitored_state_max_value": {
         "en": "state max value",
         "de": "Zustand max Wert",
         "ru": "указать максимальное значение",
@@ -421,8 +433,8 @@ systemDictionary = {
         "es": "estado valor máximo",
         "pl": "wartość maksymalna stanu",
         "zh-cn": "状态最大值"
-      },
-      "monitorstate": {
+    },
+    "monitorstate": {
         "en": "monitor state",
         "de": "Status überwachen",
         "ru": "состояние монитора",
@@ -433,8 +445,8 @@ systemDictionary = {
         "es": "estado del monitor",
         "pl": "stan monitora",
         "zh-cn": "监控状态"
-      },
-      "autoplay": {
+    },
+    "autoplay": {
         "en": "auto play",
         "de": "automatisches Abspielen",
         "ru": "Автовоспроизведение",
@@ -445,8 +457,8 @@ systemDictionary = {
         "es": "auto-reproducción",
         "pl": "Automatyczne odtwarzanie",
         "zh-cn": "自动播放"
-      },
-      "animation": {
+    },
+    "animation": {
         "en": "animation",
         "de": "Animation",
         "ru": "анимация",
@@ -457,8 +469,8 @@ systemDictionary = {
         "es": "animación",
         "pl": "animacja",
         "zh-cn": "动画"
-      },
-      "animation_repeat": {
+    },
+    "animation_repeat": {
         "en": "repeat",
         "de": "wiederholen",
         "ru": "повторение",
@@ -469,8 +481,8 @@ systemDictionary = {
         "es": "repetir",
         "pl": "powtarzać",
         "zh-cn": "重复"
-      },
-      "group_modelclickableobjects": {
+    },
+    "group_modelclickableobjects": {
         "en": "clickable objects",
         "de": "Anklickbare Objekte",
         "ru": "интерактивные объекты",
@@ -481,8 +493,8 @@ systemDictionary = {
         "es": "objetos en los que se puede hacer clic",
         "pl": "klikalne obiekty",
         "zh-cn": "可点击的对象"
-      },
-      "clickable_object_name": {
+    },
+    "clickable_object_name": {
         "en": "object name",
         "de": "Objektname",
         "ru": "имя объекта",
@@ -493,8 +505,8 @@ systemDictionary = {
         "es": "nombre del objeto",
         "pl": "nazwa obiektu",
         "zh-cn": "对象名称"
-      },
-      "enable_shadows": {
+    },
+    "enable_shadows": {
         "en": "calculate shadows",
         "de": "Schatten berechnen",
         "ru": "вычислить тени",
@@ -505,5 +517,101 @@ systemDictionary = {
         "es": "calcular sombras",
         "pl": "oblicz cienie",
         "zh-cn": "计算阴影"
-      }
+    },
+    "silent": {
+        "en": "silent",
+        "de": "silent",
+        "ru": "silent",
+        "pt": "silent",
+        "nl": "silent",
+        "fr": "silent",
+        "it": "silent",
+        "es": "silent",
+        "pl": "silent",
+        "zh-cn": "silent"
+    },
+    "error": {
+        "en": "error",
+        "de": "error",
+        "ru": "error",
+        "pt": "error",
+        "nl": "error",
+        "fr": "error",
+        "it": "error",
+        "es": "error",
+        "pl": "error",
+        "zh-cn": "error"
+    },
+    "warn": {
+        "en": "warn",
+        "de": "warn",
+        "ru": "warn",
+        "pt": "warn",
+        "nl": "warn",
+        "fr": "warn",
+        "it": "warn",
+        "es": "warn",
+        "pl": "warn",
+        "zh-cn": "warn"
+    },
+    "info": {
+        "en": "info",
+        "de": "info",
+        "ru": "info",
+        "pt": "info",
+        "nl": "info",
+        "fr": "info",
+        "it": "info",
+        "es": "info",
+        "pl": "info",
+        "zh-cn": "info"
+    },
+    "debug": {
+        "en": "debug",
+        "de": "debug",
+        "ru": "debug",
+        "pt": "debug",
+        "nl": "debug",
+        "fr": "debug",
+        "it": "debug",
+        "es": "debug",
+        "pl": "debug",
+        "zh-cn": "debug"
+    },
+    "trace": {
+        "en": "trace",
+        "de": "trace",
+        "ru": "trace",
+        "pt": "trace",
+        "nl": "trace",
+        "fr": "trace",
+        "it": "trace",
+        "es": "trace",
+        "pl": "trace",
+        "zh-cn": "trace"
+    },
+    "group_modeldebug": {
+        "en": "debugging",
+        "de": "Debuggen",
+        "ru": "отладка",
+        "pt": "depuração",
+        "nl": "debuggen",
+        "fr": "débogage",
+        "it": "debug",
+        "es": "depuración",
+        "pl": "debugowanie",
+        "zh-cn": "调试"
+    },
+    "debug_loglevel": {
+        "en": "loglevel",
+        "de": "Loglevel",
+        "ru": "лог-уровень",
+        "pt": "loglevel",
+        "nl": "Log niveau",
+        "fr": "loglevel",
+        "it": "loglevel",
+        "es": "nivel de registro",
+        "pl": "loglevel",
+        "zh-cn": "日志级别"
+    }
 };
