@@ -75,7 +75,7 @@ jobs:
         if: ${{ steps.prepare_tag.outputs.is_latest}}
         run: |
           echo "tag is latest. need to update latest-symlink in gh-pages branch"
-          ln -f -s ${{ steps.prepare_tag.outputs.deploy_tag_name }} latest
+          ln -sfn ${{ steps.prepare_tag.outputs.deploy_tag_name }} latest
       
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
