@@ -110,16 +110,53 @@ vis.binds["3dmodel"] = {
         if (data.enable_ambient_lighting)
             model.setupLights(data.enable_shadows, data.ambient_color, data.ambient_intensity, data.punctual_lights_max_power);
 
-        // Get list of clickable objects
+        // Setup clickable objects
         const clickableObjects = [];
 
         for (let i = 0; i <= data.number_clickable_objects; i++) {
             logger.trace(data.attr("clickable_object_name" + i) + " " + data.attr("clickable_object_action_id" + i));
             clickableObjects[data.attr("clickable_object_name" + i)] = {
-                "target_id": data.attr("clickable_object_action_id" + i),
-                "action": data.attr("clickable_object_action_task" + i)
+                "stateId": data.attr("clickable_object_state" + i),
+                "action": data.attr("clickable_object_state_action" + i)
             };
         }
+
+        // If object is clicked, perform action associated with it
+        function performAction (stateId, action) {
+            logger.debug("Performing action " + action + " for state " + stateId);
+
+            // Get current state value
+            vis.conn.getStates(stateId, (error, states) => {
+                if (error) {
+                    logger.error("Error updating state " + stateId + ": " + error);
+                    return;
+                }
+
+                logger.trace("Clickable state information: " + JSON.stringify(states));
+                let stateValue = states[stateId].val;
+                logger.debug("State " + stateId + " has value: " + stateValue);
+                switch (action) {
+                    case "enable":
+                        stateValue = true;
+                        break;
+                    case "disable":
+                        stateValue = false;
+                        break;
+                    case "toggle":
+                        stateValue = !stateValue;
+                        break;
+                }
+                // Update state with new value
+                vis.conn.setState(stateId, stateValue, (error, response) => {
+                    if (error)
+                        logger.error("Error while updating state" + error);
+                    else
+                        logger.debug("Updated state successfully. New value: " + stateValue);
+                });
+            });
+        }
+
+        model.setupClickableObjects(clickableObjects, performAction);
 
         // Bind animations to states
         const bound = [];
@@ -174,9 +211,13 @@ vis.binds["3dmodel"] = {
 
         // Do same stuff for lights on state changes
         const monitoredStateLightMap = [];
+        const lightAttributes = [];
         for (let i = 0; i <= data.number_switchable_lights; i++) {
             const lightName = data.attr("light_name" + i);
             const monitoredStateName = data.attr("light_monitored_state" + i);
+            const lightMaxPower = data.attr("light_max_power" + i);
+            const monitoredStateMaxValue = data.attr("light_monitored_state_max_value" + i);
+            lightAttributes[lightName] = { "maxPower": (lightMaxPower || null), "maxValue": monitoredStateMaxValue };
             if (monitoredStateLightMap[monitoredStateName] == null)
                 monitoredStateLightMap[monitoredStateName] = [];
             monitoredStateLightMap[monitoredStateName].push(lightName);
@@ -193,7 +234,7 @@ vis.binds["3dmodel"] = {
             }
             for (const [oid, lights] of Object.entries(monitoredStateLightMap)) {
                 lights.forEach((light) => {
-                    model.updateLightByState(light, states[oid].val);
+                    model.updateLightByState(light, states[oid].val, lightAttributes[light].maxValue, lightAttributes[light].maxPower);
                 });
             }
 
@@ -230,16 +271,6 @@ vis.binds["3dmodel"] = {
                 initializeModel(model, states, monitoredStateAnimationMap, stateAttributes, monitoredStateLightMap, autoplayAnimations, repeatAnimations);
             }
         });
-
-        // If object is clicked, perform action associated with it
-        function performAction (targetId, action) {
-            logger.debug("Performing action " + action + " for target " + targetId);
-            // vis.setValue("0_userdata.0.dummy", Math.floor(Math.random() * 100) + 1);
-            vis.setValue("0_userdata.0.show_dialog", true);
-            vis.setValue("0_userdata.0.show_dialogger.dialog_target", targetId);
-        }
-
-        model.setupClickableObjects(clickableObjects, performAction);
 
         // #####################
         // TODO: Initialize dynamic menues (called too late, needs to be invoked earlier)

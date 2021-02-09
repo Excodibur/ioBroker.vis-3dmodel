@@ -47,6 +47,7 @@ It is a good idea to check the validity of your export GLTF-file, before using i
 Although not required, one of the key features of this widget is the ability to react to states maintained in ioBroker to update the model in real time.
 
 States (sometimes also refered to as _Datapoint_) can be used in conjunction within light-sources, as well as animations of the 3D model. Currently there are two types of states supported:
+
 * `boolean`: Toogles entities of the 3D model.
 ** *Lights* are turned on or off. 
 ** *Animations* are played once.

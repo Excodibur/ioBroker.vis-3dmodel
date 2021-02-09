@@ -3,13 +3,23 @@ The widget itself can be used like any regular widget in iobroker VIS. It should
 
 image:media/3dmodel_widget_vis_main.png[title="Main view 3D Model Widget VIS",800]
 
-To work properly, a valid GLTF file needs to be uploaded to ioBroker VIS file manager (`Setup` → `File Manager...`) and referenced in the widget attributes under `General` / `Common` / `*gltf file*`.
+[.float-group]
+--
+image:media/3dmodel_widget_vis_settings_common.png[Widget settings - Common,300,float="right"]
+
+* `*gltf file*`: To work properly, a valid GLTF file needs to be uploaded to ioBroker VIS file manager (`Setup` → `File Manager...`) and referenced in the widget attributes under `General` / `Common` / `*gltf file*`.
+* `*show loading screen*`: Show a small animation (moving boxes) while loading the model. Otherwise a black box will be shown until the model is loaded.
 
 [TIP]
 ====
 If a exported GLTF file is valid, can be checked easily beforehand with available online tools, like link:https://gltf-viewer.donmccurdy.com/[GLTF Viewer].
 ====
 
+[NOTE]
+====
+Although the GLTF file upload succeeds, it is likely that the GLTF file will not show up in VIS file manager. It can be referenced by path anyways.
+====
+--
 == Model
 [.float-group]
 --
@@ -44,7 +54,7 @@ image:media/3dmodel_widget_vis_settings_lighting.png[Widget settings - Lighting,
 * `*ambient lighting*`: Globally illuminate the whole scene equally. See also link:https://threejs.org/docs/#api/en/lights/AmbientLight[ThreeJS docs].
 * `*ambient color*`: Color of ambient lighting.
 * `*ambient intensity*`: Intensity of ambient light. In physically correct mode, intensity is interpreted as luminous intensity measured in candela.
-* `*punct-lights max power*`: Default intensity of all punctual lights in the scene. Can be overwritten with link:#_switchable_lights[Switchable Lights]/`light max-power`.
+* `*punct-lights max power*`: Default intensity of all punctual lights in the scene. Can be overwritten with link:#_switchable_lights[Switchable Lights] /`light max power`.
 * `*calculate shadows*`: If activated, all objects in the scene will cast and receive shadows.
 * `*number of switchable lights*`: Number of lights that should be bound to ioBroker states. Opens up new submenues. See chapter link:#_switchable_lights[Switchable Lights].
 --
@@ -58,23 +68,19 @@ image:media/3dmodel_widget_vis_settings_switchable_lights.png[Widget settings - 
 
 * `*light name*`: Light object from 3D model that should be linked to state. For punctual lights the GLTF format supports Directional, Point and Spot lights.
 * `*monitored state*`: ioBroker state to bind light to.
-* `*light max-power*`: Light intensity/brightness. In physically correct mode, the luminous power of the light measured in lumens.
+* `*state max value*`: Max value the ioBroker state can have.footnote:[This setting might be removed in the future by retrieving maxValue directly from state-attributes.]
+* `*light max power*`: Light intensity/brightness. In physically correct mode, the luminous power of the light measured in lumens.
 
 [NOTE]
 --
-Regarding _light intensity_ being measured in lumens it is questionable if real-life values are sensible to be used here. Although not fully verified, how bright a light-source will appear in the rendered object also depends on the dimension of your model. E.g. a house model might look fine while rendered, but if it not also does match sensible metrics (e.g. wall height of rooms), a normal lumen-intensity will not provide enough light for the whole room.
+Regarding _light intensity_ being measured in lumens, it is questionable if real-life values are sensible to be used here. Although not fully verified, how bright a light-source will appear in the rendered object also depends on the dimensions of your model. E.g. a house model might look fine while rendered, but if it not also does match real-life metrics (e.g. wall height of rooms), a normal lumen-intensity will not provide enough light for the whole room.
 --
 
 TODO: Light behaviour in connection with ioBroker state
 --
 
 == Clickable Objects
-Apart from binding link:#_animations[Animations] and link:#_switchable_lights[Lights] to states, it is also possible to make every object in the scene clickable. Once clicked upon, a customly configured action (e.g. execution of Javascript) will be invoked.
-
-[WARNING]
---
-Not fully implemented yet
---
+Apart from binding link:#_animations[Animations] and link:#_switchable_lights[Lights] to states, it is also possible to make every object in the scene clickable. Once clicked upon, the value of the associated state is changed, e.g. to trigger the execution of customer Javascript.
 
 [.float-group]
 --
@@ -91,12 +97,13 @@ Each clickable object can be configured as follows:
 image:media/3dmodel_widget_vis_settings_clickable_objects_2.png[Widget settings - Clickable Objects 2,300,float="right"]
 
 * `*object name*`: Name of the clickable object.
-* `*clickable_object_action_id*`: *Does nothing at the moment.*
-* `*clickable_object_action_task*`: *Does nothing at the moment.* The idea is to have options like: 
-** run JavaScript
-** set the monitored state to a preconfigured value
-** open up new preconfigured dialog window (e.g. dialog with slider for window blinds)
+* `*changeable state*`: The state that will be changed when clicking on the object.
+* `*action*`: This setting defines how the state value will be altered:
+** `enable`: Set value to `true`
+** `disable`: Set Value to `false`
+** `toggle` (default): Inverts the current state value, e.g. `false` to `true`, and `true` to `false`:
 
+The idea here is to use further adapters (e.g. link:https://github.com/ioBroker/ioBroker.javascript[ioBroker Javascript Adapter]) and bind them to `changeable state`. This reduces complixity of this widget, while allowing users to utilize the full capabilities of customly written Javascript.
 --
 
 
@@ -123,7 +130,7 @@ image:media/3dmodel_widget_vis_settings_animations_2.png[Widget settings - Anima
 * `*monitored state*`: ioBroker state to bind animation to.
 * `*animation*`: Animation for which this configuration applies.
 * `*repeat*`: Loop the animation, instead of playing it just once. Mostly used in conjunction with `auto play`.
-* `*state max value*`: Max value the ioBroker state can have. This value is used, when the ioBroker state referred to is of type _number_ (not _boolean_!). The widget then assumes that the state can be set to a value from 0 to `state max value`. Defaults to _100_. See further explanation below.
+* `*state max value*`: Max value the ioBroker state can have. This value is used, when the ioBroker state referred to is of type _number_ (not _boolean_!).footnote:[This setting might be removed in the future by retrieving maxValue directly from state-attributes.]The widget then assumes that the state can be set to a value from 0 to `state max value`. Defaults to _100_. See further explanation below.
 
 --
 
@@ -132,8 +139,16 @@ When *Animations* are turned on, they will just play once, unless configured to 
 With a configured `state max value` (the highest value the monitored state can have) it is calculated relatively, up to which point an animation is played. E.g. a window-blind animation is played up to 50%, if the state value indicates the blinds are closed that much (e.g. current state value: 50, state max value: 100). If the state value decreases after that (e.g. because blinds are opened more and only 30% closed) the animation will play in reverse up to that percentage.
 
 == Debugging
-
-[WARNING]
+This settings-section is mostly intended for developers.
+[.float-group]
 --
-Further debugging features have not yet been implemented.
+image:media/3dmodel_widget_vis_settings_debugging.png[Widget settings - Debugging,300,float="right"]
+
+* `*loglevel*`: Defines the loglevel (per widget) of messages written to Browser console
+** `silent`: Don't log anything.
+** `error`: Log only errors.
+** `warn`: Log warnings, and everything mentioned above.
+** `info`: Log basic widget information messages, and everything mentioned above.
+** `debug`: Log debugging messages, and everything mentioned above.
+** `trace`: Log even more debug-messages (trace), and everything mentioned above.
 --

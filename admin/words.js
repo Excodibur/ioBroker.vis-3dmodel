@@ -290,6 +290,30 @@ systemDictionary = {
         "pl": "maksymalna moc świateł punktowych",
         "zh-cn": "点光源最大功率"
     },
+    "light_max_power": {
+        "en": "light max power",
+        "de": "Licht max Leistung",
+        "ru": "максимальная мощность света",
+        "pt": "potência máxima de luz",
+        "nl": "licht max. vermogen",
+        "fr": "puissance maximale légère",
+        "it": "potenza massima leggera",
+        "es": "potencia máxima ligera",
+        "pl": "światło maksymalna moc",
+        "zh-cn": "最大光功率"
+    },
+    "light_monitored_state_max_value": {
+        "en": "state max value",
+        "de": "Zustand max Wert",
+        "ru": "указать максимальное значение",
+        "pt": "valor máximo do estado",
+        "nl": "max. waarde aangeven",
+        "fr": "état valeur max",
+        "it": "indicare il valore massimo",
+        "es": "estado valor máximo",
+        "pl": "wartość maksymalna stanu",
+        "zh-cn": "状态最大值"
+    },
     "number_switchable_lights": {
         "en": "number of switchable lights",
         "de": "Anzahl der schaltbaren Lichter",
@@ -505,6 +529,66 @@ systemDictionary = {
         "es": "nombre del objeto",
         "pl": "nazwa obiektu",
         "zh-cn": "对象名称"
+    },
+    "clickable_object_state": {
+        "en": "changeable state",
+        "de": "veränderbarer Zustand",
+        "ru": "изменчивое состояние",
+        "pt": "estado mutável",
+        "nl": "veranderlijke staat",
+        "fr": "état variable",
+        "it": "stato mutevole",
+        "es": "estado cambiante",
+        "pl": "zmienny stan",
+        "zh-cn": "可变状态"
+    },
+    "clickable_object_state_action": {
+        "en": "action",
+        "de": "Aktion",
+        "ru": "действие",
+        "pt": "açao",
+        "nl": "actie",
+        "fr": "action",
+        "it": "azione",
+        "es": "acción",
+        "pl": "akcja",
+        "zh-cn": "行动"
+    },
+    "enable": {
+        "en": "enable",
+        "de": "aktivieren",
+        "ru": "включить",
+        "pt": "habilitar",
+        "nl": "inschakelen",
+        "fr": "activer",
+        "it": "abilitare",
+        "es": "habilitar",
+        "pl": "włączyć",
+        "zh-cn": "使能"
+    },
+    "disable": {
+        "en": "disable",
+        "de": "deaktivieren",
+        "ru": "отключить",
+        "pt": "desabilitar",
+        "nl": "uitschakelen",
+        "fr": "désactiver",
+        "it": "disattivare",
+        "es": "inhabilitar",
+        "pl": "wyłączyć",
+        "zh-cn": "禁用"
+    },
+    "toggle": {
+        "en": "toggle",
+        "de": "Umschalten",
+        "ru": "переключить",
+        "pt": "alternancia",
+        "nl": "schakelen",
+        "fr": "basculer",
+        "it": "toggle",
+        "es": "palanca",
+        "pl": "przełącznik",
+        "zh-cn": "拨动"
     },
     "enable_shadows": {
         "en": "calculate shadows",

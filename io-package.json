@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "news": {
+            "0.0.4": {
+                "en": "Added clickable-object behaviour\nImproved switchable lights\nESLint added\nMultiple improvements & bugfixes\nReworked logging\nDocumentation updated",
+                "de": "Klickbares Objektverhalten hinzugefügt\nVerbesserte schaltbare Lichter\nESLint hinzugefügt\nMehrere Verbesserungen und Bugfixes\nÜberarbeitete Protokollierung\nDokumentation aktualisiert",
+                "ru": "Добавлено поведение объекта при нажатии\nУлучшенное переключаемое освещение\nESLint добавлен\nМножественные улучшения и исправления\nПереработано ведение журнала\nДокументация обновлена",
+                "pt": "Adicionado comportamento de objeto clicável\nLuzes comutáveis aprimoradas\nESLint adicionado\nVárias melhorias e correções de bugs\nRegistro retrabalhado\nDocumentação atualizada",
+                "nl": "Gedrag aan klikbare objecten toegevoegd\nVerbeterde schakelbare lichten\nESLint toegevoegd\nMeerdere verbeteringen en bugfixes\nHerwerkte logboekregistratie\nDocumentatie bijgewerkt",
+                "fr": "Ajout d'un comportement d'objet cliquable\nLumières commutables améliorées\nESLint ajouté\nPlusieurs améliorations et corrections de bogues\nJournalisation retravaillée\nDocumentation mise à jour",
+                "it": "Aggiunto comportamento oggetto cliccabile\nLuci commutabili migliorate\nESLint aggiunto\nMolteplici miglioramenti e correzioni di bug\nRegistrazione rielaborata\nDocumentazione aggiornata",
+                "es": "Comportamiento de objeto en el que se puede hacer clic\nLuces intercambiables mejoradas\nESLint agregado\nVarias mejoras y correcciones de errores\nRegistro reelaborado\nDocumentación actualizada",
+                "pl": "Dodano zachowanie obiektów, które można kliknąć\nUlepszone przełączane światła\nDodano ESLint\nWiele ulepszeń i poprawek błędów\nPrzerobione logowanie\nZaktualizowano dokumentację",
+                "zh-cn": "添加了可点击对象行为\n改进的可切换灯\nESLint添加了\n多项改进和错误修正\n重做的日志\n文档更新"
+            },
             "0.0.3": {
                 "en": "Removed docs from NPM\nAdded loading-animation for model\nMultiple Bugfixes",
                 "de": "Dokumente aus NPM entfernt\nLadeanimation für Modell hinzugefügt\nMehrere Bugfixes",

@@ -3,6 +3,14 @@
 	Placeholder for the next version (add instead of version-number-headline below):
 	## __WORK IN PROGRESS__
 -->
+## 0.0.4 (2021-02-09)
+* Added clickable-object behaviour
+* Improved switchable lights
+* ESLint added
+* Multiple improvements & bugfixes
+* Reworked logging
+* Documentation updated
+
 ## 0.0.3 (2021-02-03)
 * Removed docs from NPM
 * Added loading-animation for model

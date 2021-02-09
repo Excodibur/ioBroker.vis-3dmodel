@@ -213,7 +213,7 @@ class ThreeJSModel {
             // check if object is light
             if ((object.type === "PointLight") || (object.type === "DirectionalLight") || (object.type === "SpotLight")) {
                 this.logger.trace("Found light: " + object.name);
-                listOfLights[object.name] = { "object": object, "max_power": this.punctualLightsMaxPower, "smooth_transition": true };
+                listOfLights[object.name] = { "object": object, "maxPower": this.punctualLightsMaxPower, "smoothTransition": true };
             }
         }
 
@@ -300,16 +300,20 @@ class ThreeJSModel {
         // this.animations[name].targetPosition = clip.duration + 1000;
     }
 
-    updateLightByState (name, value) {
+    updateLightByState (name, value, maxValue, maxPower) {
+        // overwrite max power if it is set individually for light
+        if ((maxPower != null) && (this.lights[name].maxPower !== maxPower)) {
+            this.logger.debug("Overwrite default max power (" + this.punctualLightsMaxPower + ") with individual power-setting: " + maxPower);
+            this.lights[name].maxPower = maxPower;
+        }
+
         const light = this.lights[name];
         const lightObject = light.object;
         if (!lightObject) return;
 
-        // var oldIntensity = lightObject.intensity;
-        // var targetIntensity = (value) ? 2 : 0;
         const oldPower = lightObject.power;
-        const targetPower = value / 1000 * light.max_power;
-        if (light.smooth_transition) {
+        const targetPower = value / maxValue * light.maxPower;
+        if (light.smoothTransition) {
             if (targetPower > oldPower) {
                 const intr = setInterval(function () {
                     // console.log("++LIGHT power: " + lightObject.power);
@@ -357,7 +361,7 @@ class ThreeJSModel {
                     mixer.update(deltaTime);
             }
         }
-        // this.mixer.update(this.clock.getDelta());
+
         requestAnimationFrame(this.animate.bind(this));
 
         // update the picking ray with the camera and mouse position
@@ -413,8 +417,6 @@ class ThreeJSModel {
     resetEmissiveness (object) {
         const parentObject = this.allObjects[object.name];
         if (parentObject != null) {
-            // console.log("[unset Em] " + object.name + " has parent " + parentObject.name);
-            // console.log(this.currentlyIntersectedMesh.name + " has parent " + parentObject.name);
             parentObject.children.forEach(childObject => {
                 if (!childObject.isLine) childObject.material.emissive.setHex(childObject.currentHex);
                 // this.unhighlightEdges(childObject);
@@ -457,17 +459,7 @@ class ThreeJSModel {
             if (this.clickableObjects[object.name] != null) {
                 const objectAction = this.clickableObjects[object.name];
                 // Perform action
-                this.clickableObjectPerformAction(objectAction.target_id, objectAction.action);
-                // Testing (use toogle mechanic)
-                /* var target;
-                if (testToggle) {
-                    target = 50;
-                    testToggle = false
-                } else {
-                    target = 0;
-                    testToggle = true;
-                }
-                this.updateAnimationByState("Animation_Rolladen_Buero_Vorne", target, "something", 100); */
+                this.clickableObjectPerformAction(objectAction.stateId, objectAction.action);
             }
         }
     }
