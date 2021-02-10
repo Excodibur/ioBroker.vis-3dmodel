@@ -8,6 +8,8 @@
 [![Dependency Status](https://img.shields.io/david/Excodibur/iobroker.vis-3dmodel.svg)](https://david-dm.org/Excodibur/iobroker.vis-3dmodel)
 [![Known Vulnerabilities](https://snyk.io/test/github/Excodibur/ioBroker.vis-3dmodel/badge.svg)](https://snyk.io/test/github/Excodibur/ioBroker.vis-3dmodel)
 
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Excodibur/ioBroker.vis-3dmodel.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Excodibur/ioBroker.vis-3dmodel/context:javascript)
+
 [![NPM](https://nodei.co/npm/iobroker.vis-3dmodel.png?downloads=true)](https://nodei.co/npm/iobroker.vis-3dmodel/)
 
 **Tests:** ![Test and Release](https://github.com/Excodibur/ioBroker.vis-3dmodel/workflows/Test%20and%20Release/badge.svg)
@@ -18,8 +20,6 @@ This widget allows to render interactive 3D models directly in ioBroker VIS. In 
 
 ![Widget Demo](doc/media/clips/3dmodel_demo.gif)
 Source files for this example can be found [here](examples/house).
-
-This widget is in a very early and potentially unstable phase. Not all features have been implemented yet, so there will be a lot of bugs and "dead-ends" at the moment.
 
 Before you start using it, please [read the documentation](https://excodibur.github.io/ioBroker.vis-3dmodel/latest/index.html).
 
