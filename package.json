@@ -23,8 +23,8 @@
   "dependencies": {},
   "devDependencies": {
     "@alcalzone/release-script": "^1.8.3",
-    "@iobroker/testing": "^2.3.0",
-    "@types/gulp": "^4.0.7",
+    "@iobroker/testing": "^2.4.2",
+    "@types/gulp": "^4.0.8",
     "axios": "^0.21.1",
     "eslint": "^7.19.0",
     "eslint-config-standard": "^16.0.2",
@@ -37,6 +37,8 @@
   "main": "widgets/3dmodel.html",
   "scripts": {
     "test:package": "mocha test/package --exit",
+    "test:unit": "mocha test/unit --exit",
+    "test:integration": "mocha test/integration --exit",
     "lint": "eslint --ext .js widgets/*",
     "test": "npm run test:package",
     "release": "release-script"
