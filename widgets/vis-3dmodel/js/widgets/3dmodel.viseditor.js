@@ -58,7 +58,7 @@ vis.binds["3dmodel"].viseditor = {
                         $(this).append('<option value=""></option>');
                         // get all other options
                         vis.binds["3dmodel"].getAnimations(widget).then(animationList => {
-                            for (const [name, tools] of Object.entries(animationList))
+                            for (const name of Object.keys(animationList))
                                 $(this).append('<option value="' + name + '" ' + ((data === name) ? "selected" : "") + ">" + name + "</option>");
                         });
                     }
@@ -92,7 +92,7 @@ vis.binds["3dmodel"].viseditor = {
                         $(this).append('<option value=""></option>');
                         // get all other options
                         vis.binds["3dmodel"].getLights(widget).then(lightList => {
-                            for (const [name, object] of Object.entries(lightList))
+                            for (const name of Object.keys(lightList))
                                 $(this).append('<option value="' + name + '" ' + ((data === name) ? "selected" : "") + ">" + name + "</option>");
                         });
                     }

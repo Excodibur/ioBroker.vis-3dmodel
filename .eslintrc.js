@@ -1,5 +1,5 @@
 module.exports = {
-    "ignorePatterns": ["*.min.js", "widgets/*/lib/*.js"],
+    "ignorePatterns": ["*.min.js", "widgets/*/lib/*.js", "gulpfile.js"],
     "env": {
         "browser": true,
         "es2021": true,
@@ -28,7 +28,7 @@ module.exports = {
         ],
         "curly": ["warn", "multi-or-nest"],
         "space-before-function-paren": ["warn", "always"],
-        "no-unused-vars": 0
+        "no-unused-vars": "warn"
     },
     "plugins": ["html"]
 };

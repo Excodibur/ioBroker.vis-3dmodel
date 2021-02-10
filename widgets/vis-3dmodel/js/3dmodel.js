@@ -6,7 +6,7 @@
 "use strict";
 
 // Define some globals for eslint that are set by other JavaScript entries in 3dmodel.html
-/* global vis, ThreeJSModel, translateWord, systemDictionary, log, prefix */
+/* global vis, ThreeJSModel, translateWord, systemDictionary, log */
 
 const iobSystemDic = systemDictionary;
 $.get("../vis-3dmodel.admin/words.js", function (script) {

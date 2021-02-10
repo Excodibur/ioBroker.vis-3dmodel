@@ -1,7 +1,7 @@
 "use strict";
 
 // Define some globals for eslint that are set by other JavaScript entries in 3dmodel.html
-/* global THREE, log */
+/* global THREE */
 
 let mouse;
 // var testToggle = true;
@@ -289,15 +289,7 @@ class ThreeJSModel {
         if (!this.animations[name]) return;
         this.logger.debug("Repeating animation " + name);
 
-        // Get current frame from animation (by percentage)
-        const mixer = this.animations[name].mixer;
-        const clip = this.animations[name].clip;
-        // const clipAction = mixer.clipAction(clip);
-
         this.animations[name].repeat = true;
-        // clipAction.setLoop(THREE.LoopRepeat);
-        // Workaround (set targetPosition higher than clip length, so it can never be reached)
-        // this.animations[name].targetPosition = clip.duration + 1000;
     }
 
     updateLightByState (name, value, maxValue, maxPower) {
@@ -337,18 +329,18 @@ class ThreeJSModel {
     }
 
     animate () {
-        for (const [key, value] of Object.entries(this.animations)) {
-            const mixer = value.mixer;
-            const clip = value.clip;
-            const clipAction = value.mixer.clipAction(clip);
+        for (const animation of Object.values(this.animations)) {
+            const mixer = animation.mixer;
+            const clip = animation.clip;
+            const clipAction = animation.mixer.clipAction(clip);
 
-            value.currentPosition = clipAction.time;
+            animation.currentPosition = clipAction.time;
 
-            const deltaTime = value.clock.getDelta();
+            const deltaTime = animation.clock.getDelta();
 
             // Play animations smoothly
-            if (value.repeat) {
-                if (value.targetPosition > 0) {
+            if (animation.repeat) {
+                if (animation.targetPosition > 0) {
                     clipAction.enabled = true;
                     clipAction.setLoop(THREE.LoopRepeat);
                 } else
@@ -356,8 +348,8 @@ class ThreeJSModel {
                 mixer.update(deltaTime);
             } else {
                 // go only to target position
-                if (((clipAction.timeScale === 1) && (Math.ceil(value.currentPosition * 10) / 10 < Math.ceil(value.targetPosition * 10) / 10)) ||
-                    ((clipAction.timeScale === -1) && (Math.floor(value.currentPosition * 10) / 10 > Math.floor(value.targetPosition * 10) / 10)))
+                if (((clipAction.timeScale === 1) && (Math.ceil(animation.currentPosition * 10) / 10 < Math.ceil(animation.targetPosition * 10) / 10)) ||
+                    ((clipAction.timeScale === -1) && (Math.floor(animation.currentPosition * 10) / 10 > Math.floor(animation.targetPosition * 10) / 10)))
                     mixer.update(deltaTime);
             }
         }
