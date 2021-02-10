@@ -9,6 +9,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/Excodibur/ioBroker.vis-3dmodel/badge.svg)](https://snyk.io/test/github/Excodibur/ioBroker.vis-3dmodel)
 
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Excodibur/ioBroker.vis-3dmodel.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Excodibur/ioBroker.vis-3dmodel/context:javascript)
+[![Travis-CI](http://img.shields.io/travis/excodibur/ioBroker.vis-3dmodel/master.svg)](https://travis-ci.org/Excodibur/ioBroker.vis-3dmodel)
 
 [![NPM](https://nodei.co/npm/iobroker.vis-3dmodel.png?downloads=true)](https://nodei.co/npm/iobroker.vis-3dmodel/)
 
