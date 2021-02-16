@@ -106,7 +106,7 @@
         "type": "visualization-widgets",
         "mode": "daemon",
         "connectionType": "local",
-        "dataSource": "pull",
+        "dataSource": "poll",
         "dependencies": [
             "vis"
         ]
