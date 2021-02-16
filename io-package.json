@@ -104,7 +104,9 @@
         "noConfig": true,
         "singleton": true,
         "type": "visualization-widgets",
-        "mode": "once",
+        "mode": "daemon",
+        "connectionType": "local",
+        "dataSource": "pull",
         "dependencies": [
             "vis"
         ]
