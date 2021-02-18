@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "news": {
+            "0.0.5": {
+                "en": "Updated ThreeJS from r121 to r125\nImproved dependency management",
+                "de": "ThreeJS wurde von r121 auf r125 aktualisiert\nVerbessertes Abhängigkeitsmanagement",
+                "ru": "Обновлен ThreeJS с r121 до r125.\nУлучшенное управление зависимостями",
+                "pt": "ThreeJS atualizado de r121 para r125\nMelhor gerenciamento de dependências",
+                "nl": "ThreeJS bijgewerkt van r121 naar r125\nVerbeterd afhankelijkheidsbeheer",
+                "fr": "Mise à jour de ThreeJS de R121 à R125\nAmélioration de la gestion des dépendances",
+                "it": "Aggiornato ThreeJS da r121 a r125\nGestione delle dipendenze migliorata",
+                "es": "ThreeJS actualizado de r121 a r125\nGestión mejorada de la dependencia",
+                "pl": "Zaktualizowano ThreeJS z r121 do r125\nUlepszone zarządzanie zależnościami",
+                "zh-cn": "将ThreeJS从r121更新为r125\n改进的依赖关系管理"
+            },
             "0.0.4": {
                 "en": "Added clickable-object behaviour\nImproved switchable lights\nESLint added\nMultiple improvements & bugfixes\nReworked logging\nDocumentation updated",
                 "de": "Klickbares Objektverhalten hinzugefügt\nVerbesserte schaltbare Lichter\nESLint hinzugefügt\nMehrere Verbesserungen und Bugfixes\nÜberarbeitete Protokollierung\nDokumentation aktualisiert",
@@ -111,8 +123,7 @@
             "vis"
         ]
     },
-    "native": {
-    },
+    "native": {},
     "objects": [],
     "instanceObjects": []
 }

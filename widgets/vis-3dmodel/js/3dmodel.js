@@ -20,14 +20,12 @@ const stateDefinitions = [];
 
 // this code can be placed directly in vis-3dmodel.html
 vis.binds["3dmodel"] = {
-    "version": "0.0.3",
+    "version": "0.0.5",
     "logger": [],
     "models": [],
     "showVersion": function () {
-        if (vis.binds["3dmodel"].version) {
+        if (vis.binds["3dmodel"].version)
             console.log("Version vis-3dmodel: " + vis.binds["3dmodel"].version);
-            vis.binds["3dmodel"].version = null;
-        }
     },
     "createWidget": function (widgetID, view, data, style) {
         // Setup logging
@@ -251,6 +249,8 @@ vis.binds["3dmodel"] = {
                     model.repeatAnimation(animation);
                 });
             }
+
+            logger.info("Model for widget " + widgetID + " initialized. Using ThreeJS v." + model.getThreeJsVersion());
         }
 
         // Force Vis to get all state and stay updated

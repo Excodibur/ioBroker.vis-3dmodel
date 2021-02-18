@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-3dmodel",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Import 3D GLTF images into Blender",
   "author": {
     "name": "Excodibur",
@@ -32,11 +32,19 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2",
+    "loglevel": "^1.7.1",
+    "readable-stream": "^3.6.0",
+    "three": "^0.125.2"
   },
   "main": "widgets/3dmodel.html",
   "scripts": {
     "test:package": "mocha test/package --exit",
+    "compress-js:three": "gulp compress-three",
+    "compress-js:loglevel": "gulp compress-loglevel",
+    "compress-js": "npm run compress-js:three && npm run compress-js:loglevel",
     "lint": "eslint --ext .js widgets/*",
     "test": "npm run test:package",
     "release": "release-script"

@@ -19,10 +19,7 @@ class ThreeJSModel {
         this.debugShowCoordinates = false;
         this.showLoader = showLoader;
         this.logger = logger;
-    }
-
-    setupLoader () {
-
+        this.threeJsVersion = THREE.REVISION;
     }
 
     setupScene (bgColor, highlightSelected, highlightColor, enableRealisticLighting) {
@@ -454,5 +451,9 @@ class ThreeJSModel {
                 this.clickableObjectPerformAction(objectAction.stateId, objectAction.action);
             }
         }
+    }
+
+    getThreeJsVersion () {
+        return this.threeJsVersion;
     }
 };

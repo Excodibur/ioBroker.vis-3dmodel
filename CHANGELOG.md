@@ -3,6 +3,10 @@
 	Placeholder for the next version (add instead of version-number-headline below):
 	## __WORK IN PROGRESS__
 -->
+## 0.0.5 (2021-02-18)
+* Updated ThreeJS from r121 to r125
+* Improved dependency management
+
 ## 0.0.4 (2021-02-09)
 * Added clickable-object behaviour
 * Improved switchable lights

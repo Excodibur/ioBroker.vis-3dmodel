@@ -24,15 +24,17 @@ const languages = {
     pl: {},
     "zh-cn": {}
 };
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 
-function sanitizeJsonString(str) {
+function sanitizeJsonString (str) {
     return str
         .replace(/\\/g, '\\\\')
         .replace(/"/g, '\\"')
-    ;
+        ;
 }
 
-function lang2data(lang, isFlat) {
+function lang2data (lang, isFlat) {
     let str = isFlat ? "" : "{\n";
     let count = 0;
     for (const w in lang) {
@@ -55,7 +57,7 @@ function lang2data(lang, isFlat) {
     }
 }
 
-function readWordJs(src) {
+function readWordJs (src) {
     try {
         let words;
         if (fs.existsSync(src + "js/" + fileName)) {
@@ -74,11 +76,11 @@ function readWordJs(src) {
     }
 }
 
-function padRight(text, totalLength) {
+function padRight (text, totalLength) {
     return text + (text.length < totalLength ? new Array(totalLength - text.length).join(" ") : "");
 }
 
-function writeWordJs(data, src) {
+function writeWordJs (data, src) {
     let text = "";
     text += "/*global systemDictionary:true */\n";
     text += "'use strict';\n\n";
@@ -107,7 +109,7 @@ function writeWordJs(data, src) {
     }
 }
 
-function words2languages(src) {
+function words2languages (src) {
     const langs = Object.assign({}, languages);
     const data = readWordJs(src);
     if (data) {
@@ -149,7 +151,7 @@ function words2languages(src) {
     }
 }
 
-function words2languagesFlat(src) {
+function words2languagesFlat (src) {
     const langs = Object.assign({}, languages);
     const data = readWordJs(src);
     if (data) {
@@ -197,7 +199,7 @@ function words2languagesFlat(src) {
     }
 }
 
-function languagesFlat2words(src) {
+function languagesFlat2words (src) {
     const dirs = fs.readdirSync(src + "i18n/");
     const langs = {};
     const bigOne = {};
@@ -271,7 +273,7 @@ function languagesFlat2words(src) {
     writeWordJs(bigOne, src);
 }
 
-function languages2words(src) {
+function languages2words (src) {
     const dirs = fs.readdirSync(src + "i18n/");
     const langs = {};
     const bigOne = {};
@@ -339,7 +341,7 @@ function languages2words(src) {
     writeWordJs(bigOne, src);
 }
 
-async function translateNotExisting(obj, baseText, yandex) {
+async function translateNotExisting (obj, baseText, yandex) {
     let t = obj['en'];
     if (!t) {
         t = baseText;
@@ -413,8 +415,8 @@ gulp.task("updateReadme", function (done) {
         if (readme.indexOf(version) === -1) {
             const timestamp = new Date();
             const date = timestamp.getFullYear() + "-" +
-                    ("0" + (timestamp.getMonth() + 1).toString(10)).slice(-2) + "-" +
-                    ("0" + (timestamp.getDate()).toString(10)).slice(-2);
+                ("0" + (timestamp.getMonth() + 1).toString(10)).slice(-2) + "-" +
+                ("0" + (timestamp.getDate()).toString(10)).slice(-2);
 
             let news = "";
             if (iopackage.common.news && iopackage.common.news[pkg.version]) {
@@ -480,3 +482,34 @@ gulp.task('translate', async function (done) {
 gulp.task("translateAndUpdateWordsJS", gulp.series("translate", "adminLanguages2words", "adminWords2languages"));
 
 gulp.task("default", gulp.series("updatePackages", "updateReadme"));
+
+//Compress ThreeJS Javascript files
+gulp.task('compress-three', function () {
+    const sourceJsFiles = [
+        'node_modules/three/build/three.js',
+        'node_modules/three/examples/js/controls/OrbitControls.js',
+        'node_modules/three/examples/js/loaders/GLTFLoader.js',
+    ];
+
+    const targetFolder = 'widgets/vis-3dmodel/lib';
+    const targetJsFile = 'three.min.js';
+
+    return gulp.src(sourceJsFiles)
+        .pipe(concat(targetJsFile))
+        .pipe(uglify())
+        .pipe(gulp.dest(targetFolder));
+});
+//Compess Loglevel Javascript files
+gulp.task('compress-loglevel', function () {
+    const sourceJsFiles = [
+        'node_modules/loglevel/dist/loglevel.js'
+    ];
+
+    const targetFolder = 'widgets/vis-3dmodel/lib';
+    const targetJsFile = 'loglevel.min.js';
+
+    return gulp.src(sourceJsFiles)
+        .pipe(concat(targetJsFile))
+        .pipe(uglify())
+        .pipe(gulp.dest(targetFolder));
+});
