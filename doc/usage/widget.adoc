@@ -1,7 +1,7 @@
 = 3D Model Widget
 The widget itself can be used like any regular widget in iobroker VIS. It should look similar to the following figure:
 
-image:media/3dmodel_widget_vis_main.png[title="Main view 3D Model Widget VIS",800]
+image:media/3dmodel_widget_vis_main.png[title="Main view 3D Model Widget VIS",900]
 
 [.float-group]
 --
@@ -13,6 +13,13 @@ image:media/3dmodel_widget_vis_settings_common.png[Widget settings - Common,300,
 [TIP]
 ====
 If a exported GLTF file is valid, can be checked easily beforehand with available online tools, like link:https://gltf-viewer.donmccurdy.com/[GLTF Viewer].
+====
+
+[TIP]
+====
+image:media/3dmodel_widget_vis_model_3daxis.png[Widget settings - 3d axis,float="left"]
+
+Refer to the colored 3d-axis on the left bottom of the model (only visible in edit-mode) when positioning the model and camera via *+++<span style="color:#7F2020">X-axis</span>+++*, *+++<span style="color:#207F20">Y-axis</span>+++* and *+++<span style="color:#20207F">Z-axis</span>+++*.
 ====
 
 [NOTE]

@@ -20,7 +20,7 @@ const stateDefinitions = [];
 
 // this code can be placed directly in vis-3dmodel.html
 vis.binds["3dmodel"] = {
-    "version": "0.0.5",
+    "version": "0.0.6",
     "logger": [],
     "models": [],
     "showVersion": function () {
@@ -92,7 +92,7 @@ vis.binds["3dmodel"] = {
         $div.on("resize", _onContainerResize);
         container.addEventListener("resize", _onContainerResize);
 
-        const model = new ThreeJSModel(container, data.show_loader, logger);
+        const model = new ThreeJSModel(container, data.show_loader, logger, vis.editMode);
         this.models[widgetID] = model;
         model.setupScene(data.background_color, data.highlight_selected, data.highlight_color, data.enable_realistic_lighting);
 

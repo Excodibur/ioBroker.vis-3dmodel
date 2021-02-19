@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
+            "0.0.6": {
+                "en": "Added 3d-axis in edit-mode to ease model positioning",
+                "de": "3D-Achse im Bearbeitungsmodus hinzugefügt, um die Modellpositionierung zu vereinfachen",
+                "ru": "Добавлена трехмерная ось в режиме редактирования для упрощения позиционирования модели.",
+                "pt": "Adicionado eixo 3d no modo de edição para facilitar o posicionamento do modelo",
+                "nl": "3D-as toegevoegd in bewerkingsmodus om modelpositionering te vergemakkelijken",
+                "fr": "Ajout d'un axe 3D en mode édition pour faciliter le positionnement du modèle",
+                "it": "Aggiunto asse 3D in modalità di modifica per facilitare il posizionamento del modello",
+                "es": "Se agregó un eje 3D en el modo de edición para facilitar el posicionamiento del modelo.",
+                "pl": "Dodano oś 3D w trybie edycji, aby ułatwić pozycjonowanie modelu",
+                "zh-cn": "在编辑模式下添加了3d轴以简化模型定位"
+            },
             "0.0.5": {
                 "en": "Updated ThreeJS from r121 to r125\nImproved dependency management",
                 "de": "ThreeJS wurde von r121 auf r125 aktualisiert\nVerbessertes Abhängigkeitsmanagement",

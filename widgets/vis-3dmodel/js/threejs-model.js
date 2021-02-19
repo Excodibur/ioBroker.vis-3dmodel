@@ -8,7 +8,7 @@ let mouse;
 
 // eslint-disable-next-line no-unused-vars
 class ThreeJSModel {
-    constructor (container, showLoader, logger) {
+    constructor(container, showLoader, logger, editMode) {
         this.container = container;
         this.clickableObjects = [];
         this.allObjects = [];
@@ -20,6 +20,7 @@ class ThreeJSModel {
         this.showLoader = showLoader;
         this.logger = logger;
         this.threeJsVersion = THREE.REVISION;
+        this.editMode = editMode;
     }
 
     setupScene (bgColor, highlightSelected, highlightColor, enableRealisticLighting) {
@@ -38,8 +39,27 @@ class ThreeJSModel {
 
         this.container.appendChild(this.renderer.domElement);
 
-        // this.container.addEventListener('mousemove', (event) => {console.log(event);console.log(this)}, false);
-        // this.container.addEventListener('mousemove', (that) => this._onMouseMove());
+        // add Arrow renderer (overlay), thanks to http://jsfiddle.net/b97zd1a3/16/
+        if (this.editMode) {
+            this.arrowOverlay = { "width": 160, "height": 160 };
+
+            this.arrowRenderer = new THREE.WebGLRenderer({ "alpha": true });
+            this.arrowRenderer.setClearColor(0x000000, 0);
+            this.arrowRenderer.setSize(this.arrowOverlay.width, this.arrowOverlay.height);
+
+            const arrowCanvas = this.container.appendChild(this.arrowRenderer.domElement);
+            arrowCanvas.setAttribute("class", "vis_3dmodel_arrowCanvas");
+            arrowCanvas.style.width = this.arrowOverlay.width;
+            arrowCanvas.style.height = this.arrowOverlay.height;
+
+            this.arrowScene = new THREE.Scene();
+            const arrowPos = new THREE.Vector3(0, 0, 0);
+            const arrowLegth = 120;
+            this.arrowScene.add(new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), arrowPos, arrowLegth, 0x7F2020, 20, 10));
+            this.arrowScene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), arrowPos, arrowLegth, 0x207F20, 20, 10));
+            this.arrowScene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), arrowPos, arrowLegth, 0x20207F, 20, 10));
+        }
+
         this.container.addEventListener("mousemove", this._onMouseMove.bind(this), false);
         this.container.addEventListener("click", this._onMouseClick.bind(this), false);
 
@@ -55,6 +75,11 @@ class ThreeJSModel {
     setupView (cameraPosX, cameraPosY, cameraPosZ, cameraTargetPosX, cameraTargetPosY, cameraTargetPosZ) {
         this.camera = new THREE.PerspectiveCamera(100, $(this.container).innerWidth() / $(this.container).innerHeight(), 1, 100);
         this.camera.position.set(parseFloat(cameraPosX), parseFloat(cameraPosY), parseFloat(cameraPosZ));
+
+        if (this.editMode) {
+            this.arrowCamera = new THREE.PerspectiveCamera(50, this.arrowOverlay.width / this.arrowOverlay.height, 1, 1000);
+            this.arrowCamera.up = this.camera.up; // important!
+        }
 
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.controls.target.set(parseFloat(cameraTargetPosX), parseFloat(cameraTargetPosY), parseFloat(cameraTargetPosZ));
@@ -118,6 +143,10 @@ class ThreeJSModel {
 
             this.scene.add(model);
             this.currentScene = model.name;
+
+            // add AxesHelper, if needed, deprecated in favour of custom arrow-overlay
+            // if (this.enableAxesHelper)
+            //    this.scene.add(new THREE.AxesHelper(100));
 
             // load objects
             // this.listObjects(this.scene.children[2], this.allObjects, this.lights);
@@ -379,6 +408,17 @@ class ThreeJSModel {
 
         this.controls.update();
         this.renderer.render(this.scene, this.camera);
+
+        if (this.editMode) {
+            // Copy current view position of main camera to camera of arrow-overlay
+            this.arrowCamera.position.copy(this.camera.position);
+            this.arrowCamera.position.sub(this.controls.target);
+            this.arrowCamera.position.setLength(300);
+
+            this.arrowCamera.lookAt(this.arrowScene.position);
+
+            this.arrowRenderer.render(this.arrowScene, this.arrowCamera);
+        }
     }
 
     setEmissiveness (object) {

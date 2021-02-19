@@ -3,6 +3,13 @@
     font-style: italic;
 }
 
+.vis_3dmodel_arrowCanvas {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 100;
+}
+
 /* In Chrome hide border around model */
 canvas { 
     outline: none; 
