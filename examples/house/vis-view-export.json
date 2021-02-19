@@ -7,7 +7,8 @@
       "sizex": "",
       "sizey": "",
       "gridSize": "",
-      "snapType": null
+      "snapType": null,
+      "alwaysRender": false
     },
     "widgets": {
       "e00001": {
@@ -22,9 +23,6 @@
           "g_gestures": false,
           "g_signals": false,
           "g_last_change": false,
-          "visibility-cond": "==",
-          "visibility-val": 1,
-          "visibility-groups-action": "hide",
           "model_pos_x": "0",
           "model_pos_y": "0",
           "model_pos_z": "0",
@@ -33,15 +31,15 @@
           "model_camera_target_pos_x": "0",
           "model_camera_target_pos_y": "0",
           "model_camera_target_pos_z": "0",
-          "model_camera_pos_x": "6",
-          "model_camera_pos_y": "16",
+          "model_camera_pos_x": "2",
+          "model_camera_pos_y": "12",
           "model_camera_pos_z": "9",
           "enable_realistic_lighting": "false",
           "enable_ambient_lighting": "true",
           "ambient_color": "#ffffff",
           "ambient_intensity": "0.9",
           "enable_shadows": true,
-          "number_switchable_lights": "1",
+          "number_switchable_lights": "0",
           "highlight_selected": "false",
           "number_clickable_objects": "0",
           "number_animations": "4",
@@ -107,7 +105,7 @@
           "state_animation_mapping2": "switch",
           "monitored_state_name2": "0_userdata.0.front_door_open",
           "state_animation2": "Door_Animation",
-          "light_max_power0": "-1",
+          "light_max_power0": "1000",
           "animation_behaviour3": "monitorstate",
           "state_animation_mapping3": "switch",
           "state_animation3": "Fan-WheelAction",
@@ -118,7 +116,7 @@
           "animation_behaviour4": "autoplay",
           "state_animation_mapping4": "switch",
           "animation4": "Light_KitchenAction",
-          "light_max_power1": "-1",
+          "light_max_power1": "",
           "light_monitored_state1": "0_userdata.0.light_kitchen",
           "animation_repeat0": false,
           "animation_repeat1": false,
@@ -130,13 +128,29 @@
           "animation_repeat5": false,
           "animation_behaviour5": "monitorstate",
           "monitored_state_name5": "0_userdata.0.blinds_livingroom",
-          "animation5": "Bl_Window_2_Living_Animation"
+          "animation5": "Bl_Window_2_Living_Animation",
+          "monitored_state_max_value": "100",
+          "monitored_state_max_value0": "100",
+          "monitored_state_max_value1": "100",
+          "monitored_state_max_value2": "100",
+          "monitored_state_max_value3": "100",
+          "monitored_state_max_value4": "100",
+          "show_loader": true,
+          "debug_loglevel": "info",
+          "visibility-cond": "==",
+          "visibility-val": 1,
+          "visibility-groups-action": "hide",
+          "punctual_lights_max_power": "1000",
+          "clickable_object_state0": "0_userdata.0.blinds_livingroom_script",
+          "clickable_object_state_action0": "toggle",
+          "light_monitored_state_max_value0": "100",
+          "light_monitored_state_max_value1": "100"
         },
         "style": {
-          "left": "35px",
-          "top": "37px",
-          "width": "896px",
-          "height": "667px"
+          "left": "31px",
+          "top": "33px",
+          "width": "575px",
+          "height": "516px"
         },
         "widgetSet": "3dmodel"
       },
@@ -203,8 +217,8 @@
           "html_prepend": "Light Livingroom: "
         },
         "style": {
-          "left": "1022px",
-          "top": "76px",
+          "left": "651px",
+          "top": "42px",
           "width": "185px",
           "height": "23px"
         },
@@ -272,8 +286,8 @@
           "max": "100"
         },
         "style": {
-          "left": "1017px",
-          "top": "97px",
+          "left": "645px",
+          "top": "62px",
           "width": "154px",
           "height": "23px"
         },
@@ -342,8 +356,8 @@
           "inverted": true
         },
         "style": {
-          "left": "1022px",
-          "top": "209px",
+          "left": "650px",
+          "top": "174px",
           "width": "24px",
           "height": "93px"
         },
@@ -412,8 +426,8 @@
           "html_prepend": "Blinds Livingroom: "
         },
         "style": {
-          "left": "1064px",
-          "top": "249px",
+          "left": "692px",
+          "top": "214px",
           "width": "154px",
           "height": "21px"
         },
@@ -482,8 +496,8 @@
           "lc-zindex": 0
         },
         "style": {
-          "left": "1020px",
-          "top": "383px"
+          "left": "648px",
+          "top": "348px"
         },
         "widgetSet": "jqui"
       },
@@ -548,8 +562,8 @@
           "html": "Front door:"
         },
         "style": {
-          "left": "1078px",
-          "top": "353px",
+          "left": "706px",
+          "top": "318px",
           "width": "83px",
           "height": "19px"
         },
@@ -618,8 +632,8 @@
           "html_prepend": "Light Kitchen: "
         },
         "style": {
-          "left": "1023px",
-          "top": "136px",
+          "left": "651px",
+          "top": "101px",
           "width": "185px",
           "height": "23px"
         },
@@ -687,8 +701,8 @@
           "max": "100"
         },
         "style": {
-          "left": "1015px",
-          "top": "154px",
+          "left": "643px",
+          "top": "119px",
           "width": "154px",
           "height": "23px"
         },
@@ -757,8 +771,8 @@
           "lc-zindex": 0
         },
         "style": {
-          "left": "1019px",
-          "top": "479px"
+          "left": "647px",
+          "top": "444px"
         },
         "widgetSet": "jqui"
       },
@@ -823,14 +837,14 @@
           "html": "FAN:"
         },
         "style": {
-          "left": "1078px",
-          "top": "450px",
+          "left": "706px",
+          "top": "415px",
           "width": "83px",
           "height": "19px"
         },
         "widgetSet": "basic"
       }
     },
-    "name": "3dmodel_test",
+    "name": "3dmodel-test",
     "filterList": []
   }
