@@ -60,6 +60,8 @@ class ThreeJSModel {
             this.arrowScene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), arrowPos, arrowLegth, 0x20207F, 20, 10));
         }
 
+        // this.container.addEventListener('mousemove', (event) => {console.log(event);console.log(this)}, false);
+        // this.container.addEventListener('mousemove', (that) => this._onMouseMove());
         this.container.addEventListener("mousemove", this._onMouseMove.bind(this), false);
         this.container.addEventListener("click", this._onMouseClick.bind(this), false);
 
@@ -330,7 +332,14 @@ class ThreeJSModel {
         if (!lightObject) return;
 
         const oldPower = lightObject.power;
-        const targetPower = value / maxValue * light.maxPower;
+        let targetPower;
+        if (typeof value === "boolean")
+            targetPower = (value) ? light.maxPower : 0;
+        else if (typeof value === "number")
+            targetPower = value / maxValue * light.maxPower;
+        else
+            return;
+        // const targetPower = value / maxValue * light.maxPower;
         if (light.smoothTransition) {
             if (targetPower > oldPower) {
                 const intr = setInterval(function () {

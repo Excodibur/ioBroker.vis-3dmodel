@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "news": {
+            "0.0.7": {
+                "en": "Fixed lighting behaviour (switchable lights)",
+                "de": "Festes Beleuchtungsverhalten (schaltbare Lichter)",
+                "ru": "Исправлено поведение освещения (переключаемый свет)",
+                "pt": "Comportamento de iluminação fixo (luzes comutáveis)",
+                "nl": "Vast lichtgedrag (schakelbare lampen)",
+                "fr": "Comportement d'éclairage fixe (lumières commutables)",
+                "it": "Comportamento di illuminazione fisso (luci commutabili)",
+                "es": "Comportamiento de iluminación fijo (luces conmutables)",
+                "pl": "Naprawiono zachowanie oświetlenia (przełączane światła)",
+                "zh-cn": "固定的照明行为（可切换灯）"
+            },
             "0.0.6": {
                 "en": "Added 3d-axis in edit-mode to ease model positioning",
                 "de": "3D-Achse im Bearbeitungsmodus hinzugefügt, um die Modellpositionierung zu vereinfachen",

@@ -3,6 +3,9 @@
 	Placeholder for the next version (add instead of version-number-headline below):
 	## __WORK IN PROGRESS__
 -->
+## 0.0.7 (2021-02-21)
+* Fixed lighting behaviour (switchable lights)
+
 ## 0.0.6 (2021-02-19)
 * Added 3d-axis in edit-mode to ease model positioning
 

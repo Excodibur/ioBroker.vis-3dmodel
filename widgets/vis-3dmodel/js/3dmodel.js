@@ -173,7 +173,7 @@ vis.binds["3dmodel"] = {
 
             if (monitoredStateLightMap[oid]) {
                 monitoredStateLightMap[oid].forEach(light => {
-                    model.updateLightByState(light, newVal);
+                    model.updateLightByState(light, newVal, lightAttributes[light].maxValue, lightAttributes[light].maxPower);
                 });
             }
             // $div.find('.template-value').html(newVal);

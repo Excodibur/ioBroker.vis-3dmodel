@@ -83,7 +83,7 @@ image:media/3dmodel_widget_vis_settings_switchable_lights.png[Widget settings - 
 Regarding _light intensity_ being measured in lumens, it is questionable if real-life values are sensible to be used here. Although not fully verified, how bright a light-source will appear in the rendered object also depends on the dimensions of your model. E.g. a house model might look fine while rendered, but if it not also does match real-life metrics (e.g. wall height of rooms), a normal lumen-intensity will not provide enough light for the whole room.
 --
 
-TODO: Light behaviour in connection with ioBroker state
+The `monitored state` can either have a number, or boolean value. If a number is set as value, it must not be greater than `state max value` and the light will be dimmed according to the state-change. If boolean is used, the light will either be turned off (_false_), or turned on (_true_), meaning set to `state max value`.
 --
 
 == Clickable Objects
