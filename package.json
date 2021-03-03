@@ -37,7 +37,7 @@
     "gulp-uglify": "^3.0.2",
     "loglevel": "^1.7.1",
     "readable-stream": "^3.6.0",
-    "three": "^0.125.2"
+    "three": "^0.126.0"
   },
   "main": "widgets/3dmodel.html",
   "scripts": {
