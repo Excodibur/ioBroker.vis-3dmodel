@@ -12,6 +12,16 @@ To achieve this, perform the following steps:
 
 The following issues were observed during development and likely will reoccur for other users, hence this section covers known workarounds for them. Some of the issues described here are already being fixed, or formally addressed, but still exist at the time of writing this document.
 
+Recent issues can also be found here: link:https://github.com/Excodibur/ioBroker.vis-3dmodel/issues[GitHub 3D Model Widget issue tracker].
+
+=== Problems with loading model (CSP)
+[IMPORTANT]
+--
+The workaround described below is only required, if VIS adapter older than link:https://github.com/ioBroker/ioBroker.vis/tree/v1.3.8[v1.3.8] is installed.
+
+With this and newer releases the *Content Security Policy* now includes the fix already. For more details, please take a look at link:https://github.com/ioBroker/ioBroker.vis/pull/346[this ticket].
+--
+
 * The *Content Security Policy* that is enforced by ioBroker VIS by default will likely cause issues on client-side, if a GLTF model is loaded that contains Materials and Image Textures. It is correctly displayed in edit-view, but in the regular end-user view it appears as black box, since it was not properly loaded. In the web-console of your browser you will find numerous errors related to the *Content Security Policy*. ThreeJS, the 3D render library used within this widget loads some resources as *blob* data, which by default is blocked by the CSP the VIS adapter uses.
 ** The solution is to change the VIS config file `<iobroker-home>/node_modules/iobroker.vis/www/index.html` 
 
@@ -29,5 +39,3 @@ to
 <1> Notice that for content types `img-src` and `connect-src` both *blob:* was added.
 
 And then restart VIS via GUI, or CLI. However sometimes updating old or installing new widgets overwrites this setting again, so this is not a permanet fix. It is checked, if this can be changed in the core code.
-
-Recent issues can also be found here: link:https://github.com/Excodibur/ioBroker.vis-3dmodel/issues[GitHub 3D Model Widget issue tracker].

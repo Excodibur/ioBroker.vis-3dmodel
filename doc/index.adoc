@@ -13,7 +13,7 @@ At its core the 3D Model widget uses link:https://threejs.org/[ThreeJS] as rende
 
 If everything is setup correctly, this (or hopefully more beautiful) is how your house-model could look like:
 
-image:media/clips/3dmodel_demo.gif[title="Demo of 3D model widget"]
+video::media/clips/3dmodel_demo.mp4[width=960,title="Demo of 3D model widget"]
 
 include::installation.adoc[leveloffset=1]
 include::usage/usage.adoc[leveloffset=1]

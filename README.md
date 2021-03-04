@@ -23,7 +23,7 @@ Source files for this example can be found [here](examples/house).
 
 Before you start using it, please [read the documentation](https://excodibur.github.io/ioBroker.vis-3dmodel/latest/index.html).
 
-
+Please use in conjunction with VIS-Adapter [https://github.com/ioBroker/ioBroker.vis/tree/v1.3.8](v1.3.8) (or newer) for the widget to work flawlessly.
 ## Changelog
 See [Changelog](https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/CHANGELOG.md).
 

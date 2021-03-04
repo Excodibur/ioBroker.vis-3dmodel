@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "news": {
+            "0.0.8": {
+                "en": "Bump three from 0.125.2 to 0.126.0",
+                "de": "Bump drei von 0,125,2 auf 0,126,0",
+                "ru": "Увеличьте 3 с 0,125,2 до 0,126,0",
+                "pt": "Bata três de 0,125,2 para 0,126,0",
+                "nl": "Bump drie van 0.125.2 naar 0.126.0",
+                "fr": "Passez trois de 0,125,2 à 0,126,0",
+                "it": "Salta tre da 0.125.2 a 0.126.0",
+                "es": "Aumente tres de 0.125.2 a 0.126.0",
+                "pl": "Podbij trzy z 0,125,2 na 0,126,0",
+                "zh-cn": "凹凸三从0.125.2到0.126.0"
+            },
             "0.0.7": {
                 "en": "Fixed lighting behaviour (switchable lights)",
                 "de": "Festes Beleuchtungsverhalten (schaltbare Lichter)",

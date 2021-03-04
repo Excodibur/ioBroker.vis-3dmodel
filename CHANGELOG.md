@@ -3,6 +3,9 @@
 	Placeholder for the next version (add instead of version-number-headline below):
 	## __WORK IN PROGRESS__
 -->
+## 0.0.8 (2021-03-04)
+* Bump three from 0.125.2 to 0.126.0
+
 ## 0.0.7 (2021-02-21)
 * Fixed lighting behaviour (switchable lights)
 

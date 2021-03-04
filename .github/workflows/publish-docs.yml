@@ -61,7 +61,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doc
-          exclude_assets: '**.adoc,*/**.adoc,*/**.sh'
+          exclude_assets: '**.adoc,*/**.adoc,*/**.sh,*/**.gif'
           keep_files: true
           destination_dir: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
 

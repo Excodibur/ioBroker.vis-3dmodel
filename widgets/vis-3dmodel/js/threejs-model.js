@@ -8,7 +8,7 @@ let mouse;
 
 // eslint-disable-next-line no-unused-vars
 class ThreeJSModel {
-    constructor(container, showLoader, logger, editMode) {
+    constructor (container, showLoader, logger, editMode) {
         this.container = container;
         this.clickableObjects = [];
         this.allObjects = [];
