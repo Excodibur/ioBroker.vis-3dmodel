@@ -196,3 +196,19 @@ canvas {
       transform: translate(100%, 100%);
     }
   }
+
+  .axis_x, .axis_y, .axis_z {
+    font-weight: bold;
+  }
+
+  .axis_x {
+    color: #7F2020;
+  }
+
+  .axis_y {
+    color: #207F20;
+  }
+
+  .axis_z {
+    color: #20207F;
+  }

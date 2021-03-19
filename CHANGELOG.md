@@ -3,6 +3,12 @@
 	Placeholder for the next version (add instead of version-number-headline below):
 	## __WORK IN PROGRESS__
 -->
+## 0.0.9 (2021-03-19)
+* Fixed bug where animations bound to boolean states were not initialized properly when model was loaded
+* Colored axis in editor-panel
+* Fixed multiple false error messages upon first model setup
+* Removed unneeded things (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)
+
 ## 0.0.8 (2021-03-04)
 * Bump three from 0.125.2 to 0.126.0
 

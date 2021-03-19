@@ -263,6 +263,7 @@ class ThreeJSModel {
     }
 
     updateAnimationByState (name, value, maxValue) {
+        this.logger.debug("Updating animation \"" + name + "\" to value " + value);
         // console.log("running animation " + name);
         if (!this.animations[name]) return;
 
@@ -321,6 +322,7 @@ class ThreeJSModel {
     }
 
     updateLightByState (name, value, maxValue, maxPower) {
+        this.logger.debug("Updating light \"" + name + "\" to value " + value);
         // overwrite max power if it is set individually for light
         if ((maxPower != null) && (this.lights[name].maxPower !== maxPower)) {
             this.logger.debug("Overwrite default max power (" + this.punctualLightsMaxPower + ") with individual power-setting: " + maxPower);

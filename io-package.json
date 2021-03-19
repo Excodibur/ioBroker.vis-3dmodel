@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "news": {
+            "0.0.9": {
+                "en": "Fixed bug where animations bound to boolean states were not initialized properly when model was loaded\nColored axis in editor-panel\nFixed multiple false error messages upon first model setup\nRemoved unneeded things (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "de": "Fehler behoben, bei dem Animationen, die an boolesche Zustände gebunden waren, beim Laden des Modells nicht ordnungsgemäß initialisiert wurden\nFarbige Achse im Editor-Panel\nMehrere falsche Fehlermeldungen beim ersten Modell-Setup wurden behoben\nNicht benötigte Dinge wurden entfernt (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "ru": "Исправлена ошибка, из-за которой анимации, привязанные к логическим состояниям, не инициализировались должным образом при загрузке модели.\nЦветная ось в панели-редакторе\nИсправлено несколько ложных сообщений об ошибках при первой настройке модели.\nУдалены ненужные вещи (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "pt": "Bug corrigido em que as animações vinculadas a estados booleanos não eram inicializadas corretamente quando o modelo era carregado\nEixo colorido no painel do editor\nCorreção de várias mensagens de erro falsas na configuração do primeiro modelo\nCoisas desnecessárias removidas (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "nl": "Bug opgelost waarbij animaties die waren gebonden aan booleaanse toestanden niet correct werden geïnitialiseerd toen het model werd geladen\nGekleurde as in editor-paneel\nMeerdere valse foutmeldingen opgelost bij de eerste modelconfiguratie\nOnnodige dingen verwijderd (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "fr": "Correction d'un bug où les animations liées aux états booléens n'étaient pas initialisées correctement lors du chargement du modèle\nAxe coloré dans le panneau de l'éditeur\nCorrection de plusieurs faux messages d'erreur lors de la première configuration du modèle\nSuppression des éléments inutiles (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "it": "Risolto bug per cui le animazioni legate a stati booleani non venivano inizializzate correttamente quando il modello veniva caricato\nAsse colorato nel pannello dell'editor\nRisolti diversi messaggi di errore falso durante la configurazione del primo modello\nOggetti non necessari rimossi (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "es": "Se corrigió el error por el cual las animaciones vinculadas a estados booleanos no se inicializaban correctamente cuando se cargaba el modelo\nEje coloreado en el panel del editor\nSe corrigieron múltiples mensajes de error falsos en la configuración del primer modelo\nSe eliminaron cosas innecesarias (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "pl": "Naprawiono błąd polegający na tym, że animacje powiązane ze stanami logicznymi nie były poprawnie inicjowane po załadowaniu modelu\nKolorowa oś w panelu edytora\nNaprawiono wiele fałszywych komunikatów o błędach podczas pierwszej konfiguracji modelu\nUsunięto niepotrzebne rzeczy (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+                "zh-cn": "修复了以下错误：加载模型时，绑定到布尔状态的动画未正确初始化\n编辑器面板中的彩色轴\n修复了第一个模型设置时的多个错误消息\n删除了不需要的东西（https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631）"
+            },
             "0.0.8": {
                 "en": "Bump three from 0.125.2 to 0.126.0",
                 "de": "Bump drei von 0,125,2 auf 0,126,0",
@@ -138,7 +150,6 @@
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
-        "main": "main.js",
         "icon": "vis-3dmodel.png",
         "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/Excodibur/ioBroker.vis-3dmodel/master/admin/vis-3dmodel.png",
@@ -152,7 +163,7 @@
         "noConfig": true,
         "singleton": true,
         "type": "visualization-widgets",
-        "mode": "daemon",
+        "mode": "none",
         "connectionType": "local",
         "dataSource": "poll",
         "dependencies": [

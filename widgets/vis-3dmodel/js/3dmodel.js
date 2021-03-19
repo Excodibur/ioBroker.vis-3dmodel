@@ -20,7 +20,7 @@ const stateDefinitions = [];
 
 // this code can be placed directly in vis-3dmodel.html
 vis.binds["3dmodel"] = {
-    "version": "0.0.8",
+    "version": "0.0.9",
     "logger": [],
     "models": [],
     "showVersion": function () {
@@ -112,7 +112,10 @@ vis.binds["3dmodel"] = {
         const clickableObjects = [];
 
         for (let i = 0; i <= data.number_clickable_objects; i++) {
-            logger.trace(data.attr("clickable_object_name" + i) + " " + data.attr("clickable_object_action_id" + i));
+            logger.debug(
+                "Clickable object: " + data.attr("clickable_object_name" + i) +
+                " State: " + data.attr("clickable_object_state" + i) +
+                " Action: " + data.attr("clickable_object_state_action" + i));
             clickableObjects[data.attr("clickable_object_name" + i)] = {
                 "stateId": data.attr("clickable_object_state" + i),
                 "action": data.attr("clickable_object_state_action" + i)
@@ -176,7 +179,6 @@ vis.binds["3dmodel"] = {
                     model.updateLightByState(light, newVal, lightAttributes[light].maxValue, lightAttributes[light].maxPower);
                 });
             }
-            // $div.find('.template-value').html(newVal);
         }
 
         // It should be possible to map more than one animation to a state
@@ -185,6 +187,7 @@ vis.binds["3dmodel"] = {
         const autoplayAnimations = [];
         const repeatAnimations = [];
         const stateAttributes = [];
+        // The numbering in VIS seems to be off. Array values start at 0, but number_animations = 0 actually means 1 element
         for (let i = 0; i <= data.number_animations; i++) {
             const animationName = data.attr("animation" + i);
             const behaviour = data.attr("animation_behaviour" + i);
@@ -192,13 +195,17 @@ vis.binds["3dmodel"] = {
             if (behaviour === "monitorstate") {
                 const monitoredStateName = data.attr("monitored_state_name" + i);
                 const monitoredStateMaxValue = data.attr("monitored_state_max_value" + i);
-                if (monitoredStateAnimationMap[monitoredStateName] == null)
-                    monitoredStateAnimationMap[monitoredStateName] = [];
-                monitoredStateAnimationMap[monitoredStateName].push(animationName);
                 stateAttributes[monitoredStateName] = { "maxValue": monitoredStateMaxValue };
-                // console.log("Setup state: " + monitoredStateName + " with animation " + animationName);
-                // vis.states.bind(monitoredStateName + '.val', onChange);
-                bound.push(monitoredStateName);
+                // Check if all mandatory fields are set
+                if ((animationName != null) && (monitoredStateName != null) && (monitoredStateMaxValue != null)) {
+                    if (monitoredStateAnimationMap[monitoredStateName] == null)
+                        monitoredStateAnimationMap[monitoredStateName] = [];
+                    monitoredStateAnimationMap[monitoredStateName].push(animationName);
+                    stateAttributes[monitoredStateName] = { "maxValue": monitoredStateMaxValue };
+                    bound.push(monitoredStateName);
+                    logger.debug("Bound animation \"" + animationName + "\" to state \"" + monitoredStateName + "\"");
+                } else
+                    logger.warn("Not all mandatory fields are set for Animation #" + i + " hence state will not be subscribed");
             } else {
                 if (behaviour === "autoplay")
                     autoplayAnimations.push(animationName);
@@ -216,23 +223,34 @@ vis.binds["3dmodel"] = {
             const lightMaxPower = data.attr("light_max_power" + i);
             const monitoredStateMaxValue = data.attr("light_monitored_state_max_value" + i);
             lightAttributes[lightName] = { "maxPower": (lightMaxPower || null), "maxValue": monitoredStateMaxValue };
-            if (monitoredStateLightMap[monitoredStateName] == null)
-                monitoredStateLightMap[monitoredStateName] = [];
-            monitoredStateLightMap[monitoredStateName].push(lightName);
-            bound.push(monitoredStateName);
+            // Check if all mandatory fields are set
+            if ((lightName != null) && (lightMaxPower != null) && (monitoredStateName != null) && (monitoredStateMaxValue != null)) {
+                if (monitoredStateLightMap[monitoredStateName] == null)
+                    monitoredStateLightMap[monitoredStateName] = [];
+                monitoredStateLightMap[monitoredStateName].push(lightName);
+                bound.push(monitoredStateName);
+                logger.debug("Bound light \"" + lightName + "\" to state \"" + monitoredStateName + "\"");
+            } else
+                logger.warn("Not all mandatory fields are set for Light #" + i + " hence state will not be subscribed");
         }
 
         async function initializeModel (model, states, monitoredStateAnimationMap, stateAttributes, monitoredStateLightMap, autoplayAnimations, repeatAnimations) {
             await model.checkIfLoaded();
             // Initialize all animations/lights upon start
             for (const [oid, animations] of Object.entries(monitoredStateAnimationMap)) {
+                // TODO: Improve code duplicates
+                const stateType = stateDefinitions[oid].common.type;
+                const stateValue = (stateType === "boolean") ? !!states[oid].val : states[oid].val;
                 animations.forEach((animation) => {
-                    model.updateAnimationByState(animation, states[oid].val, stateAttributes[oid].maxValue);
+                    model.updateAnimationByState(animation, stateValue, stateAttributes[oid].maxValue);
                 });
             }
             for (const [oid, lights] of Object.entries(monitoredStateLightMap)) {
+                // TODO: Improve code duplicates
+                const stateType = stateDefinitions[oid].common.type;
+                const stateValue = (stateType === "boolean") ? !!states[oid].val : states[oid].val;
                 lights.forEach((light) => {
-                    model.updateLightByState(light, states[oid].val, lightAttributes[light].maxValue, lightAttributes[light].maxPower);
+                    model.updateLightByState(light, stateValue, lightAttributes[light].maxValue, lightAttributes[light].maxPower);
                 });
             }
 
@@ -255,6 +273,7 @@ vis.binds["3dmodel"] = {
 
         // Force Vis to get all state and stay updated
         // Works in end-user-view, but not in edit-mode
+        logger.debug("BOUND: " + bound + " " + JSON.stringify(bound));
         vis.conn.getStates(bound, (_error, states) => {
             vis.updateStates(states);
             vis.conn.subscribe(bound);
