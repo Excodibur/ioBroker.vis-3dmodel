@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "vis-3dmodel",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "news": {
+            "0.0.10": {
+                "en": "Updated to ThreeJS 127\nImproved documentation layout\nReplaced JS minifier \"uglify\" with ES6 aware \"terser\"",
+                "de": "Auf ThreeJS 127 aktualisiert\nVerbessertes Dokumentationslayout\nJS-Minifier \"uglify\" durch ES6-fähigen \"terser\" ersetzt",
+                "ru": "Обновлено до ThreeJS 127\nУлучшенный макет документации\nЗаменен JS-минификатор «uglify» на «терсер», поддерживающий ES6.",
+                "pt": "Atualizado para ThreeJS 127\nLayout de documentação aprimorado\nSubstituído o minificador JS \"uglify\" por ES6 ciente de \"terser\"",
+                "nl": "Bijgewerkt naar ThreeJS 127\nVerbeterde documentatie-indeling\nJS-minifier 'uglify' vervangen door ES6-bewuste 'terser'",
+                "fr": "Mis à jour vers ThreeJS 127\nAmélioration de la mise en page de la documentation\nRemplacement du minificateur JS \"uglify\" par \"terser\" compatible ES6",
+                "it": "Aggiornato a ThreeJS 127\nLayout della documentazione migliorato\nSostituito il minificatore JS \"uglify\" con \"terser\" compatibile con ES6",
+                "es": "Actualizado a ThreeJS 127\nDiseño de documentación mejorado\nSe reemplazó el minificador JS \"uglify\" con \"terser\" compatible con ES6.",
+                "pl": "Zaktualizowano do ThreeJS 127\nUlepszony układ dokumentacji\nZastąpiono minifier JS „uglify” przez „terser” obsługujący ES6",
+                "zh-cn": "更新到ThreeJS 127\n改进的文档布局\n用支持ES6的“ terser”替换了JS压缩程序“ uglify”"
+            },
             "0.0.9": {
                 "en": "Fixed bug where animations bound to boolean states were not initialized properly when model was loaded\nColored axis in editor-panel\nFixed multiple false error messages upon first model setup\nRemoved unneeded things (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
                 "de": "Fehler behoben, bei dem Animationen, die an boolesche Zustände gebunden waren, beim Laden des Modells nicht ordnungsgemäß initialisiert wurden\nFarbige Achse im Editor-Panel\nMehrere falsche Fehlermeldungen beim ersten Modell-Setup wurden behoben\nNicht benötigte Dinge wurden entfernt (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",

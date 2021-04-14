@@ -20,7 +20,7 @@ const stateDefinitions = [];
 
 // this code can be placed directly in vis-3dmodel.html
 vis.binds["3dmodel"] = {
-    "version": "0.0.9",
+    "version": "0.0.10",
     "logger": [],
     "models": [],
     "showVersion": function () {

@@ -2,8 +2,10 @@
 ___VERSION___
 :icons: font
 :sectanchors:
+:sectnums:
 :title-logo-image: image:../admin/logo.svg[]
-:toc:
+:toc: left
+:toc-title: VIS 3D Model Widget
 
 The following document gives an overview on how to install and use the 3d Model VIS widget. Please ensure to always read the manual that corresponds to the widget version you are using, to avoid any confusion. At this point in time all functions offered by the widget are potential subject to change, so the content of this manual may differ greatly depending on your widget version.
 

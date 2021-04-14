@@ -3,6 +3,11 @@
 	Placeholder for the next version (add instead of version-number-headline below):
 	## __WORK IN PROGRESS__
 -->
+## 0.0.10 (2021-04-14)
+* Updated to ThreeJS 127
+* Improved documentation layout
+* Replaced JS minifier "uglify" with ES6 aware "terser"
+
 ## 0.0.9 (2021-03-19)
 * Fixed bug where animations bound to boolean states were not initialized properly when model was loaded
 * Colored axis in editor-panel
