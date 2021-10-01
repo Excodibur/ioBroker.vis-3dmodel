@@ -34,7 +34,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
-    "gulp-terser": "^2.0.1",
+    "gulp-terser": "^2.1.0",
     "loglevel": "^1.7.1",
     "readable-stream": "^3.6.0",
     "three": "^0.133.0"
