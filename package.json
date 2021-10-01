@@ -25,7 +25,7 @@
     "@alcalzone/release-script": "^1.10.0",
     "@iobroker/testing": "^2.4.4",
     "@types/gulp": "^4.0.9",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-html": "^6.1.2",
