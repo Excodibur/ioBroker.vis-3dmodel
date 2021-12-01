@@ -35,7 +35,7 @@
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-terser": "^2.1.0",
-    "loglevel": "^1.7.1",
+    "loglevel": "^1.8.0",
     "readable-stream": "^3.6.0",
     "three": "^0.135.0"
   },
