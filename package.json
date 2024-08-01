@@ -22,7 +22,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@alcalzone/release-script": "^3.7.0",
+    "@alcalzone/release-script": "^3.8.0",
     "@alcalzone/release-script-plugin-iobroker": "^3.7.2",
     "@iobroker/testing": "^2.6.0",
     "@types/gulp": "^4.0.17",
