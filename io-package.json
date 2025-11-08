@@ -167,6 +167,7 @@
         "extIcon": "https://raw.githubusercontent.com/Excodibur/ioBroker.vis-3dmodel/master/admin/vis-3dmodel.png",
         "readme": "https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/README.md",
         "loglevel": "info",
+        "tier": 3,
         "restartAdapters": [
             "vis"
         ],
