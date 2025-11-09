@@ -160,7 +160,10 @@
             "3d",
             "blender"
         ],
-        "license": "MIT",
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
         "platform": "Javascript/Node.js",
         "icon": "vis-3dmodel.png",
         "enabled": true,
