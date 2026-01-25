@@ -9,10 +9,10 @@
   "homepage": "https://github.com/Excodibur/ioBroker.vis-3dmodel",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "threejs",
     "gltf",
     "vis",
-    "iobroker",
     "3d",
     "blender"
   ],
