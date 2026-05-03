@@ -27,6 +27,8 @@ Please use in conjunction with VIS-Adapter [v1.3.8](https://github.com/ioBroker/
 ## Changelog
 See [Changelog](https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/CHANGELOG.md).
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
