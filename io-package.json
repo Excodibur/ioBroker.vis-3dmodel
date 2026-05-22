@@ -1,188 +1,190 @@
 {
-    "common": {
-        "name": "vis-3dmodel",
-        "version": "0.0.10",
-        "news": {
-            "0.0.10": {
-                "en": "Updated to ThreeJS 127\nImproved documentation layout\nReplaced JS minifier \"uglify\" with ES6 aware \"terser\"",
-                "de": "Auf ThreeJS 127 aktualisiert\nVerbessertes Dokumentationslayout\nJS-Minifier \"uglify\" durch ES6-fähigen \"terser\" ersetzt",
-                "ru": "Обновлено до ThreeJS 127\nУлучшенный макет документации\nЗаменен JS-минификатор «uglify» на «терсер», поддерживающий ES6.",
-                "pt": "Atualizado para ThreeJS 127\nLayout de documentação aprimorado\nSubstituído o minificador JS \"uglify\" por ES6 ciente de \"terser\"",
-                "nl": "Bijgewerkt naar ThreeJS 127\nVerbeterde documentatie-indeling\nJS-minifier 'uglify' vervangen door ES6-bewuste 'terser'",
-                "fr": "Mis à jour vers ThreeJS 127\nAmélioration de la mise en page de la documentation\nRemplacement du minificateur JS \"uglify\" par \"terser\" compatible ES6",
-                "it": "Aggiornato a ThreeJS 127\nLayout della documentazione migliorato\nSostituito il minificatore JS \"uglify\" con \"terser\" compatibile con ES6",
-                "es": "Actualizado a ThreeJS 127\nDiseño de documentación mejorado\nSe reemplazó el minificador JS \"uglify\" con \"terser\" compatible con ES6.",
-                "pl": "Zaktualizowano do ThreeJS 127\nUlepszony układ dokumentacji\nZastąpiono minifier JS „uglify” przez „terser” obsługujący ES6",
-                "zh-cn": "更新到ThreeJS 127\n改进的文档布局\n用支持ES6的“ terser”替换了JS压缩程序“ uglify”"
-            },
-            "0.0.9": {
-                "en": "Fixed bug where animations bound to boolean states were not initialized properly when model was loaded\nColored axis in editor-panel\nFixed multiple false error messages upon first model setup\nRemoved unneeded things (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "de": "Fehler behoben, bei dem Animationen, die an boolesche Zustände gebunden waren, beim Laden des Modells nicht ordnungsgemäß initialisiert wurden\nFarbige Achse im Editor-Panel\nMehrere falsche Fehlermeldungen beim ersten Modell-Setup wurden behoben\nNicht benötigte Dinge wurden entfernt (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "ru": "Исправлена ошибка, из-за которой анимации, привязанные к логическим состояниям, не инициализировались должным образом при загрузке модели.\nЦветная ось в панели-редакторе\nИсправлено несколько ложных сообщений об ошибках при первой настройке модели.\nУдалены ненужные вещи (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "pt": "Bug corrigido em que as animações vinculadas a estados booleanos não eram inicializadas corretamente quando o modelo era carregado\nEixo colorido no painel do editor\nCorreção de várias mensagens de erro falsas na configuração do primeiro modelo\nCoisas desnecessárias removidas (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "nl": "Bug opgelost waarbij animaties die waren gebonden aan booleaanse toestanden niet correct werden geïnitialiseerd toen het model werd geladen\nGekleurde as in editor-paneel\nMeerdere valse foutmeldingen opgelost bij de eerste modelconfiguratie\nOnnodige dingen verwijderd (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "fr": "Correction d'un bug où les animations liées aux états booléens n'étaient pas initialisées correctement lors du chargement du modèle\nAxe coloré dans le panneau de l'éditeur\nCorrection de plusieurs faux messages d'erreur lors de la première configuration du modèle\nSuppression des éléments inutiles (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "it": "Risolto bug per cui le animazioni legate a stati booleani non venivano inizializzate correttamente quando il modello veniva caricato\nAsse colorato nel pannello dell'editor\nRisolti diversi messaggi di errore falso durante la configurazione del primo modello\nOggetti non necessari rimossi (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "es": "Se corrigió el error por el cual las animaciones vinculadas a estados booleanos no se inicializaban correctamente cuando se cargaba el modelo\nEje coloreado en el panel del editor\nSe corrigieron múltiples mensajes de error falsos en la configuración del primer modelo\nSe eliminaron cosas innecesarias (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "pl": "Naprawiono błąd polegający na tym, że animacje powiązane ze stanami logicznymi nie były poprawnie inicjowane po załadowaniu modelu\nKolorowa oś w panelu edytora\nNaprawiono wiele fałszywych komunikatów o błędach podczas pierwszej konfiguracji modelu\nUsunięto niepotrzebne rzeczy (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
-                "zh-cn": "修复了以下错误：加载模型时，绑定到布尔状态的动画未正确初始化\n编辑器面板中的彩色轴\n修复了第一个模型设置时的多个错误消息\n删除了不需要的东西（https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631）"
-            },
-            "0.0.8": {
-                "en": "Bump three from 0.125.2 to 0.126.0",
-                "de": "Bump drei von 0,125,2 auf 0,126,0",
-                "ru": "Увеличьте 3 с 0,125,2 до 0,126,0",
-                "pt": "Bata três de 0,125,2 para 0,126,0",
-                "nl": "Bump drie van 0.125.2 naar 0.126.0",
-                "fr": "Passez trois de 0,125,2 à 0,126,0",
-                "it": "Salta tre da 0.125.2 a 0.126.0",
-                "es": "Aumente tres de 0.125.2 a 0.126.0",
-                "pl": "Podbij trzy z 0,125,2 na 0,126,0",
-                "zh-cn": "凹凸三从0.125.2到0.126.0"
-            },
-            "0.0.7": {
-                "en": "Fixed lighting behaviour (switchable lights)",
-                "de": "Festes Beleuchtungsverhalten (schaltbare Lichter)",
-                "ru": "Исправлено поведение освещения (переключаемый свет)",
-                "pt": "Comportamento de iluminação fixo (luzes comutáveis)",
-                "nl": "Vast lichtgedrag (schakelbare lampen)",
-                "fr": "Comportement d'éclairage fixe (lumières commutables)",
-                "it": "Comportamento di illuminazione fisso (luci commutabili)",
-                "es": "Comportamiento de iluminación fijo (luces conmutables)",
-                "pl": "Naprawiono zachowanie oświetlenia (przełączane światła)",
-                "zh-cn": "固定的照明行为（可切换灯）"
-            },
-            "0.0.6": {
-                "en": "Added 3d-axis in edit-mode to ease model positioning",
-                "de": "3D-Achse im Bearbeitungsmodus hinzugefügt, um die Modellpositionierung zu vereinfachen",
-                "ru": "Добавлена трехмерная ось в режиме редактирования для упрощения позиционирования модели.",
-                "pt": "Adicionado eixo 3d no modo de edição para facilitar o posicionamento do modelo",
-                "nl": "3D-as toegevoegd in bewerkingsmodus om modelpositionering te vergemakkelijken",
-                "fr": "Ajout d'un axe 3D en mode édition pour faciliter le positionnement du modèle",
-                "it": "Aggiunto asse 3D in modalità di modifica per facilitare il posizionamento del modello",
-                "es": "Se agregó un eje 3D en el modo de edición para facilitar el posicionamiento del modelo.",
-                "pl": "Dodano oś 3D w trybie edycji, aby ułatwić pozycjonowanie modelu",
-                "zh-cn": "在编辑模式下添加了3d轴以简化模型定位"
-            },
-            "0.0.5": {
-                "en": "Updated ThreeJS from r121 to r125\nImproved dependency management",
-                "de": "ThreeJS wurde von r121 auf r125 aktualisiert\nVerbessertes Abhängigkeitsmanagement",
-                "ru": "Обновлен ThreeJS с r121 до r125.\nУлучшенное управление зависимостями",
-                "pt": "ThreeJS atualizado de r121 para r125\nMelhor gerenciamento de dependências",
-                "nl": "ThreeJS bijgewerkt van r121 naar r125\nVerbeterd afhankelijkheidsbeheer",
-                "fr": "Mise à jour de ThreeJS de R121 à R125\nAmélioration de la gestion des dépendances",
-                "it": "Aggiornato ThreeJS da r121 a r125\nGestione delle dipendenze migliorata",
-                "es": "ThreeJS actualizado de r121 a r125\nGestión mejorada de la dependencia",
-                "pl": "Zaktualizowano ThreeJS z r121 do r125\nUlepszone zarządzanie zależnościami",
-                "zh-cn": "将ThreeJS从r121更新为r125\n改进的依赖关系管理"
-            },
-            "0.0.4": {
-                "en": "Added clickable-object behaviour\nImproved switchable lights\nESLint added\nMultiple improvements & bugfixes\nReworked logging\nDocumentation updated",
-                "de": "Klickbares Objektverhalten hinzugefügt\nVerbesserte schaltbare Lichter\nESLint hinzugefügt\nMehrere Verbesserungen und Bugfixes\nÜberarbeitete Protokollierung\nDokumentation aktualisiert",
-                "ru": "Добавлено поведение объекта при нажатии\nУлучшенное переключаемое освещение\nESLint добавлен\nМножественные улучшения и исправления\nПереработано ведение журнала\nДокументация обновлена",
-                "pt": "Adicionado comportamento de objeto clicável\nLuzes comutáveis aprimoradas\nESLint adicionado\nVárias melhorias e correções de bugs\nRegistro retrabalhado\nDocumentação atualizada",
-                "nl": "Gedrag aan klikbare objecten toegevoegd\nVerbeterde schakelbare lichten\nESLint toegevoegd\nMeerdere verbeteringen en bugfixes\nHerwerkte logboekregistratie\nDocumentatie bijgewerkt",
-                "fr": "Ajout d'un comportement d'objet cliquable\nLumières commutables améliorées\nESLint ajouté\nPlusieurs améliorations et corrections de bogues\nJournalisation retravaillée\nDocumentation mise à jour",
-                "it": "Aggiunto comportamento oggetto cliccabile\nLuci commutabili migliorate\nESLint aggiunto\nMolteplici miglioramenti e correzioni di bug\nRegistrazione rielaborata\nDocumentazione aggiornata",
-                "es": "Comportamiento de objeto en el que se puede hacer clic\nLuces intercambiables mejoradas\nESLint agregado\nVarias mejoras y correcciones de errores\nRegistro reelaborado\nDocumentación actualizada",
-                "pl": "Dodano zachowanie obiektów, które można kliknąć\nUlepszone przełączane światła\nDodano ESLint\nWiele ulepszeń i poprawek błędów\nPrzerobione logowanie\nZaktualizowano dokumentację",
-                "zh-cn": "添加了可点击对象行为\n改进的可切换灯\nESLint添加了\n多项改进和错误修正\n重做的日志\n文档更新"
-            },
-            "0.0.3": {
-                "en": "Removed docs from NPM\nAdded loading-animation for model\nMultiple Bugfixes",
-                "de": "Dokumente aus NPM entfernt\nLadeanimation für Modell hinzugefügt\nMehrere Bugfixes",
-                "ru": "Удалены документы из NPM\nДобавлена анимация загрузки для модели\nМножественные исправления",
-                "pt": "Documentos removidos do NPM\nAdicionada animação de carregamento para o modelo\nVárias correções de bugs",
-                "nl": "Documenten verwijderd uit NPM\nLaadanimatie toegevoegd voor model\nMeerdere bugfixes",
-                "fr": "Documents supprimés de NPM\nAjout d'une animation de chargement pour le modèle\nCorrections de bogues multiples",
-                "it": "Documenti rimossi da NPM\nAggiunta animazione di caricamento per il modello\nCorrezioni multiple di bug",
-                "es": "Documentos eliminados de NPM\nAnimación de carga agregada para el modelo\nVarias correcciones de errores",
-                "pl": "Usunięto dokumenty z NPM\nDodano animację ładowania modelu\nWiele poprawek",
-                "zh-cn": "从NPM中删除了文档\n添加了模型的加载动画\n多个错误修正"
-            },
-            "0.0.2": {
-                "en": "Reordered some menues in VIS editor\nExtended documentation\nImproved animation system\nMultiple Bugfixes",
-                "de": "Einige Menüs im VIS-Editor neu angeordnet\nErweiterte Dokumentation\nVerbessertes Animationssystem\nMehrere Bugfixes",
-                "ru": "Изменен порядок некоторых меню в редакторе VIS.\nРасширенная документация\nУлучшенная система анимации\nМножественные исправления",
-                "pt": "Reordenou alguns menus no editor VIS\nDocumentação estendida\nSistema de animação aprimorado\nVárias correções de bugs",
-                "nl": "Enkele menu's opnieuw gerangschikt in VIS-editor\nUitgebreide documentatie\nVerbeterd animatiesysteem\nMeerdere bugfixes",
-                "fr": "Réorganisation de certains menus dans l'éditeur VIS\nDocumentation étendue\nSystème d'animation amélioré\nCorrections de bogues multiples",
-                "it": "Riordinato alcuni menu nell'editor VIS\nDocumentazione estesa\nSistema di animazione migliorato\nCorrezioni multiple di bug",
-                "es": "Reordenó algunos menús en el editor VIS\nDocumentación ampliada\nSistema de animación mejorado\nVarias correcciones de errores",
-                "pl": "Zmieniono kolejność niektórych menu w edytorze VIS\nRozszerzona dokumentacja\nUlepszony system animacji\nWiele poprawek",
-                "zh-cn": "重新排列了VIS编辑器中的某些菜单\n扩展文档\n改进的动画系统\n多个错误修正"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
-            }
-        },
-        "title": "3D Model",
-        "titleLang": {
-            "en": "3D Model",
-            "de": "3D-Modell",
-            "ru": "3D модель",
-            "pt": "Modelo 3D",
-            "nl": "3d model",
-            "fr": "modèle 3D",
-            "it": "Modello 3D",
-            "es": "modelo 3d",
-            "pl": "Model 3D",
-            "zh-cn": "3D模型"
-        },
-        "desc": {
-            "en": "Import 3D GLTF images into Blender",
-            "de": "Importieren Sie 3D-GLTF-Bilder in Blender",
-            "ru": "Импорт изображений 3D GLTF в Blender",
-            "pt": "Importe imagens 3D GLTF para o Blender",
-            "nl": "Importeer 3D GLTF-afbeeldingen in Blender",
-            "fr": "Importez des images 3D GLTF dans Blender",
-            "it": "Importa immagini 3D GLTF in Blender",
-            "es": "Importar imágenes GLTF 3D a Blender",
-            "pl": "Importuj obrazy 3D GLTF do Blendera",
-            "zh-cn": "将3D GLTF图像导入Blender"
-        },
-        "authors": [
-            "Excodibur <non@existant.com>"
-        ],
-        "keywords": [
-            "threejs",
-            "gltf",
-            "vis",
-            "iobroker",
-            "3d",
-            "blender"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "icon": "vis-3dmodel.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Excodibur/ioBroker.vis-3dmodel/master/admin/vis-3dmodel.png",
-        "readme": "https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/README.md",
-        "loglevel": "info",
-        "restartAdapters": [
-            "vis"
-        ],
-        "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
-        "onlyWWW": true,
-        "noConfig": true,
-        "singleton": true,
-        "type": "visualization-widgets",
-        "mode": "none",
-        "connectionType": "local",
-        "dataSource": "poll",
-        "dependencies": [
-            "vis"
-        ]
+  "common": {
+    "name": "vis-3dmodel",
+    "version": "0.0.10",
+    "news": {
+      "0.0.10": {
+        "en": "Updated to ThreeJS 127\nImproved documentation layout\nReplaced JS minifier \"uglify\" with ES6 aware \"terser\"",
+        "de": "Auf ThreeJS 127 aktualisiert\nVerbessertes Dokumentationslayout\nJS-Minifier \"uglify\" durch ES6-fähigen \"terser\" ersetzt",
+        "ru": "Обновлено до ThreeJS 127\nУлучшенный макет документации\nЗаменен JS-минификатор «uglify» на «терсер», поддерживающий ES6.",
+        "pt": "Atualizado para ThreeJS 127\nLayout de documentação aprimorado\nSubstituído o minificador JS \"uglify\" por ES6 ciente de \"terser\"",
+        "nl": "Bijgewerkt naar ThreeJS 127\nVerbeterde documentatie-indeling\nJS-minifier 'uglify' vervangen door ES6-bewuste 'terser'",
+        "fr": "Mis à jour vers ThreeJS 127\nAmélioration de la mise en page de la documentation\nRemplacement du minificateur JS \"uglify\" par \"terser\" compatible ES6",
+        "it": "Aggiornato a ThreeJS 127\nLayout della documentazione migliorato\nSostituito il minificatore JS \"uglify\" con \"terser\" compatibile con ES6",
+        "es": "Actualizado a ThreeJS 127\nDiseño de documentación mejorado\nSe reemplazó el minificador JS \"uglify\" con \"terser\" compatible con ES6.",
+        "pl": "Zaktualizowano do ThreeJS 127\nUlepszony układ dokumentacji\nZastąpiono minifier JS „uglify” przez „terser” obsługujący ES6",
+        "zh-cn": "更新到ThreeJS 127\n改进的文档布局\n用支持ES6的“ terser”替换了JS压缩程序“ uglify”"
+      },
+      "0.0.9": {
+        "en": "Fixed bug where animations bound to boolean states were not initialized properly when model was loaded\nColored axis in editor-panel\nFixed multiple false error messages upon first model setup\nRemoved unneeded things (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "de": "Fehler behoben, bei dem Animationen, die an boolesche Zustände gebunden waren, beim Laden des Modells nicht ordnungsgemäß initialisiert wurden\nFarbige Achse im Editor-Panel\nMehrere falsche Fehlermeldungen beim ersten Modell-Setup wurden behoben\nNicht benötigte Dinge wurden entfernt (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "ru": "Исправлена ошибка, из-за которой анимации, привязанные к логическим состояниям, не инициализировались должным образом при загрузке модели.\nЦветная ось в панели-редакторе\nИсправлено несколько ложных сообщений об ошибках при первой настройке модели.\nУдалены ненужные вещи (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "pt": "Bug corrigido em que as animações vinculadas a estados booleanos não eram inicializadas corretamente quando o modelo era carregado\nEixo colorido no painel do editor\nCorreção de várias mensagens de erro falsas na configuração do primeiro modelo\nCoisas desnecessárias removidas (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "nl": "Bug opgelost waarbij animaties die waren gebonden aan booleaanse toestanden niet correct werden geïnitialiseerd toen het model werd geladen\nGekleurde as in editor-paneel\nMeerdere valse foutmeldingen opgelost bij de eerste modelconfiguratie\nOnnodige dingen verwijderd (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "fr": "Correction d'un bug où les animations liées aux états booléens n'étaient pas initialisées correctement lors du chargement du modèle\nAxe coloré dans le panneau de l'éditeur\nCorrection de plusieurs faux messages d'erreur lors de la première configuration du modèle\nSuppression des éléments inutiles (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "it": "Risolto bug per cui le animazioni legate a stati booleani non venivano inizializzate correttamente quando il modello veniva caricato\nAsse colorato nel pannello dell'editor\nRisolti diversi messaggi di errore falso durante la configurazione del primo modello\nOggetti non necessari rimossi (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "es": "Se corrigió el error por el cual las animaciones vinculadas a estados booleanos no se inicializaban correctamente cuando se cargaba el modelo\nEje coloreado en el panel del editor\nSe corrigieron múltiples mensajes de error falsos en la configuración del primer modelo\nSe eliminaron cosas innecesarias (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "pl": "Naprawiono błąd polegający na tym, że animacje powiązane ze stanami logicznymi nie były poprawnie inicjowane po załadowaniu modelu\nKolorowa oś w panelu edytora\nNaprawiono wiele fałszywych komunikatów o błędach podczas pierwszej konfiguracji modelu\nUsunięto niepotrzebne rzeczy (https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631)",
+        "zh-cn": "修复了以下错误：加载模型时，绑定到布尔状态的动画未正确初始化\n编辑器面板中的彩色轴\n修复了第一个模型设置时的多个错误消息\n删除了不需要的东西（https://github.com/ioBroker/ioBroker.repositories/pull/1157#issuecomment-802623631）"
+      },
+      "0.0.8": {
+        "en": "Bump three from 0.125.2 to 0.126.0",
+        "de": "Bump drei von 0,125,2 auf 0,126,0",
+        "ru": "Увеличьте 3 с 0,125,2 до 0,126,0",
+        "pt": "Bata três de 0,125,2 para 0,126,0",
+        "nl": "Bump drie van 0.125.2 naar 0.126.0",
+        "fr": "Passez trois de 0,125,2 à 0,126,0",
+        "it": "Salta tre da 0.125.2 a 0.126.0",
+        "es": "Aumente tres de 0.125.2 a 0.126.0",
+        "pl": "Podbij trzy z 0,125,2 na 0,126,0",
+        "zh-cn": "凹凸三从0.125.2到0.126.0"
+      },
+      "0.0.7": {
+        "en": "Fixed lighting behaviour (switchable lights)",
+        "de": "Festes Beleuchtungsverhalten (schaltbare Lichter)",
+        "ru": "Исправлено поведение освещения (переключаемый свет)",
+        "pt": "Comportamento de iluminação fixo (luzes comutáveis)",
+        "nl": "Vast lichtgedrag (schakelbare lampen)",
+        "fr": "Comportement d'éclairage fixe (lumières commutables)",
+        "it": "Comportamento di illuminazione fisso (luci commutabili)",
+        "es": "Comportamiento de iluminación fijo (luces conmutables)",
+        "pl": "Naprawiono zachowanie oświetlenia (przełączane światła)",
+        "zh-cn": "固定的照明行为（可切换灯）"
+      },
+      "0.0.6": {
+        "en": "Added 3d-axis in edit-mode to ease model positioning",
+        "de": "3D-Achse im Bearbeitungsmodus hinzugefügt, um die Modellpositionierung zu vereinfachen",
+        "ru": "Добавлена трехмерная ось в режиме редактирования для упрощения позиционирования модели.",
+        "pt": "Adicionado eixo 3d no modo de edição para facilitar o posicionamento do modelo",
+        "nl": "3D-as toegevoegd in bewerkingsmodus om modelpositionering te vergemakkelijken",
+        "fr": "Ajout d'un axe 3D en mode édition pour faciliter le positionnement du modèle",
+        "it": "Aggiunto asse 3D in modalità di modifica per facilitare il posizionamento del modello",
+        "es": "Se agregó un eje 3D en el modo de edición para facilitar el posicionamiento del modelo.",
+        "pl": "Dodano oś 3D w trybie edycji, aby ułatwić pozycjonowanie modelu",
+        "zh-cn": "在编辑模式下添加了3d轴以简化模型定位"
+      },
+      "0.0.5": {
+        "en": "Updated ThreeJS from r121 to r125\nImproved dependency management",
+        "de": "ThreeJS wurde von r121 auf r125 aktualisiert\nVerbessertes Abhängigkeitsmanagement",
+        "ru": "Обновлен ThreeJS с r121 до r125.\nУлучшенное управление зависимостями",
+        "pt": "ThreeJS atualizado de r121 para r125\nMelhor gerenciamento de dependências",
+        "nl": "ThreeJS bijgewerkt van r121 naar r125\nVerbeterd afhankelijkheidsbeheer",
+        "fr": "Mise à jour de ThreeJS de R121 à R125\nAmélioration de la gestion des dépendances",
+        "it": "Aggiornato ThreeJS da r121 a r125\nGestione delle dipendenze migliorata",
+        "es": "ThreeJS actualizado de r121 a r125\nGestión mejorada de la dependencia",
+        "pl": "Zaktualizowano ThreeJS z r121 do r125\nUlepszone zarządzanie zależnościami",
+        "zh-cn": "将ThreeJS从r121更新为r125\n改进的依赖关系管理"
+      },
+      "0.0.4": {
+        "en": "Added clickable-object behaviour\nImproved switchable lights\nESLint added\nMultiple improvements & bugfixes\nReworked logging\nDocumentation updated",
+        "de": "Klickbares Objektverhalten hinzugefügt\nVerbesserte schaltbare Lichter\nESLint hinzugefügt\nMehrere Verbesserungen und Bugfixes\nÜberarbeitete Protokollierung\nDokumentation aktualisiert",
+        "ru": "Добавлено поведение объекта при нажатии\nУлучшенное переключаемое освещение\nESLint добавлен\nМножественные улучшения и исправления\nПереработано ведение журнала\nДокументация обновлена",
+        "pt": "Adicionado comportamento de objeto clicável\nLuzes comutáveis aprimoradas\nESLint adicionado\nVárias melhorias e correções de bugs\nRegistro retrabalhado\nDocumentação atualizada",
+        "nl": "Gedrag aan klikbare objecten toegevoegd\nVerbeterde schakelbare lichten\nESLint toegevoegd\nMeerdere verbeteringen en bugfixes\nHerwerkte logboekregistratie\nDocumentatie bijgewerkt",
+        "fr": "Ajout d'un comportement d'objet cliquable\nLumières commutables améliorées\nESLint ajouté\nPlusieurs améliorations et corrections de bogues\nJournalisation retravaillée\nDocumentation mise à jour",
+        "it": "Aggiunto comportamento oggetto cliccabile\nLuci commutabili migliorate\nESLint aggiunto\nMolteplici miglioramenti e correzioni di bug\nRegistrazione rielaborata\nDocumentazione aggiornata",
+        "es": "Comportamiento de objeto en el que se puede hacer clic\nLuces intercambiables mejoradas\nESLint agregado\nVarias mejoras y correcciones de errores\nRegistro reelaborado\nDocumentación actualizada",
+        "pl": "Dodano zachowanie obiektów, które można kliknąć\nUlepszone przełączane światła\nDodano ESLint\nWiele ulepszeń i poprawek błędów\nPrzerobione logowanie\nZaktualizowano dokumentację",
+        "zh-cn": "添加了可点击对象行为\n改进的可切换灯\nESLint添加了\n多项改进和错误修正\n重做的日志\n文档更新"
+      },
+      "0.0.3": {
+        "en": "Removed docs from NPM\nAdded loading-animation for model\nMultiple Bugfixes",
+        "de": "Dokumente aus NPM entfernt\nLadeanimation für Modell hinzugefügt\nMehrere Bugfixes",
+        "ru": "Удалены документы из NPM\nДобавлена анимация загрузки для модели\nМножественные исправления",
+        "pt": "Documentos removidos do NPM\nAdicionada animação de carregamento para o modelo\nVárias correções de bugs",
+        "nl": "Documenten verwijderd uit NPM\nLaadanimatie toegevoegd voor model\nMeerdere bugfixes",
+        "fr": "Documents supprimés de NPM\nAjout d'une animation de chargement pour le modèle\nCorrections de bogues multiples",
+        "it": "Documenti rimossi da NPM\nAggiunta animazione di caricamento per il modello\nCorrezioni multiple di bug",
+        "es": "Documentos eliminados de NPM\nAnimación de carga agregada para el modelo\nVarias correcciones de errores",
+        "pl": "Usunięto dokumenty z NPM\nDodano animację ładowania modelu\nWiele poprawek",
+        "zh-cn": "从NPM中删除了文档\n添加了模型的加载动画\n多个错误修正"
+      },
+      "0.0.2": {
+        "en": "Reordered some menues in VIS editor\nExtended documentation\nImproved animation system\nMultiple Bugfixes",
+        "de": "Einige Menüs im VIS-Editor neu angeordnet\nErweiterte Dokumentation\nVerbessertes Animationssystem\nMehrere Bugfixes",
+        "ru": "Изменен порядок некоторых меню в редакторе VIS.\nРасширенная документация\nУлучшенная система анимации\nМножественные исправления",
+        "pt": "Reordenou alguns menus no editor VIS\nDocumentação estendida\nSistema de animação aprimorado\nVárias correções de bugs",
+        "nl": "Enkele menu's opnieuw gerangschikt in VIS-editor\nUitgebreide documentatie\nVerbeterd animatiesysteem\nMeerdere bugfixes",
+        "fr": "Réorganisation de certains menus dans l'éditeur VIS\nDocumentation étendue\nSystème d'animation amélioré\nCorrections de bogues multiples",
+        "it": "Riordinato alcuni menu nell'editor VIS\nDocumentazione estesa\nSistema di animazione migliorato\nCorrezioni multiple di bug",
+        "es": "Reordenó algunos menús en el editor VIS\nDocumentación ampliada\nSistema de animación mejorado\nVarias correcciones de errores",
+        "pl": "Zmieniono kolejność niektórych menu w edytorze VIS\nRozszerzona dokumentacja\nUlepszony system animacji\nWiele poprawek",
+        "zh-cn": "重新排列了VIS编辑器中的某些菜单\n扩展文档\n改进的动画系统\n多个错误修正"
+      },
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "zh-cn": "首次出版"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+    "title": "3D Model",
+    "titleLang": {
+      "en": "3D Model",
+      "de": "3D-Modell",
+      "ru": "3D модель",
+      "pt": "Modelo 3D",
+      "nl": "3d model",
+      "fr": "modèle 3D",
+      "it": "Modello 3D",
+      "es": "modelo 3d",
+      "pl": "Model 3D",
+      "zh-cn": "3D模型"
+    },
+    "desc": {
+      "en": "Import 3D GLTF images into Blender",
+      "de": "Importieren Sie 3D-GLTF-Bilder in Blender",
+      "ru": "Импорт изображений 3D GLTF в Blender",
+      "pt": "Importe imagens 3D GLTF para o Blender",
+      "nl": "Importeer 3D GLTF-afbeeldingen in Blender",
+      "fr": "Importez des images 3D GLTF dans Blender",
+      "it": "Importa immagini 3D GLTF in Blender",
+      "es": "Importar imágenes GLTF 3D a Blender",
+      "pl": "Importuj obrazy 3D GLTF do Blendera",
+      "zh-cn": "将3D GLTF图像导入Blender"
+    },
+    "authors": [
+      "Excodibur <non@existant.com>"
+    ],
+    "keywords": [
+      "threejs",
+      "gltf",
+      "vis",
+      "iobroker",
+      "3d",
+      "blender"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "vis-3dmodel.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/Excodibur/ioBroker.vis-3dmodel/master/admin/vis-3dmodel.png",
+    "readme": "https://github.com/Excodibur/ioBroker.vis-3dmodel/blob/master/README.md",
+    "loglevel": "info",
+    "restartAdapters": [
+      "vis"
+    ],
+    "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "mode": "none",
+    "connectionType": "local",
+    "dataSource": "poll",
+    "dependencies": [
+      "vis"
+    ],
+    "adminUI": {
+      "config": "none"
+    }
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }
